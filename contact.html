@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YiBu One Hub Solution: Global EV charging stations, Type 2/1//GB/T adapters, Conversion Head sourcing services from reliable and suppliers.">
+    <title>One Electra | EV Chargers & Parts</title>
+ <!--Link external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Pictures/favicon.png" type="image/png">
+   
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="nav-container">
+        <img src="Pictures/logo-removebg.png" style="width:250px; height:80px; alignment-adjust:central">
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link" data-page"index">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-page"about">About</a></li>
+                <li><a href="products.html" class="nav-link" data-page"products">Products</a></li>
+                <li><a href="services.html" class="nav-link" data-page"services">Services</a></li>
+                <li><a href="contact.html" class="nav-link" data-page"contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ==================== CONTACT SECTION: SIDE BY SIDE ==================== -->
+<div class="contact-wrapper">
+
+  <!-- LEFT: ENQUIRY FORM (WORKS ON GITHUB) -->
+  <div class="form-column">
+    <h3>Send Us An Enquiry</h3>
+    <form action="https://formsubmit.co/support@oneelectra.com" method="POST">
+      <!-- Hidden Settings -->
+      <input type="hidden" name="_subject" value="New Enquiry | One Electra">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <input type="text" name="full_name" placeholder="Your Full Name" required>
+      <input type="email" name="sender_email" placeholder="Your Email Address" required>
+      <input type="text" name="company_country" placeholder="Company / Country (Optional)">
+      <textarea name="details" placeholder="Your requirements..." rows="5" required></textarea>
+      <button type="submit">Submit Enquiry</button>
+    </form>
+  </div>
+
+  <!-- RIGHT: GET IN TOUCH DETAILS -->
+  <div class="info-column">
+    <h2>Get In Touch</h2>
+    <p class="contact-name">Alex</p >
+
+    <div class="detail-row">
+      <span class="label">E‑mail:</span>
+      <span>info@oneelectra.com</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Markets:</span>
+      <span>EU | Middle East | South Asia</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Address:</span>
+      <span>Shenyang, Liaoning 110000, China</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">WhatsApp:</span>
+      <span>Direct quick chat</span>
+    </div>
+<a href="https://wa.me/8615504192700?text=Hello%20One%20Electra%20Team%2C%20I%20am%20inquiring%20about%20your%20EV%20charging%20solutions%20and%20would%20like%20full%20details."target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+  Chat on WhatsApp Now
+</a >
+  </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">One Electra</div>
+        <p class="footer-text">Reliable EV Charging Solutions • Sourcing & Logistics • China ↔ World</p>
+        <div class="copyright">© 2026 One Electra. All Rights Reserved.</div>
+    </div>
+</footer>
+
+
+<!-- Page Switch Script -->
+<script>
+   document.querySelectorAll('.nav-link').forEach (link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        const page = this.getAttribute('data-page');
+        document.getElementById(page).classList.add('active'
+        this.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
