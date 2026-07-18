@@ -82,14 +82,14 @@
 
     /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(130, 224, 199, 0.75)), url('https://via.placeholder.com/1920x800?text=One+Electra+EV+Charging+Solutions') center/cover no-repeat;
+    background: #1A304A; linear-gradient(rgba(10, 10, 10, 0.85), rgba(130, 224, 199, 0.70)), url('https://oneelectra.com/1920x800?text=One+Electra+EV+Charging+Solutions') center/cover no-repeat;
     color: var(--white);
     padding: 7rem 2rem;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 3.2rem;
+    font-size: 3.1rem;
     margin-bottom: 1.2rem;
     line-height: 1.2;
 	text-justify:center;
@@ -124,7 +124,7 @@
         }
 
         .btn-primary {
-            background: var(--brand-mint);
+            background: var(--white);
             color: var(--white);
         }
 
@@ -135,7 +135,7 @@
         }
 
         .btn-outline {
-            background: transparent;
+            background: #1A304A;
             color: var(--white);
             border: 2px solid var(--brand-mint);
         }
@@ -273,6 +273,25 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
+
+.product-whatsapp-link {
+  display: block;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-whatsapp-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(45, 212, 191, 0.25);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
         /* Services */
         .services-grid {
