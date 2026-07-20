@@ -79,6 +79,34 @@
   padding-bottom: 3px;
 }
 
+/* image layer */
+.wrapper {
+  position: relative; /* Anchor for absolute image */
+  width: 100%;
+  min-height: 500px;
+  background: ; /* Main background */
+  overflow: hidden;
+  padding: 70px 20px;
+}
+
+/* Image layer (background ← IMAGE → text) */
+.bg-overlay-img {
+  position: absolute;
+  /* EDIT THESE 4 VALUES TO MOVE IMAGE */
+  top: 110px;
+  bottom: auto;
+  left: 72%;
+  right: auto;
+
+  transform: translateX(-50%); /* Center horizontally when left:50% */
+
+  /* Responsive sizing */
+  max-width: 850px;
+  width: 75%;
+  height: auto;
+  opacity: 0.10; /* Faint watermark look */
+  z-index: 1; /* Between background and text */
+}
 
     /* Hero Section */
 .hero {
@@ -543,4 +571,9 @@
     gap: 18px;
   }
 
+.bg-overlay-img {
+    top: 60px; /* Move image up on phones */
+    max-width: 300px;
+  }
+	
         }
