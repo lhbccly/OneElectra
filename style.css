@@ -519,6 +519,32 @@
   padding-left: 5px;
 }
 
+/* time zone */
+.time-widget{
+    font-family: sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+.time-row{
+    margin:4px 0;
+}
+
+.time-row{
+    display:flex;
+    justify-content:space-between;
+    gap:6px;
+    font-size:17px;
+    line-height:1.6;
+}
+.time-label{
+    opacity:0.55;
+}
+.time-value{
+    font-weight:bold;
+    color:#bbbbbb;
+    min-width:80px;
+    text-align:center;
+}
 /* Copyright */
 .footer-bottom {
   max-width: 1100px;
