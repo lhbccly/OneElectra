@@ -152,8 +152,51 @@
         <a href="https://www.facebook.com/profile.php?id=61591170849895" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook">
           <i class="fab fa-facebook-f"></i>
         </a >
-    
       </div>
+        <br><br>
+<div class="time-widget">
+    <div class="time-row">
+        <span class="time-label">Local:</span>
+        <span class="time-value" id="visitorLocal"></span>|
+        <span class="time-label">Beijing:</span>
+        <span class="time-value" id="beijingTime"></span>
+    </div>
+    
+</div>
+
+<script>
+function pad(n){
+    return n < 10 ? '0' + n : n;
+}
+
+// Function only returns HH:MM:SS (NO DATE)
+function formatOnlyTime(d){
+    const h = pad(d.getHours());
+    const mi = pad(d.getMinutes());
+    const s = pad(d.getSeconds());
+    return `${h}:${mi}:${s}`;
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+    function updateClock(){
+        const now = new Date();
+        const visitorEl = document.getElementById('visitorLocal');
+        const beijingEl = document.getElementById('beijingTime');
+
+        if(visitorEl){
+            visitorEl.textContent = formatOnlyTime(now);
+        }
+        if(beijingEl){
+            // Manual UTC+8 calculation for Beijing
+            const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+            const beijingTime = new Date(utcMs + (8 * 3600000));
+            beijingEl.textContent = formatOnlyTime(beijingTime);
+        }
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+});
+</script>
     </div>
 
     <!-- Quick Links -->
