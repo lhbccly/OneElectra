@@ -428,6 +428,122 @@
   color: #444;
 }
 
+/* ===== ONE ELECTRA BRAND FAQ STYLES ===== */
+.oneelectra-faq-section{
+    max-width: 1150px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+}
+.faq-heading{
+    font-size: 30px;
+    color:#182233;
+    margin-bottom:35px;
+    font-weight:700;
+}
+.faq-item{
+    background:#ffffff;
+    border:1px solid #dde3ee;
+    border-radius:10px;
+    margin-bottom:14px;
+    overflow:hidden;
+    transition: 0.25s ease;
+}
+.faq-item:hover{
+    box-shadow: 0 4px 14px rgba(24, 34, 51, 0.10);
+    border-color:#3086d8;
+}
+.faq-question{
+    width:100%;
+    background:transparent;
+    border:none;
+    padding:18px 24px;
+    font-size:17px;
+    font-weight:600;
+    text-align:left;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#182233;
+}
+/* Animated Arrow - Brand Accent Blue */
+.arrow-icon{
+    width:22px;
+    height:22px;
+    position:relative;
+    transition: transform 0.3s ease;
+}
+.arrow-icon::before, .arrow-icon::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:2px;
+    background-color:#3086d8;
+}
+.arrow-icon::before{
+    transform: rotate(45deg);
+    right:0px;
+}
+.arrow-icon::after{
+    transform: rotate(-45deg);
+    left:0px;
+}
+.faq-item.open .arrow-icon{
+    transform: rotate(180deg);
+}
+.faq-item.open .faq-question{
+    color:#3086d8;
+}
+
+.faq-answer{
+    padding:0 24px;
+    max-height:0;
+    overflow:hidden;
+    color:#4a5468;
+    line-height:1.8;
+    font-size:15px;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-item.open .faq-answer{
+    padding:0 24px 22px 24px;
+    max-height:700px;
+}
+
+/* ===== PAGINATION STYLES ===== */
+.faq-pagination{
+    margin-top:35px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+}
+.page-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid #3086d8;
+    background:#fff;
+    color:#3086d8;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.2s;
+}
+.page-btn.active{
+    background:#3086d8;
+    color:#ffffff;
+}
+.page-btn:hover{
+    background:#3086d8;
+    color:#fff;
+}
+/* Hide inactive FAQ pages */
+.faq-page{
+    display:none;
+}
+.faq-page.active{
+    display:block;
+}
+
 /* WhatsApp Button */
 .whatsapp-btn {
   display: inline-block;
