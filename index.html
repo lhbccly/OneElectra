@@ -236,5 +236,69 @@ window.addEventListener('DOMContentLoaded', function(){
     });
 });
 </script>
+
+             <script>
+// Elite Image Slider JavaScript
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.slider-dot');
+const prevBtn = document.querySelector('.arrow-prev');
+const nextBtn = document.querySelector('.arrow-next');
+let currentSlideIndex = 0;
+let autoPlayTimer;
+
+function showSlide(index){
+    slides.forEach((slide,i)=>{
+        slide.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot,i)=>{
+        dot.classList.toggle('active', i === index);
+    });
+    currentSlideIndex = index;
+}
+
+function nextSlide(){
+    let newIndex = (currentSlideIndex + 1) % slides.length;
+    showSlide(newIndex);
+}
+function prevSlide(){
+    let newIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    showSlide(newIndex);
+}
+
+// auto play every 5 seconds
+function startAutoPlay(){
+    autoPlayTimer = setInterval(nextSlide,5000);
+}
+function stopAutoPlay(){
+    clearInterval(autoPlayTimer);
+}
+
+// button events
+nextBtn.addEventListener('click',()=>{
+    stopAutoPlay();
+    nextSlide();
+    startAutoPlay();
+});
+prevBtn.addEventListener('click',()=>{
+    stopAutoPlay();
+    prevSlide();
+    startAutoPlay();
+});
+
+// dot click
+dots.forEach((dot, idx)=>{
+    dot.addEventListener('click',()=>{
+        stopAutoPlay();
+        showSlide(idx);
+        startAutoPlay();
+    });
+});
+
+// pause autoplay when mouse hover slider
+document.querySelector('.hero-slider-container').addEventListener('mouseenter', stopAutoPlay);
+document.querySelector('.hero-slider-container').addEventListener('mouseleave', startAutoPlay);
+
+startAutoPlay();
+</script>   
 </body>
 </html>
