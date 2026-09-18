@@ -7,7 +7,7 @@ export const categories: Category[] = [
     slug: 'ac-charging-pile',
     shortLabel: 'AC',
     description:
-      'Home and commercial AC wallboxes from 7kW to 22kW, with WiFi, OCPP, and multi-standard connector options.',
+      'Residential, workplace, and commercial AC charging solutions for 7kW, 11kW, and 22kW deployment needs.',
   },
   {
     id: 'dc-charging-pile',
@@ -15,7 +15,7 @@ export const categories: Category[] = [
     slug: 'dc-charging-pile',
     shortLabel: 'DC',
     description:
-      'High-power DC fast-charging solutions for corridors, depots, and commercial charge-point operators.',
+      'High-power DC charging hardware for fleets, public charging corridors, depots, and commercial station operators.',
   },
   {
     id: 'portable-charging-pile',
@@ -23,7 +23,7 @@ export const categories: Category[] = [
     slug: 'portable-charging-pile',
     shortLabel: 'Portable',
     description:
-      'Compact portable EV chargers with adjustable current, LED status, and travel-ready cable kits.',
+      'Compact portable chargers and travel-ready cable kits designed for flexible mobile and backup charging use.',
   },
   {
     id: 'adapters-connectors',
@@ -31,7 +31,7 @@ export const categories: Category[] = [
     slug: 'adapters-connectors',
     shortLabel: 'Adapters',
     description:
-      'Cable guns and conversion adapters for Type 1, Type 2, GB/T, NACS, and DC Type 2 ecosystems.',
+      'Cross-standard cable guns and adapter solutions for Type 1, Type 2, GB/T, NACS, and DC Type 2 ecosystems.',
   },
 ]
 

@@ -21,16 +21,21 @@ export const site = {
     whatsapp: 'https://wa.me/8615504192700',
   },
   hero: {
-    title: 'Premium EV charging for global markets.',
+    title: 'Global EV charging solutions for real-world projects.',
     subtitle:
-      'Certified Chinese EV charging hardware, adapters, and end-to-end sourcing for Europe, the Middle East, and South Asia.',
-    primaryCta: 'Browse Products',
-    secondaryCta: 'Get Quotation',
+      'One Electra supplies certified AC/DC chargers, adapters, and infrastructure support for distributors, developers, fleets, and project teams across Europe, the Middle East, and South Asia.',
+    primaryCta: 'Request a Quote',
+    secondaryCta: 'Explore Products',
   },
   brandStory: {
-    eyebrow: 'Brand',
-    title: 'Connecting certified Chinese EV makers with the world.',
-    body: 'One Electra is an international company that connects top-of-the-line Chinese electric vehicle charging device makers with companies and customers across every major market. With deep knowledge of regional charging standards and efficient cross-border logistics, we deliver full integration of EV infrastructure services.',
+    eyebrow: 'Why buyers choose us',
+    title: 'Reliable sourcing partner for EV infrastructure growth.',
+    body: 'One Electra connects project buyers, resellers, and infrastructure operators with certified EV charging hardware from trusted Chinese manufacturers. We combine standards expertise, cross-border support, and practical procurement experience to help clients move faster from spec to deployment.',
+    points: [
+      'Multi-standard compatibility across Type 1, Type 2, GB/T, and NACS ecosystems',
+      'Export-ready supply support for distributors, fleets, and commercial installations',
+      'Fast response, clear technical guidance, and shipment coordination from source to site',
+    ],
   },
   opportunity: {
     title: 'Future energy & business opportunities',
@@ -73,11 +78,29 @@ export const site = {
     markets: ['Europe', 'Middle East', 'South Asia', 'Global'],
   },
   finalCta: {
-    title: 'Ready to source certified EV charging hardware?',
-    body: 'Tell us your market, connector standard, and volume. We will match products, quote quickly on WhatsApp, and support logistics end to end.',
-    primaryCta: 'Contact Sales',
-    secondaryCta: 'View Products',
+    title: 'Need certified charging hardware for your next project?',
+    body: 'Tell us your market, connector standard, target volume, and deployment type. We will match the right hardware, recommend the best fit, and support your sourcing from quote to shipment.',
+    primaryCta: 'Talk to Sales',
+    secondaryCta: 'Browse Products',
   },
+  whyChoose: [
+    {
+      title: 'Verified sourcing',
+      description: 'Access to reliable Chinese EV charging manufacturers and vetted product options for commercial procurement.',
+    },
+    {
+      title: 'Standards expertise',
+      description: 'Guidance across Type 1, Type 2, GB/T, and NACS to help your market-specific specification process.',
+    },
+    {
+      title: 'Quality control',
+      description: 'Pre-shipment inspection, product matching, and operational support before goods leave the factory.',
+    },
+    {
+      title: 'End-to-end support',
+      description: 'From quote to documentation, freight coordination, and after-sales help for international buyers.',
+    },
+  ],
   about: {
     title: 'Why choose One Electra',
     intro:

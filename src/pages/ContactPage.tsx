@@ -32,7 +32,7 @@ export function ContactPage() {
               <SectionHeading
                 eyebrow="Contact"
                 title="Send us an enquiry"
-                description="Tell us your market, connector standard, and volume. Enquiries are routed to support@oneelectra.com."
+                description="Tell us your market, connector standard, volume, and deployment type. Typical quote responses are sent within 24 hours and routed to support@oneelectra.com."
               />
             </motion.div>
           </motion.div>
@@ -108,15 +108,31 @@ export function ContactPage() {
             </div>
           </motion.div>
 
-          <motion.p
-            className="text-sm leading-relaxed text-muted"
+          <motion.div
+            className="rounded-[1.5rem] border border-line bg-graphite/60 p-5"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={viewportOnce}
             transition={{ delay: 0.3 }}
           >
-            Submissions are sent securely to support@oneelectra.com through the same FormSubmit
-            delivery used by the One Electra website.
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-lime">What to include</p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              <li>• Country and application</li>
+              <li>• Connector standard and power requirement</li>
+              <li>• Quantity and target delivery timing</li>
+              <li>• OEM, fleet, or project-specific requirements</li>
+            </ul>
+          </motion.div>
+
+          <motion.p
+            className="text-sm leading-relaxed text-muted"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={viewportOnce}
+            transition={{ delay: 0.35 }}
+          >
+            Typical response time is within 24 hours. Submissions are sent securely to
+            support@oneelectra.com through the same FormSubmit delivery used by the One Electra website.
           </motion.p>
         </motion.aside>
       </Container>

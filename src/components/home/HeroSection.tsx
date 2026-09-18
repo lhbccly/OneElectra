@@ -10,7 +10,6 @@ import {
 } from 'framer-motion'
 import { ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { site } from '@/data/site'
 import heroImage from '@/assets/hero/hero-1.webp'
 
@@ -166,10 +165,33 @@ export function HeroSection() {
             transition={{ duration: 0.55, delay: 0.3 + titleWords.length * 0.06 }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <ButtonLink to="/products" variant="lime" size="lg">
+            <ButtonLink to="/contact" variant="lime" size="lg">
               {site.hero.primaryCta}
             </ButtonLink>
-            <WhatsAppButton label={site.hero.secondaryCta} variant="secondary" />
+            <ButtonLink to="/products" variant="secondary" size="lg">
+              {site.hero.secondaryCta}
+            </ButtonLink>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.5 + titleWords.length * 0.06 }}
+            className="mt-8 flex flex-wrap gap-2"
+          >
+            {[
+              'Certified hardware',
+              'Type 1 / Type 2 / GB/T / NACS',
+              'Global export support',
+              'Fast WhatsApp response',
+            ].map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center rounded-full border border-line bg-white/2 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted"
+              >
+                {item}
+              </span>
+            ))}
           </motion.div>
 
           {/* Animated stats strip */}
@@ -180,9 +202,9 @@ export function HeroSection() {
             className="mt-10 flex flex-wrap gap-6 border-t border-line pt-8"
           >
             {[
-              { value: '50+', label: 'Products' },
               { value: '4', label: 'Standards' },
-              { value: '10+', label: 'Markets' },
+              { value: 'Global', label: 'Coverage' },
+              { value: 'B2B', label: 'Focus' },
             ].map(({ value, label }, i) => (
               <motion.div
                 key={label}

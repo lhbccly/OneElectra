@@ -40,19 +40,46 @@ export function ServicesPage() {
         </Container>
       </section>
 
-      <Container className="grid gap-5 pt-14 md:grid-cols-2 md:pt-20">
-        {services.map((service, i) => {
-          const Icon = service.icon
-          return (
-            <motion.article
-              key={service.id}
-              className="group relative overflow-hidden rounded-[1.75rem] border border-line bg-panel/50 p-8 transition duration-300 hover:border-lime/30"
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4 }}
-            >
+      <Container className="pt-14 md:pt-20">
+        <motion.div
+          className="mb-8 rounded-[1.75rem] border border-line bg-panel/40 p-6 md:p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-lime">How we work</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-5">
+            {[
+              'Share your requirements',
+              'Match suitable hardware',
+              'Confirm standards and quantity',
+              'Inspect and prepare shipment',
+              'Deliver with documentation',
+            ].map((step, index) => (
+              <div key={step} className="rounded-2xl border border-line bg-graphite/70 p-4">
+                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-lime/12 text-xs font-semibold text-lime">
+                  0{index + 1}
+                </div>
+                <p className="text-sm leading-relaxed text-off-white/90">{step}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {services.map((service, i) => {
+            const Icon = service.icon
+            return (
+              <motion.article
+                key={service.id}
+                className="group relative overflow-hidden rounded-[1.75rem] border border-line bg-panel/50 p-8 transition duration-300 hover:border-lime/30"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4 }}
+              >
               {/* Hover glow */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -83,27 +110,28 @@ export function ServicesPage() {
                 {service.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">{service.summary}</p>
-              <motion.ul
-                className="mt-6 space-y-2"
-                initial="hidden"
-                whileInView="show"
-                viewport={viewportOnce}
-                variants={staggerContainer}
-              >
-                {service.points.map((point) => (
-                  <motion.li
-                    key={point}
-                    variants={fadeUp}
-                    className="flex items-start gap-2 text-sm text-off-white/90"
-                  >
-                    <span className="mt-0.5 size-1.5 shrink-0 rounded-full bg-lime" aria-hidden />
-                    {point}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.article>
-          )
-        })}
+                <motion.ul
+                  className="mt-6 space-y-2"
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={viewportOnce}
+                  variants={staggerContainer}
+                >
+                  {service.points.map((point) => (
+                    <motion.li
+                      key={point}
+                      variants={fadeUp}
+                      className="flex items-start gap-2 text-sm text-off-white/90"
+                    >
+                      <span className="mt-0.5 size-1.5 shrink-0 rounded-full bg-lime" aria-hidden />
+                      {point}
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.article>
+            )
+          })}
+        </div>
       </Container>
     </motion.div>
   )

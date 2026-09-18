@@ -99,13 +99,13 @@ export function ProductCard({ product }: ProductCardProps) {
           <p className="text-sm text-off-white/90">{product.name}</p>
           <p className="text-sm leading-relaxed text-muted">{product.shortDescription}</p>
 
-          {/* "View Product" with expanding underline */}
+          {/* Quote-first product CTA */}
           <div className="mt-auto pt-2 flex items-center gap-1.5 overflow-hidden">
-            <span className="text-sm font-medium text-lime">View Product</span>
+            <span className="text-sm font-medium text-lime">Request Quote</span>
             <motion.div
               className="h-px bg-lime"
               initial={{ width: 0 }}
-              whileHover={{ width: 20 }}
+              whileHover={{ width: 24 }}
               transition={{ duration: 0.25 }}
             />
           </div>

@@ -21,21 +21,48 @@ export function BrandStorySection() {
           whileInView="show"
           viewport={viewportOnce}
           variants={fadeRight}
+          className="space-y-6"
         >
-          <p className="font-editorial max-w-2xl text-2xl leading-tight text-off-white/80 md:text-3xl lg:pb-4">
-            {site.brandStory.body.split('. ').map((sentence, i) => (
-              <motion.span
-                key={i}
-                className="block mt-2 first:mt-0"
+          <p className="font-display max-w-2xl text-2xl leading-[1.15] tracking-[-0.03em] text-off-white/85 md:text-3xl lg:pb-2">
+            {site.brandStory.body}
+          </p>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            {site.brandStory.points.map((point, index) => (
+              <motion.div
+                key={point}
+                className="rounded-2xl border border-line bg-panel/70 p-4"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOnce}
-                transition={{ delay: i * 0.12, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: index * 0.12, duration: 0.45 }}
               >
-                {sentence}{i < site.brandStory.body.split('. ').length - 1 ? '.' : ''}
-              </motion.span>
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-lime/12 text-sm font-semibold text-lime">
+                  0{index + 1}
+                </div>
+                <p className="text-sm leading-relaxed text-muted">{point}</p>
+              </motion.div>
             ))}
-          </p>
+          </div>
+
+          <motion.div
+            className="grid gap-3 sm:grid-cols-3"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ delay: 0.2, duration: 0.45 }}
+          >
+            {[
+              { label: 'Standards', value: 'Type 1 / Type 2 / GB/T / NACS' },
+              { label: 'Markets', value: 'Europe • Middle East • South Asia' },
+              { label: 'Support', value: 'Quote response in 24 hours' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-line bg-graphite/60 p-4">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted">{item.label}</p>
+                <p className="mt-2 text-sm font-medium text-off-white">{item.value}</p>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </Container>
     </section>

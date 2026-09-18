@@ -62,7 +62,7 @@ export function FinalCtaSection() {
               variants={fadeUp}
               className="text-xs font-medium uppercase tracking-[0.22em] text-lime"
             >
-              Next step
+              Ready when you are
             </motion.p>
             <motion.h2
               variants={fadeUp}
