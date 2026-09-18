@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { site } from '@/data/site'
 import gunImage from '@/assets/products/adapters-connectors/type2-cable-gun/01.png'
 import { staggerContainer, fadeUp, fadeLeft, fadeRight, viewportOnce } from '@/lib/animations'
-
+ 
 export function GlobalPresenceSection() {
   const reduceMotion = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
