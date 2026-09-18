@@ -1,0 +1,62 @@
+import { CreditCard, Globe2, Package, Truck } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
+export interface ServiceItem {
+  id: string
+  title: string
+  summary: string
+  points: string[]
+  icon: LucideIcon
+}
+
+export const services: ServiceItem[] = [
+  {
+    id: 'payment-trade',
+    title: 'Payment & Trade Terms',
+    summary: 'Flexible commercial terms for sample, wholesale, and container-scale orders.',
+    points: [
+      'Payment: T/T, L/C, Bank, Alipay',
+      'Export terms: FOB / CIF / EXW',
+      'Lead time by product and schedule',
+      'MOQ by specification',
+    ],
+    icon: CreditCard,
+  },
+  {
+    id: 'china-pakistan-logistics',
+    title: 'China ↔ Pakistan Logistics',
+    summary: 'Dedicated freight lanes with double customs clearance and nationwide delivery.',
+    points: [
+      'Air cargo: 10–15 days from warehouse',
+      'By road: ~25 days from warehouse',
+      'By sea: 2–3 months from warehouse',
+      'All-inclusive taxes and doorstep delivery',
+    ],
+    icon: Truck,
+  },
+  {
+    id: 'global-shipping',
+    title: 'Global Shipping',
+    summary: 'Worldwide delivery with export documentation and compliance support.',
+    points: [
+      'Ship to any country worldwide',
+      'Complete export documentation',
+      'Compliance support',
+      'Flexible freight options',
+    ],
+    icon: Globe2,
+  },
+  {
+    id: 'bulk-business',
+    title: 'Bulk & Business Support',
+    summary: 'End-to-end B2B support from inquiry matching through after-sales.',
+    points: [
+      'Special wholesale pricing',
+      'Supplier matching and sample approval',
+      'Quality inspection and logistics',
+      'CE, FCC, RoHS, UKCA verification',
+      'OEM/ODM custom branding',
+    ],
+    icon: Package,
+  },
+]
