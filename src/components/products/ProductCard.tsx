@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, FileText } from 'lucide-react'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { Product } from '@/types/catalogue'
 import { getCategoryById } from '@/data/categories'
+import { useQuote } from '@/context/QuoteContext'
 
 interface ProductCardProps {
   product: Product
@@ -14,6 +15,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const reduceMotion = useReducedMotion()
   const cardRef = useRef<HTMLDivElement>(null)
   const [shimmerPos, setShimmerPos] = useState({ x: 50, y: 50 })
+  const { openQuoteModal } = useQuote()
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -36,10 +38,24 @@ export function ProductCard({ product }: ProductCardProps) {
     mouseY.set(0)
   }
 
+  function handleQuickQuote(e: React.MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+    const powerSpec = product.specifications.find((s) => s.label.toLowerCase().includes('power'))?.value
+    openQuoteModal({
+      product,
+      productModel: product.model,
+      productName: product.name,
+      category: category?.name,
+      powerOutput: powerSpec,
+      standard: product.standards.join(' / '),
+    })
+  }
+
   return (
     <motion.div
       ref={cardRef}
-      className="group relative flex h-full flex-col"
+      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-panel/70 transition-colors duration-300 hover:border-lime/40 hover:bg-panel"
       style={reduceMotion ? {} : {
         rotateX,
         rotateY,
@@ -64,7 +80,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <Link
         to={`/products/${product.slug}`}
-        className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-panel/70 transition-colors duration-300 group-hover:border-lime/40 group-hover:bg-panel"
+        className="flex flex-1 flex-col"
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
           <motion.img
@@ -88,29 +104,33 @@ export function ProductCard({ product }: ProductCardProps) {
                 {product.model}
               </h3>
             </div>
-            <motion.span
-              className="mt-1 inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition group-hover:border-lime group-hover:text-lime group-hover:bg-lime/10"
-              whileHover={reduceMotion ? {} : { rotate: 45 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-            >
+            <span className="mt-1 inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition group-hover:border-lime group-hover:text-lime group-hover:bg-lime/10">
               <ArrowUpRight className="size-4" aria-hidden />
-            </motion.span>
+            </span>
           </div>
-          <p className="text-sm text-off-white/90">{product.name}</p>
-          <p className="text-sm leading-relaxed text-muted">{product.shortDescription}</p>
-
-          {/* Quote-first product CTA */}
-          <div className="mt-auto pt-2 flex items-center gap-1.5 overflow-hidden">
-            <span className="text-sm font-medium text-lime">Request Quote</span>
-            <motion.div
-              className="h-px bg-lime"
-              initial={{ width: 0 }}
-              whileHover={{ width: 24 }}
-              transition={{ duration: 0.25 }}
-            />
-          </div>
+          <p className="text-sm font-medium text-off-white/90">{product.name}</p>
+          <p className="text-xs leading-relaxed text-muted line-clamp-2">{product.shortDescription}</p>
         </div>
       </Link>
+
+      {/* Quote-first Card Footer */}
+      <div className="flex items-center justify-between border-t border-line/60 bg-ink/40 px-5 py-3.5">
+        <Link
+          to={`/products/${product.slug}`}
+          className="text-xs font-semibold uppercase tracking-wider text-muted hover:text-off-white transition"
+        >
+          View Specs
+        </Link>
+
+        <button
+          onClick={handleQuickQuote}
+          className="inline-flex items-center gap-1.5 rounded-full border border-lime/40 bg-lime/10 px-3.5 py-1.5 text-xs font-semibold text-lime transition hover:bg-lime/20"
+        >
+          <FileText className="size-3.5" />
+          Request Quote
+        </button>
+      </div>
     </motion.div>
   )
 }
+

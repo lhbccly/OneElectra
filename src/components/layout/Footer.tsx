@@ -25,26 +25,62 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-line bg-graphite">
-      <Container className="grid gap-10 py-14 md:grid-cols-3 md:gap-8">
-        <div className="space-y-4">
+      <Container className="grid gap-10 py-14 md:grid-cols-4 md:gap-8">
+        <div className="space-y-4 md:col-span-1">
           <Logo />
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            {site.brand.name} is a trading brand of {site.brand.legalName}. Based in{' '}
-            {site.brand.location}.
+          <p className="text-sm leading-relaxed text-muted">
+            <strong className="text-off-white">One Electra</strong> is the international B2B trading brand of <strong className="text-off-white">{site.brand.legalName}</strong>. Located in {site.brand.location}.
           </p>
-          <p className="text-xs text-muted/80">
-            Global market coverage across Europe, Middle East, and South Asia. Certified Type 1, Type 2, and GB/T standards.
-          </p>
+          <div className="flex flex-wrap gap-1.5 pt-2">
+            {['CE Certified', 'RoHS', 'UKCA', 'FCC', 'IP65', 'OCPP 1.6J'].map((cert) => (
+              <span key={cert} className="rounded-full border border-line bg-panel px-2.5 py-1 text-[10px] uppercase font-medium text-lime">
+                {cert}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div>
-          <h3 className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-off-white">
-            Quick Links
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+            Product Categories
           </h3>
-          <ul className="grid grid-cols-2 gap-2">
+          <ul className="space-y-2 text-sm text-muted">
+            <li>
+              <Link to="/products?category=ac-charging-pile" className="hover:text-off-white transition">
+                AC Charging Wallboxes (7-22kW)
+              </Link>
+            </li>
+            <li>
+              <Link to="/products?category=dc-charging-pile" className="hover:text-off-white transition">
+                DC Fast Chargers (20-360kW)
+              </Link>
+            </li>
+            <li>
+              <Link to="/products?category=portable-charging-pile" className="hover:text-off-white transition">
+                Portable Chargers (3.5-7kW)
+              </Link>
+            </li>
+            <li>
+              <Link to="/products?category=adapters-connectors" className="hover:text-off-white transition">
+                Cables &amp; Conversion Guns
+              </Link>
+            </li>
+            <li>
+              <Link to="/services" className="hover:text-off-white transition">
+                OEM / ODM White-Labeling
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+            Company &amp; Navigation
+          </h3>
+          <ul className="grid grid-cols-2 gap-2 text-sm text-muted">
             {quickLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-muted transition hover:text-lime">
+                <Link to={link.to} className="transition hover:text-off-white">
                   {link.label}
                 </Link>
               </li>
@@ -52,21 +88,21 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-5 text-sm text-muted">
-          <h3 className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-off-white">
-            Contact
+        <div className="space-y-4 text-sm text-muted">
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+            B2B Sales Contact
           </h3>
           <p>
-            <a className="hover:text-lime transition-colors" href={`mailto:${site.contact.supportEmail}`}>
+            <a className="hover:text-lime font-medium transition-colors" href={`mailto:${site.contact.supportEmail}`}>
               {site.contact.supportEmail}
             </a>
           </p>
-          <p>{site.contact.markets}</p>
-          <p>{site.contact.address}</p>
+          <p>Markets: {site.contact.markets}</p>
+          <p>Entity: {site.brand.legalName}</p>
 
           <div className="border-t border-line pt-4">
             <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-off-white">
-              Connect with One Electra
+              Connect With Us
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map(({ label, href, Icon, color }) => (
@@ -96,10 +132,10 @@ export function Footer() {
 
       <div className="border-t border-line bg-ink/50">
         <Container className="flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} One Electra. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} One Electra ({site.brand.legalName}). All Rights Reserved.</p>
           <p className="flex items-center gap-2">
             <span className="inline-block size-2 rounded-full bg-lime animate-pulse" />
-            Energy Technology Solutions & Global EV Hardware
+            Certified EV Charging Hardware &amp; Global B2B Sourcing
           </p>
         </Container>
       </div>

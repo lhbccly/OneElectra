@@ -8,10 +8,12 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { getCategoryById } from '@/data/categories'
 import { getProductBySlug, getRelatedProducts } from '@/data/products'
 import { usePageMeta } from '@/lib/usePageMeta'
+import { useQuote } from '@/context/QuoteContext'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { staggerContainer, fadeUp, fadeLeft, viewportOnce } from '@/lib/animations'
 
 export function ProductDetailPage() {
+  const { openQuoteModal } = useQuote()
   const { slug = '' } = useParams()
   const product = getProductBySlug(slug)
 
@@ -115,7 +117,33 @@ export function ProductDetailPage() {
               ))}
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-8">
+            {/* Certifications strip */}
+            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-muted mr-1">Certifications &amp; Standards:</span>
+              {['CE Verified', 'RoHS Compliant', 'UKCA', 'IP65 Rated'].map((badge) => (
+                <span key={badge} className="rounded-full border border-lime/30 bg-lime/5 px-3 py-1 text-[11px] font-semibold text-lime">
+                  {badge}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
+              <button
+                onClick={() => {
+                  const powerSpec = product.specifications.find((s) => s.label.toLowerCase().includes('power'))?.value
+                  openQuoteModal({
+                    product,
+                    productModel: product.model,
+                    productName: product.name,
+                    category: category?.name,
+                    powerOutput: powerSpec,
+                    standard: product.standards.join(' / '),
+                  })
+                }}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-8 py-3.5 text-sm font-semibold text-ink transition hover:bg-soft-green"
+              >
+                Request Custom Quotation
+              </button>
               <WhatsAppButton product={product} />
             </motion.div>
           </motion.div>

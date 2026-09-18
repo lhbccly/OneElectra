@@ -6,6 +6,15 @@ import { services } from '@/data/services'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
 export function ServicesSection() {
+  const steps = [
+    { step: '01', title: 'Requirement & Specs', desc: 'Tell us connector type, power output (kW), destination grid, & volume.' },
+    { step: '02', title: 'Product & Factory Matching', desc: 'We identify certified hardware models from vetted Chinese factories.' },
+    { step: '03', title: 'Sample & Detailed Quote', desc: 'Receive itemized wholesale pricing, lead times, & test samples.' },
+    { step: '04', title: 'Quality Control & QA', desc: 'Pre-shipment high-voltage & electrical safety testing at source.' },
+    { step: '05', title: 'Global Freight & Customs', desc: 'Sea/Air shipping (DDP/CIF/FOB) with complete CE/RoHS/UKCA docs.' },
+    { step: '06', title: 'Delivery & Technical Support', desc: 'Doorstep arrival support, warranty management, & after-sales.' },
+  ]
+
   return (
     <section className="border-t border-line py-20 md:py-28 overflow-hidden">
       <Container>
@@ -18,16 +27,40 @@ export function ServicesSection() {
         >
           <motion.div variants={fadeUp}>
             <SectionHeading
-              eyebrow="Services"
-              title="Trade, logistics, and B2B support"
-              description="From factory matching to freight and after-sales, One Electra supports the full sourcing journey."
+              eyebrow="From Factory To Your Market"
+              title="6-Step B2B Sourcing & Logistics Workflow"
+              description="From initial technical matching to pre-shipment factory QA and door-to-door freight, One Electra manages the complete procurement cycle."
             />
           </motion.div>
           <motion.div variants={fadeUp}>
             <ButtonLink to="/services" variant="secondary" className="shrink-0 self-start md:self-auto">
-              All Services
+              View All B2B Services
             </ButtonLink>
           </motion.div>
+        </motion.div>
+
+        {/* 6-Step Workflow */}
+        <motion.div
+          className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+        >
+          {steps.map((s, idx) => (
+            <motion.div
+              key={s.step}
+              variants={fadeUp}
+              custom={idx}
+              className="relative overflow-hidden rounded-2xl border border-line bg-panel/50 p-6 transition duration-300 hover:border-lime/40 hover:bg-panel"
+            >
+              <span className="font-display text-3xl font-bold text-lime/40 group-hover:text-lime">
+                {s.step}
+              </span>
+              <h3 className="mt-2 font-display text-lg font-semibold text-off-white">{s.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted">{s.desc}</p>
+            </motion.div>
+          ))}
         </motion.div>
 
         <motion.div

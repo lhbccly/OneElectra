@@ -8,8 +8,10 @@ import {
   useMotionValue,
   useMotionTemplate,
 } from 'framer-motion'
-import { ButtonLink } from '@/components/ui/Button'
+import { Link } from 'react-router-dom'
+import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { useQuote } from '@/context/QuoteContext'
 import { site } from '@/data/site'
 import heroImage from '@/assets/hero/hero-1.webp'
 
@@ -40,6 +42,7 @@ function Particle({ x, y, size, delay, duration }: { x: number; y: number; size:
 const titleWords = site.hero.title.split(' ')
 
 export function HeroSection() {
+  const { openQuoteModal } = useQuote()
   const reduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll()
   const imageY = useSpring(
@@ -163,31 +166,61 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.3 + titleWords.length * 0.06 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <ButtonLink to="/contact" variant="lime" size="lg">
+            <Button variant="lime" size="lg" onClick={() => openQuoteModal()}>
               {site.hero.primaryCta}
-            </ButtonLink>
+            </Button>
             <ButtonLink to="/products" variant="secondary" size="lg">
               {site.hero.secondaryCta}
             </ButtonLink>
           </motion.div>
 
+          {/* Category Quick Links Strip */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.5 + titleWords.length * 0.06 }}
-            className="mt-8 flex flex-wrap gap-2"
+            transition={{ duration: 0.55, delay: 0.45 + titleWords.length * 0.06 }}
+            className="mt-8 rounded-2xl border border-line bg-panel/50 p-4 backdrop-blur-sm"
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lime mb-3">
+              Explore Hardware Categories
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: 'AC Chargers (7-22kW)', to: '/products?category=ac-charging-pile' },
+                { label: 'DC Fast Chargers (20-360kW)', to: '/products?category=dc-charging-pile' },
+                { label: 'Portable Chargers (3.5-7kW)', to: '/products?category=portable-charging-pile' },
+                { label: 'Cables & Adapters', to: '/products?category=adapters-connectors' },
+                { label: 'OEM / ODM Branding', to: '/services' },
+              ].map((cat) => (
+                <Link
+                  key={cat.label}
+                  to={cat.to}
+                  className="inline-flex items-center rounded-xl border border-line bg-ink px-3 py-1.5 text-xs font-medium text-off-white hover:border-lime/40 hover:text-lime transition"
+                >
+                  {cat.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Key Trust Highlights */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.55 + titleWords.length * 0.06 }}
+            className="mt-6 flex flex-wrap gap-2"
           >
             {[
-              'Certified hardware',
-              'Type 1 / Type 2 / GB/T / NACS',
-              'Global export support',
-              'Fast WhatsApp response',
+              'Shenyang Yibu Trading Co.',
+              'Audited Tier-1 Factories',
+              'CE / RoHS / UKCA Certified',
+              'Fast WhatsApp Support',
             ].map((item) => (
               <span
                 key={item}
-                className="inline-flex items-center rounded-full border border-line bg-white/2 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted"
+                className="inline-flex items-center rounded-full border border-line bg-white/2 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted"
               >
                 {item}
               </span>
@@ -198,23 +231,22 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="mt-10 flex flex-wrap gap-6 border-t border-line pt-8"
+            transition={{ duration: 0.6, delay: 0.65 }}
+            className="mt-8 flex flex-wrap gap-6 border-t border-line pt-6"
           >
             {[
-              { value: '4', label: 'Standards' },
-              { value: 'Global', label: 'Coverage' },
-              { value: 'B2B', label: 'Focus' },
+              { value: '4 Major', label: 'Standards (Type 1/2, GB/T, NACS)' },
+              { value: 'Shenyang', label: 'Factory Direct Trading' },
+              { value: 'DDP/FOB', label: 'Global Freight Support' },
             ].map(({ value, label }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + i * 0.08 }}
+                transition={{ delay: 0.7 + i * 0.08 }}
                 className="flex flex-col"
               >
-                <span className="font-display text-2xl font-semibold text-lime">{value}</span>
-                <span className="text-xs uppercase tracking-[0.18em] text-muted">{label}</span>
+                <span className="font-display text-xl font-semibold text-lime">{value}</span>
               </motion.div>
             ))}
           </motion.div>

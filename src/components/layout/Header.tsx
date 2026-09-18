@@ -3,14 +3,15 @@ import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Logo } from '@/components/ui/Logo'
-import { ButtonLink } from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { useQuote } from '@/context/QuoteContext'
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
   { to: '/products', label: 'Products' },
   { to: '/services', label: 'Services' },
+  { to: '/about', label: 'About' },
   { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -18,6 +19,7 @@ const links = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { openQuoteModal } = useQuote()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -37,7 +39,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition duration-300 ${
         scrolled || open
-          ? 'bg-ink/85 backdrop-blur-xl'
+          ? 'bg-ink/85 backdrop-blur-xl border-b border-line/40'
           : 'bg-transparent'
       }`}
     >
@@ -53,7 +55,7 @@ export function Header() {
               to={link.to}
               className={({ isActive }) =>
                 `relative text-sm tracking-wide transition ${
-                  isActive ? 'text-lime' : 'text-muted hover:text-off-white'
+                  isActive ? 'text-lime font-medium' : 'text-muted hover:text-off-white'
                 }`
               }
               end={link.to === '/'}
@@ -75,9 +77,9 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <ButtonLink to="/contact" variant="lime" size="md">
-            Get Quote
-          </ButtonLink>
+          <Button variant="lime" size="md" onClick={() => openQuoteModal()}>
+            Request Quote
+          </Button>
         </div>
 
         <button
@@ -138,7 +140,7 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       `block rounded-xl px-4 py-3 text-base transition duration-200 ${
-                        isActive ? 'bg-white/5 text-lime' : 'text-off-white hover:bg-white/5 hover:text-lime'
+                        isActive ? 'bg-white/5 text-lime font-medium' : 'text-off-white hover:bg-white/5 hover:text-lime'
                       }`
                     }
                     end={link.to === '/'}
@@ -152,14 +154,16 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: links.length * 0.05, duration: 0.3 }}
               >
-                <ButtonLink
-                  to="/contact"
+                <Button
                   variant="lime"
-                  className="mt-3"
-                  onClick={() => setOpen(false)}
+                  className="mt-3 w-full"
+                  onClick={() => {
+                    setOpen(false)
+                    openQuoteModal()
+                  }}
                 >
-                  Get Quote
-                </ButtonLink>
+                  Request Quote
+                </Button>
               </motion.div>
             </Container>
           </motion.div>
@@ -168,3 +172,4 @@ export function Header() {
     </header>
   )
 }
+

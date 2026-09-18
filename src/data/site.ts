@@ -2,7 +2,7 @@
 export const site = {
   brand: {
     name: 'One Electra',
-    tagline: 'Energy Technology Solutions',
+    tagline: 'EV Charging Hardware & Global Sourcing',
     legalName: 'Shenyang Yibu Trading Company',
     location: 'Shenyang, Liaoning 110000, China',
   },
@@ -11,7 +11,7 @@ export const site = {
     infoEmail: 'info@oneelectra.com',
     inquiryEmail: 'jasmin@oneelectra.com',
     whatsappNumber: '8615504192700',
-    markets: 'EU | Middle East | South Asia',
+    markets: 'Europe | Middle East | South Asia | Global',
     address: 'Shenyang, Liaoning 110000, China',
   },
   social: {
@@ -21,29 +21,30 @@ export const site = {
     whatsapp: 'https://wa.me/8615504192700',
   },
   hero: {
-    title: 'Global EV charging solutions for real-world projects.',
+    title: 'EV Charging Hardware & Global Sourcing',
     subtitle:
-      'One Electra supplies certified AC/DC chargers, adapters, and infrastructure support for distributors, developers, fleets, and project teams across Europe, the Middle East, and South Asia.',
+      'Certified AC & DC EV chargers, portable units, cables, and adapters sourced directly from audited tier-1 manufacturers in China for distributors, fleet operators, CPOs, and commercial installers worldwide.',
     primaryCta: 'Request a Quote',
     secondaryCta: 'Explore Products',
   },
   brandStory: {
-    eyebrow: 'Why buyers choose us',
-    title: 'Reliable sourcing partner for EV infrastructure growth.',
-    body: 'One Electra connects project buyers, resellers, and infrastructure operators with certified EV charging hardware from trusted Chinese manufacturers. We combine standards expertise, cross-border support, and practical procurement experience to help clients move faster from spec to deployment.',
+    eyebrow: 'Why Buy Through One Electra?',
+    title: 'Direct Chinese Factory Sourcing with International Quality Assurance.',
+    body: 'One Electra is the international trading brand of Shenyang Yibu Trading Company (Shenyang, China). We bridge regional charging standard gaps, vet tier-1 Chinese EV manufacturers, perform pre-shipment quality inspections, and handle end-to-end freight logistics so international buyers can procure with total confidence.',
     points: [
-      'Multi-standard compatibility across Type 1, Type 2, GB/T, and NACS ecosystems',
-      'Export-ready supply support for distributors, fleets, and commercial installations',
-      'Fast response, clear technical guidance, and shipment coordination from source to site',
+      'Verified Manufacturers: Audited factories producing CE, RoHS, UKCA, and FCC certified equipment.',
+      'Multi-Standard Matching: Precise technical alignment across Type 1, Type 2, GB/T, and NACS standards.',
+      'Quality Control & Logistics: Full pre-shipment electrical testing and international door-to-door (DDP/CIF/FOB) freight.',
     ],
   },
   opportunity: {
-    title: 'Future energy & business opportunities',
-    body: 'The global EV charging market is projected to grow at roughly 18–22% annually, reaching well over USD 140 billion by 2035 — driven by net-zero targets, mass EV adoption, and fast-track infrastructure investment.',
+    title: 'Global EV Charging Infrastructure Outlook',
+    body: 'According to the IEA Global EV Outlook 2024 and BloombergNEF forecasts, the global EV charging infrastructure market is projected to expand at a 20.4% CAGR, exceeding USD 140 Billion by 2035.',
+    citation: 'Source: International Energy Agency (IEA) & BloombergNEF Infrastructure Report, 2024',
     points: [
-      'Public & highway fast-charging corridors',
-      'Commercial fleet depots, logistics hubs, and workplace networks',
-      'Residential, multi-unit, and renewable-integrated smart charging',
+      'Public & highway fast-charging corridors (60kW–360kW DC Ultra-Fast)',
+      'Commercial fleet depots, logistics hubs, and workplace networks (11kW–22kW AC)',
+      'Residential, multi-unit, and renewable-integrated smart charging (7kW AC / Portable)',
     ],
   },
   standards: [
@@ -51,80 +52,81 @@ export const site = {
       id: 'type-1',
       name: 'Type 1 (SAE J1772)',
       summary:
-        'North America and Japan standard. Single-phase AC connector for home, workplace, and public Level 1/2 charging up to ~19kW.',
+        'North America and Japan AC standard. Single-phase AC connector for home, workplace, and public Level 1/2 charging up to ~19.2kW.',
     },
     {
       id: 'type-2',
       name: 'Type 2 (IEC 62196-2)',
       summary:
-        'Primary standard across Europe, UK, Australia, and most international markets. Supports single- and three-phase AC up to 22kW and DC systems.',
+        'Primary standard across Europe, UK, Australia, Middle East, and South Asia. Supports single- and three-phase AC up to 22kW and DC systems.',
     },
     {
       id: 'gbt',
       name: 'National Standard (GB/T)',
       summary:
-        "China's official AC/DC charging standard — widely used for Chinese-manufactured EVs and infrastructure projects globally.",
+        "China's official AC/DC charging standard — essential for Chinese-manufactured EVs and rapid infrastructure deployments globally.",
     },
     {
       id: 'nacs',
-      name: 'Tesla / NACS',
+      name: 'Tesla / NACS (SAE J3400)',
       summary:
-        'Unified North America Charging Standard (SAE J3400) supporting AC and DC in one compact design, with regional adapters available.',
+        'Unified North American Charging Standard supporting AC and DC in one compact design, with regional conversion adapters available.',
     },
   ],
   globalPartner: {
-    title: 'Your global partner for EV charging & parts',
-    body: 'One Electra partners with distributors, developers, and operators to deliver standardized, certified hardware and end-to-end support — turning clean energy goals into profitable, sustainable infrastructure.',
+    title: 'Your Trusted Sourcing Partner for EV Infrastructure',
+    body: 'One Electra works with distributors, fleet managers, charge point operators, and project contractors to deliver standardized, certified hardware and end-to-end procurement support — turning clean energy projects into profitable B2B infrastructure.',
     markets: ['Europe', 'Middle East', 'South Asia', 'Global'],
   },
   finalCta: {
-    title: 'Need certified charging hardware for your next project?',
-    body: 'Tell us your market, connector standard, target volume, and deployment type. We will match the right hardware, recommend the best fit, and support your sourcing from quote to shipment.',
-    primaryCta: 'Talk to Sales',
+    title: 'Need Certified Charging Hardware for Your Next Project?',
+    body: 'Tell us your target market, connector standard, required power output, and order volume. We will match the optimal certified hardware, supply itemized quotes, and handle shipping from factory to site.',
+    primaryCta: 'Request Custom Quote',
     secondaryCta: 'Browse Products',
   },
   whyChoose: [
     {
-      title: 'Verified sourcing',
-      description: 'Access to reliable Chinese EV charging manufacturers and vetted product options for commercial procurement.',
+      title: 'Verified Sourcing',
+      description: 'Access to audited Chinese tier-1 EV hardware manufacturers and vetted commercial product lines.',
     },
     {
-      title: 'Standards expertise',
-      description: 'Guidance across Type 1, Type 2, GB/T, and NACS to help your market-specific specification process.',
+      title: 'Standards Expertise',
+      description: 'Engineering guidance across Type 1, Type 2, GB/T, and NACS to ensure grid and vehicle compatibility.',
     },
     {
-      title: 'Quality control',
-      description: 'Pre-shipment inspection, product matching, and operational support before goods leave the factory.',
+      title: 'Quality Assurance',
+      description: 'Pre-shipment high-voltage, insulation, and electrical safety testing before goods leave the factory.',
     },
     {
-      title: 'End-to-end support',
-      description: 'From quote to documentation, freight coordination, and after-sales help for international buyers.',
+      title: 'End-to-End Support',
+      description: 'From itemized quotes to export documentation, customs clearance, freight coordination, and after-sales support.',
     },
   ],
   about: {
-    title: 'Why choose One Electra',
+    title: 'Why Choose One Electra',
     intro:
-      'Factory-direct EV charging hardware with international certification, cross-standard compatibility, and multilingual B2B support.',
+      'One Electra (Shenyang Yibu Trading Company) provides factory-direct EV charging hardware with international certification, cross-standard compatibility, and dedicated B2B sourcing support.',
     productBenefits: [
-      'Fully certified to Type 1, Type 2, and GB/T protocols',
-      'CE, FCC, RoHS, UKCA documentation for import clearance',
-      'Portable 3.5–7kW and wallbox 7–22kW options',
-      'IP54/IP65 weatherproof casings',
-      'Multi-layer electrical protection',
-      'App, Bluetooth, WiFi, NFC, and timer scheduling',
+      'Fully certified to Type 1, Type 2, GB/T, and NACS protocols',
+      'CE, FCC, RoHS, UKCA documentation for seamless customs clearance',
+      'Portable 3.5–7kW and commercial wallbox 7–22kW AC options',
+      'High-power 20kW–360kW DC fast charging stations',
+      'IP54/IP65 weatherproof casings & IK10 impact protection',
+      'App, Bluetooth, Wi-Fi, 4G, RFID, and OCPP 1.6J smart charging protocol',
     ],
     serviceBenefits: [
-      'Direct factory partnerships and OEM/ODM support',
-      'Competitive bulk pricing and sample programs',
-      'Pre-shipment inspection and testing',
-      'Sea, air, and door-to-door logistics',
-      'Compliance guidance for EU, Middle East, and South Asia',
-      'Fast WhatsApp quotation and dedicated sales support',
+      'Direct factory partnerships and OEM/ODM white-label support',
+      'Competitive bulk container pricing and sample evaluation programs',
+      'Pre-shipment QA inspection, high-voltage withstand testing, and report generation',
+      'Sea, air, road, and door-to-door (DDP / CIF / FOB) international logistics',
+      'Compliance guidance for EU, Middle East, and South Asian markets',
+      'Fast WhatsApp quotation response within 24 hours',
     ],
   },
   seo: {
-    homeTitle: 'One Electra | EV Charging & Energy Technology',
+    homeTitle: 'One Electra | B2B EV Charging Hardware & Global Sourcing',
     homeDescription:
-      'Premium international EV charging piles, portable chargers, and adapters with global standards support and B2B sourcing.',
+      'Certified AC & DC EV chargers, portable units, cables, and adapters from audited Chinese manufacturers for distributors, fleet operators, and commercial installers.',
   },
 } as const
+
