@@ -39,7 +39,7 @@ export function FAQPage() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="relative hidden min-h-48 items-center justify-center overflow-hidden rounded-[2rem] border border-line bg-graphite/60 lg:flex"
+            className="relative hidden min-h-48 items-center justify-center lg:flex"
             initial={{ opacity: 0, x: 24, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -49,7 +49,7 @@ export function FAQPage() {
             <img
               src={nacsGunImage}
               alt=""
-              className="relative z-[1] w-[78%] rotate-[-8deg] object-contain opacity-90 drop-shadow-[0_1.2rem_1.5rem_rgba(0,0,0,0.55)]"
+              className="relative z-[1] w-[78%] rotate-[-8deg] object-contain opacity-100 drop-shadow-[0_1.2rem_1.5rem_rgba(0,0,0,0.55)]"
             />
             <span className="absolute bottom-4 left-5 text-[10px] uppercase tracking-[0.2em] text-lime/80">
               Connector standards

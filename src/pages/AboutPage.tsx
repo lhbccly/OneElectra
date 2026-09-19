@@ -45,7 +45,7 @@ export function AboutPage() {
           </motion.div>
 
           <motion.div
-            className="relative flex min-h-[22rem] items-center justify-center overflow-hidden rounded-[2rem] border border-line bg-graphite/80"
+            className="relative flex min-h-[22rem] items-center justify-center"
             initial="hidden"
             animate="show"
             variants={fadeRight}

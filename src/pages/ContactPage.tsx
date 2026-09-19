@@ -22,7 +22,7 @@ export function ContactPage() {
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
       <section className="hero-wash border-b border-line py-16 md:py-24">
-        <Container>
+        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <motion.div
             initial="hidden"
             animate="show"
@@ -36,10 +36,24 @@ export function ContactPage() {
               />
             </motion.div>
           </motion.div>
+          <motion.div
+            className="relative flex min-h-48 items-center justify-center lg:min-h-64"
+            initial={{ opacity: 0, x: 24, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
+          >
+            <div className="pointer-events-none absolute size-64 rounded-full bg-lime/10 blur-3xl" />
+            <img
+              src={type2GunImage}
+              alt=""
+              className="relative z-[1] h-auto w-[min(100%,30rem)] rotate-[-8deg] object-contain drop-shadow-[0_1.5rem_2rem_rgba(0,0,0,0.45)]"
+            />
+          </motion.div>
         </Container>
       </section>
 
-      <Container className="grid gap-10 pt-12 md:grid-cols-[1.1fr_0.9fr] md:gap-14 md:pt-16">
+      <Container className="grid gap-10 pt-12 md:grid-cols-[1.1fr_0.9fr] md:items-start md:gap-14 md:pt-16">
         <motion.div
           className="rounded-[1.75rem] border border-line bg-panel/40 p-6 md:p-8"
           initial="hidden"
@@ -58,7 +72,7 @@ export function ContactPage() {
           variants={fadeRight}
         >
           <motion.div
-            className="group relative overflow-hidden rounded-[1.75rem] border border-line bg-graphite p-6 md:p-8 transition duration-300 hover:border-lime/30"
+            className="group relative rounded-[1.75rem] border border-line bg-graphite p-6 md:p-8 transition duration-300 hover:border-lime/30"
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 260, damping: 22 }}
           >
@@ -68,13 +82,6 @@ export function ContactPage() {
               style={{ background: 'radial-gradient(circle at 100% 0%, rgba(184,255,61,0.08), transparent 55%)' }}
               aria-hidden
             />
-            <img
-              src={type2GunImage}
-              alt=""
-              className="pointer-events-none absolute -right-12 -top-2 w-44 rotate-[-12deg] opacity-[0.12] transition duration-500 group-hover:opacity-[0.2] md:w-56"
-              aria-hidden
-            />
-
             <h2 className="relative z-[1] font-display text-2xl font-semibold text-off-white">Get in touch</h2>
             <motion.dl
               className="relative z-[1] mt-6 space-y-4 text-sm"

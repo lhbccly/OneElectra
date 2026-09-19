@@ -12,7 +12,7 @@ export function FinalCtaSection() {
     <section className="border-t border-line py-20 md:py-28 overflow-hidden">
       <Container>
         <motion.div
-          className="relative overflow-hidden rounded-[2rem] border border-line bg-panel px-8 py-12 md:px-14 md:py-16"
+          className="dark-surface relative overflow-hidden rounded-[2rem] border border-line bg-panel px-8 py-12 md:px-14 md:py-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}

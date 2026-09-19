@@ -24,7 +24,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-graphite">
+    <footer className="dark-surface border-t border-line bg-graphite">
       <Container className="grid gap-10 py-14 md:grid-cols-4 md:gap-8">
         <div className="space-y-4 md:col-span-1">
           <Logo />

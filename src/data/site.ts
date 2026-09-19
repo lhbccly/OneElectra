@@ -30,7 +30,7 @@ export const site = {
   brandStory: {
     eyebrow: 'Why Buy Through One Electra?',
     title: 'Direct Chinese Factory Sourcing with International Quality Assurance.',
-    body: 'One Electra is the international trading brand of Shenyang Yibu Trading Company (Shenyang, China). We bridge regional charging standard gaps, vet tier-1 Chinese EV manufacturers, perform pre-shipment quality inspections, and handle end-to-end freight logistics so international buyers can procure with total confidence.',
+  
     points: [
       'Verified Manufacturers: Audited factories producing CE, RoHS, UKCA, and FCC certified equipment.',
       'Multi-Standard Matching: Precise technical alignment across Type 1, Type 2, GB/T, and NACS standards.',

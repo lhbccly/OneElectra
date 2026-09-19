@@ -6,14 +6,13 @@ import {
   useSpring,
   useTransform,
   useMotionValue,
-  useMotionTemplate,
 } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { useQuote } from '@/context/QuoteContext'
 import { site } from '@/data/site'
-import heroImage from '@/assets/hero/hero-1.webp'
+import heroImage from '@/assets/products/ac-charging-pile/dl-eu004/01.png'
 
 // Floating particle component
 function Particle({ x, y, size, delay, duration }: { x: number; y: number; size: number; delay: number; duration: number }) {
@@ -50,14 +49,12 @@ export function HeroSection() {
     { stiffness: 80, damping: 22 },
   )
 
-  // 3D tilt effect for the card
+  // 3D tilt effect for the product image
   const cardRef = useRef<HTMLDivElement>(null)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 200, damping: 30 })
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 200, damping: 30 })
-  const shimmerX = useMotionTemplate`${useTransform(mouseX, [-0.5, 0.5], [0, 100])}%`
-  const shimmerY = useMotionTemplate`${useTransform(mouseY, [-0.5, 0.5], [0, 100])}%`
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!cardRef.current || reduceMotion) return
@@ -252,7 +249,7 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* 3D tilt card */}
+        {/* 3D tilt image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -273,7 +270,7 @@ export function HeroSection() {
             aria-hidden
           />
           <motion.div
-            className="image-frame relative overflow-hidden rounded-[2rem] border border-white/15 bg-graphite/80 shadow-[var(--shadow-glow)]"
+            className="relative"
             style={{
               rotateX: reduceMotion ? 0 : rotateX,
               rotateY: reduceMotion ? 0 : rotateY,
@@ -281,24 +278,12 @@ export function HeroSection() {
             }}
             transition={{ type: 'spring', stiffness: 180, damping: 18 }}
           >
-            {/* Shimmer highlight */}
-            {!reduceMotion && (
-              <motion.div
-                className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 hover:opacity-100"
-                style={{
-                  background: useMotionTemplate`radial-gradient(circle at ${shimmerX} ${shimmerY}, rgba(184,255,61,0.12) 0%, transparent 60%)`,
-                }}
-                aria-hidden
-              />
-            )}
             <img
               src={heroImage}
-              alt="One Electra EV charging hardware"
-              className="theme-image h-auto w-full"
+              alt="One Electra AC EV charger"
+              className="h-auto max-h-[38rem] w-full object-contain drop-shadow-[0_1.5rem_2rem_rgba(0,0,0,0.35)]"
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-lime/10 via-transparent to-ink/50" />
-
           </motion.div>
         </motion.div>
       </Container>

@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { services } from '@/data/services'
 import { usePageMeta } from '@/lib/usePageMeta'
+import portableChargerImage from '@/assets/products/portable-charging-pile/nacs-portable/01.png'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
 export function ServicesPage() {
@@ -20,7 +21,7 @@ export function ServicesPage() {
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
       <section className="hero-wash border-b border-line py-16 md:py-24">
-        <Container>
+        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <motion.div
             initial="hidden"
             animate="show"
@@ -36,6 +37,20 @@ export function ServicesPage() {
             <motion.div variants={fadeUp}>
               <WhatsAppButton label="Request Freight Quotation" />
             </motion.div>
+          </motion.div>
+          <motion.div
+            className="relative flex min-h-56 items-center justify-center lg:min-h-72"
+            initial={{ opacity: 0, x: 24, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
+          >
+            <div className="pointer-events-none absolute size-72 rounded-full bg-lime/10 blur-3xl" />
+            <img
+              src={portableChargerImage}
+              alt=""
+              className="relative z-[1] h-auto w-[min(100%,32rem)] object-contain opacity-70 drop-shadow-[0_1.5rem_2rem_rgba(0,0,0,0.45)]"
+            />
           </motion.div>
         </Container>
       </section>
