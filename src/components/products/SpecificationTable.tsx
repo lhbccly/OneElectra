@@ -6,7 +6,7 @@ interface SpecificationTableProps {
 
 export function SpecificationTable({ specifications }: SpecificationTableProps) {
   return (
-    <div className="overflow-hidden rounded-3xl border border-line">
+    <div className="overflow-hidden rounded-lg border border-line">
       <table className="w-full text-left text-sm">
         <tbody>
           {specifications.map((spec, index) => (

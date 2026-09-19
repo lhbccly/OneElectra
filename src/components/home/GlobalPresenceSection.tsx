@@ -13,7 +13,7 @@ export function GlobalPresenceSection() {
   const imageY = useSpring(useTransform(scrollYProgress, [0, 1], [-20, 20]), { stiffness: 60, damping: 20 })
 
   return (
-    <section ref={sectionRef} className="border-t border-line bg-graphite/30 py-20 md:py-28 overflow-hidden">
+    <section id="global-presence" ref={sectionRef} className="border-t border-line bg-graphite/30 py-20 md:py-28 overflow-hidden">
       <Container className="grid items-center gap-12 lg:grid-cols-2">
         <motion.div
           initial="hidden"

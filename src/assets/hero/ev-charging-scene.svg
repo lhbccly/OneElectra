@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" fill="none">
+  <title>Abstract electric vehicle charging scene</title>
+  <g stroke="#18201F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M84 418h690" opacity=".38"/>
+    <path d="M124 418c0-34 27-61 61-61h271c34 0 61 27 61 61"/>
+    <path d="M178 357l38-78h203l73 78"/>
+    <path d="M226 279l-42 78M419 279l39 78"/>
+    <path d="M211 324h198" opacity=".45"/>
+    <path d="M145 379h72M445 379h47"/>
+    <circle cx="239" cy="418" r="34" fill="#E3E9E5"/>
+    <circle cx="239" cy="418" r="12"/>
+    <circle cx="473" cy="418" r="34" fill="#E3E9E5"/>
+    <circle cx="473" cy="418" r="12"/>
+    <path d="M492 291h62v127"/>
+    <path d="M554 418h43"/>
+    <path d="M597 418c31 0 55-25 55-55V225"/>
+    <path d="M652 225h74"/>
+    <path d="M726 225v-25h48v25"/>
+    <path d="M720 200v-43h36v43"/>
+    <path d="M738 157v-29"/>
+    <path d="M704 178h68"/>
+    <path d="M612 200h80v126h-80z" fill="#E3E9E5"/>
+    <path d="M630 221h44v28h-44z"/>
+    <path d="M640 280h25M640 296h25"/>
+    <path d="M692 326c28-11 53-8 66 10"/>
+    <path d="M758 336c9 13 5 31-8 40l-13 9"/>
+    <path d="M737 385l-22-24"/>
+    <path d="M715 361l-20 18"/>
+    <path d="M684 370l-20-20"/>
+    <path d="M664 350l-14 15"/>
+  </g>
+  <g stroke="#65A30D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M497 291h44"/>
+    <path d="M704 178h68"/>
+    <path d="M738 128v-22"/>
+    <path d="M715 361l-18-19"/>
+  </g>
+  <g fill="#65A30D">
+    <path d="M334 310l-24 45h22l-9 27 34-50h-23z"/>
+    <circle cx="554" cy="418" r="7"/>
+    <circle cx="652" cy="225" r="7"/>
+  </g>
+  <g stroke="#65A30D" stroke-width="4" stroke-linecap="round" opacity=".75">
+    <path d="M92 156h86M135 113v86"/>
+    <path d="M82 122l10-10M178 122l-10-10M82 190l10 10M178 190l-10 10"/>
+  </g>
+</svg>

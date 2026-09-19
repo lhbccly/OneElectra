@@ -6,20 +6,21 @@ interface LogoProps {
   accent?: boolean
 }
 
-export function Logo({ compact = false, className = '', accent = true }: LogoProps) {
+export function Logo({ compact = false, className = '' }: LogoProps) {
   return (
     <span className={`inline-flex items-center ${className}`}>
       {compact ? (
-        <LogoMark size={38} accent={accent} />
+        <LogoMark size={36} />
       ) : (
-        <span className="inline-flex items-center gap-2.5">
-          <LogoMark size={32} accent={accent} />
+        <span className="inline-flex items-center gap-3">
+          <LogoMark size={38} />
           <span className="flex flex-col leading-none" aria-label="One Electra">
-            <span className="font-display text-[0.7rem] font-bold tracking-[0.18em] text-off-white uppercase sm:text-xs">
-              One Electra
+            <span className="font-display text-base font-extrabold tracking-[0.08em] sm:text-lg">
+              <span className="text-navy">ONE </span>
+              <span className="text-lime">ELECTRA</span>
             </span>
-            <span className="mt-1 text-[0.45rem] font-medium tracking-[0.16em] text-muted uppercase">
-              Charging infrastructure supply
+            <span className="mt-1 text-[0.52rem] font-bold tracking-[0.18em] text-zinc-500 uppercase">
+              EV CHARGING INFRASTRUCTURE
             </span>
           </span>
         </span>

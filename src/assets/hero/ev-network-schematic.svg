@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" fill="none">
+  <title>Abstract EV charging network schematic</title>
+  <g stroke="#18201F" stroke-width="2" opacity=".9">
+    <path d="M88 112H252M365 112H570M88 310H196M424 310H640M164 504H342M470 504H620"/>
+    <path d="M252 112C302 112 302 210 352 210S402 310 452 310"/>
+    <path d="M196 310C252 310 252 408 308 408S364 504 420 504"/>
+    <path d="M570 112C520 112 520 210 470 210S420 310 370 310"/>
+    <path d="M640 310C584 310 584 408 528 408S472 504 416 504"/>
+  </g>
+  <g stroke="#65A30D" stroke-width="3" opacity=".72">
+    <path d="M88 112H156"/>
+    <path d="M365 112H432"/>
+    <path d="M470 504H538"/>
+    <path d="M424 310H492"/>
+  </g>
+  <g fill="#E3E9E5" stroke="#18201F" stroke-width="3">
+    <rect x="38" y="72" width="100" height="80" rx="8"/>
+    <rect x="302" y="72" width="126" height="80" rx="8"/>
+    <rect x="570" y="72" width="100" height="80" rx="8"/>
+    <rect x="146" y="270" width="100" height="80" rx="8"/>
+    <rect x="402" y="270" width="126" height="80" rx="8"/>
+    <rect x="112" y="464" width="104" height="80" rx="8"/>
+    <rect x="370" y="464" width="126" height="80" rx="8"/>
+    <rect x="584" y="464" width="100" height="80" rx="8"/>
+  </g>
+  <g stroke="#18201F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M79 123V99h18v24M88 99v-10M79 123h18"/>
+    <path d="M343 126V97h22v29M349 113h10M376 126V97h22v29"/>
+    <path d="M606 123V99h18v24M615 99v-10M606 123h18"/>
+    <path d="M177 321V297h18v24M186 297v-10M177 321h18"/>
+    <path d="M438 326h18v-34h18v34h18"/>
+    <path d="M144 514h18v-32h20v32h18"/>
+    <path d="M412 518h18v-39h20v39h24"/>
+    <path d="M611 517v-30h18v30M603 517h34"/>
+  </g>
+  <g fill="#65A30D">
+    <circle cx="88" cy="112" r="6"/><circle cx="365" cy="112" r="6"/><circle cx="470" cy="504" r="6"/><circle cx="424" cy="310" r="6"/>
+  </g>
+</svg>

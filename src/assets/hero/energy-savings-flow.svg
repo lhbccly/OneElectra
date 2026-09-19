@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" fill="none">
+  <title>Abstract EV energy savings flow</title>
+  <g stroke="#18201F" stroke-width="2" opacity=".85">
+    <path d="M44 90H176M286 90H570M44 210H120M376 210H570M44 330H236M342 330H570"/>
+    <path d="M176 90c55 0 55 120 110 120s55 120 110 120"/>
+    <path d="M286 90c45 0 45 120 90 120s45 120 90 120"/>
+  </g>
+  <g stroke="#65A30D" stroke-width="3" opacity=".75">
+    <path d="M44 90h54M376 210h54M342 330h54"/>
+  </g>
+  <g fill="#EDF1EE" stroke="#18201F" stroke-width="3">
+    <circle cx="110" cy="90" r="34"/><circle cx="320" cy="210" r="34"/><circle cx="286" cy="330" r="34"/><circle cx="510" cy="330" r="34"/>
+  </g>
+  <g stroke="#18201F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M101 100V78h18v22M110 78V68M101 100h18"/>
+    <path d="M308 221v-23h24v23M314 209h12M344 221v-23h18v23"/>
+    <path d="M274 342h24M280 318v24M292 318v24"/>
+    <path d="M499 342c18-23 38-8 22 13-17 22-39 7-22-13Z"/>
+    <path d="M508 342c-7-14-17-20-27-19 2 13 10 21 27 19Z"/>
+  </g>
+  <g fill="#65A30D">
+    <circle cx="44" cy="90" r="5"/><circle cx="570" cy="210" r="5"/><circle cx="570" cy="330" r="5"/>
+  </g>
+</svg>

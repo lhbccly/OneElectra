@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Logo } from '@/components/ui/Logo'
+import { LogoMark } from '@/components/ui/LogoMark'
 import { Container } from '@/components/ui/Container'
 import { WorldClocks } from '@/components/ui/WorldClocks'
 import { LinkedInIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/components/ui/SocialIcons'
@@ -24,16 +24,21 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="dark-surface border-t border-line bg-graphite">
+    <footer className="border-t border-footer-line bg-footer text-slate-300">
       <Container className="grid gap-10 py-14 md:grid-cols-4 md:gap-8">
         <div className="space-y-4 md:col-span-1">
-          <Logo />
-          <p className="text-sm leading-relaxed text-muted">
-            <strong className="text-off-white">One Electra</strong> is the international B2B trading brand of <strong className="text-off-white">{site.brand.legalName}</strong>. Located in {site.brand.location}.
+          <div className="inline-flex items-center gap-3">
+            <LogoMark size={36} variant="dark" />
+            <span className="font-display text-lg font-extrabold tracking-wide text-white">
+              ONE <span className="text-volt">ELECTRA</span>
+            </span>
+          </div>
+          <p className="text-sm leading-relaxed text-slate-400">
+            <strong className="text-white">One Electra</strong> is the international B2B trading brand of <strong className="text-white">{site.brand.legalName}</strong>. Located in {site.brand.location}.
           </p>
           <div className="flex flex-wrap gap-1.5 pt-2">
             {['CE Certified', 'RoHS', 'UKCA', 'FCC', 'IP65', 'OCPP 1.6J'].map((cert) => (
-              <span key={cert} className="rounded-full border border-line bg-panel px-2.5 py-1 text-[10px] uppercase font-medium text-lime">
+              <span key={cert} className="rounded-full border border-footer-line bg-footer-panel px-2.5 py-1 text-[10px] uppercase font-bold text-volt">
                 {cert}
               </span>
             ))}
@@ -41,32 +46,32 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-volt">
             Product Categories
           </h3>
-          <ul className="space-y-2 text-sm text-muted">
+          <ul className="space-y-2 text-sm text-slate-300">
             <li>
-              <Link to="/products?category=ac-charging-pile" className="hover:text-off-white transition">
+              <Link to="/products?category=ac-charging-pile" className="hover:text-white transition">
                 AC Charging Wallboxes (7-22kW)
               </Link>
             </li>
             <li>
-              <Link to="/products?category=dc-charging-pile" className="hover:text-off-white transition">
+              <Link to="/products?category=dc-charging-pile" className="hover:text-white transition">
                 DC Fast Chargers (20-360kW)
               </Link>
             </li>
             <li>
-              <Link to="/products?category=portable-charging-pile" className="hover:text-off-white transition">
+              <Link to="/products?category=portable-charging-pile" className="hover:text-white transition">
                 Portable Chargers (3.5-7kW)
               </Link>
             </li>
             <li>
-              <Link to="/products?category=adapters-connectors" className="hover:text-off-white transition">
+              <Link to="/products?category=adapters-connectors" className="hover:text-white transition">
                 Cables &amp; Conversion Guns
               </Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-off-white transition">
+              <Link to="/services" className="hover:text-white transition">
                 OEM / ODM White-Labeling
               </Link>
             </li>
@@ -74,13 +79,13 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-volt">
             Company &amp; Navigation
           </h3>
-          <ul className="grid grid-cols-2 gap-2 text-sm text-muted">
+          <ul className="grid grid-cols-2 gap-2 text-sm text-slate-300">
             {quickLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="transition hover:text-off-white">
+                <Link to={link.to} className="transition hover:text-white">
                   {link.label}
                 </Link>
               </li>
@@ -88,20 +93,20 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-4 text-sm text-muted">
-          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-lime">
+        <div className="space-y-4 text-sm text-slate-300">
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-volt">
             B2B Sales Contact
           </h3>
           <p>
-            <a className="hover:text-lime font-medium transition-colors" href={`mailto:${site.contact.supportEmail}`}>
+            <a className="hover:text-volt font-semibold text-white transition-colors" href={`mailto:${site.contact.supportEmail}`}>
               {site.contact.supportEmail}
             </a>
           </p>
-          <p>Markets: {site.contact.markets}</p>
-          <p>Entity: {site.brand.legalName}</p>
+          <p className="text-slate-400">Markets: {site.contact.markets}</p>
+          <p className="text-slate-400">Entity: {site.brand.legalName}</p>
 
-          <div className="border-t border-line pt-4">
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-off-white">
+          <div className="border-t border-footer-line pt-4">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-200">
               Connect With Us
             </p>
             <div className="flex items-center gap-3">
@@ -115,7 +120,7 @@ export function Footer() {
                   title={`Connect on ${label}`}
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative group inline-flex size-10 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 ${color}`}
+                  className={`relative group inline-flex size-10 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition-all duration-300 ${color}`}
                 >
                   <Icon className="size-4 transition-transform group-hover:scale-110" aria-hidden />
                   <span className="sr-only">{label}</span>
@@ -124,17 +129,17 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-line pt-4">
+          <div className="border-t border-footer-line pt-4 text-slate-300">
             <WorldClocks />
           </div>
         </div>
       </Container>
 
-      <div className="border-t border-line bg-ink/50">
-        <Container className="flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-footer-line bg-footer-deep py-5">
+        <Container className="flex flex-col gap-2 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} One Electra ({site.brand.legalName}). All Rights Reserved.</p>
-          <p className="flex items-center gap-2">
-            <span className="inline-block size-2 rounded-full bg-lime animate-pulse" />
+          <p className="flex items-center gap-2 text-slate-300 font-medium">
+            <span className="inline-block size-2 rounded-full bg-emerald animate-pulse" />
             Certified EV Charging Hardware &amp; Global B2B Sourcing
           </p>
         </Container>

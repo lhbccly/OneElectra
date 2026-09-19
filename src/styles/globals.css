@@ -2,37 +2,99 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #0d1112;
-  --color-graphite: #171d1e;
-  --color-panel: #202829;
-  --color-off-white: #f4f3ed;
-  --color-muted: #b5bfbd;
-  --color-lime: #d6e86a;
-  --color-soft-green: #b9d99a;
-  --color-line: color-mix(in oklab, #f4f3ed 16%, transparent);
+  /* Solar Volt & Titanium Charcoal Theme Palette (Siemens & EVBox Style) */
+  --color-ink: #edf1ee;             /* Mineral page canvas */
+  --color-canvas-subtle: #e3e9e5;   /* Steel-tinted section surface */
+  --color-graphite: #f6f8f5;        /* Soft elevated surface */
+  --color-panel: #e9efeb;           /* Quiet panel surface */
+  --color-navy: #18201f;             /* Titanium charcoal text */
+  --color-off-white: #18201f;        /* Primary text on light canvas */
+  --color-muted: #4b5b56;            /* High-contrast secondary text */
+  --color-emerald: #65a30d;         /* Primary Solar Volt accent green */
+  --color-lime: #84cc16;            /* Vibrant Solar Volt green for active highlights */
+  --color-volt: #a3e635;           /* Bright Volt for dark container callouts */
+  --color-line: #cbd6d0;             /* Mineral hairline border */
 
   --font-display: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Avenir Next', 'Segoe UI', sans-serif;
-  --font-editorial: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
 
-  --shadow-glow: 0 12px 36px color-mix(in oklab, #0d1112 35%, transparent);
+  --shadow-sm: 0 1px 2px 0 rgba(24, 24, 27, 0.05);
+  --shadow-card: 0 4px 20px -2px rgba(24, 24, 27, 0.06), 0 2px 6px -1px rgba(24, 24, 27, 0.04);
+  --shadow-card-hover: 0 20px 32px -8px rgba(24, 24, 27, 0.12), 0 0 1px 1px rgba(132, 204, 22, 0.3);
+
+  --color-white: #ffffff;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-500: #71717a;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-footer: #18201f;
+  --color-footer-deep: #101614;
+  --color-footer-panel: #26312d;
+  --color-footer-line: #35453e;
+}
+
+[data-theme='dark'] {
+  --color-ink: #101614;
+  --color-canvas-subtle: #17201d;
+  --color-graphite: #1d2824;
+  --color-panel: #22302b;
+  --color-navy: #f1f5f2;
+  --color-off-white: #f1f5f2;
+  --color-muted: #b3c1ba;
+  --color-line: #35453e;
+  --color-emerald: #84cc16;
+  --color-lime: #a3e635;
+  --color-volt: #bef264;
+  --color-white: #f8faf9;
+  --color-slate-50: #202b27;
+  --color-slate-100: #26332e;
+  --color-slate-200: #35453e;
+  --color-slate-300: #9aa9a1;
+  --color-slate-400: #82938a;
+  --color-slate-500: #71827a;
+  --color-slate-600: #c0ccc5;
+  --color-slate-700: #d3ddd7;
+  --color-slate-800: #dce5df;
+  --color-slate-900: #e8efea;
+  --color-slate-950: #0a0f0d;
+  --color-zinc-100: #26332e;
+  --color-zinc-500: #aebbb3;
+  --color-zinc-700: #d2ddd6;
+  --color-zinc-800: #e2ebe5;
+  --color-footer: #080d0b;
+  --color-footer-deep: #050807;
+  --color-footer-panel: #121b17;
+  --color-footer-line: #26352e;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-ink);
   }
 
   body {
     margin: 0;
     min-width: 320px;
     background: var(--color-ink);
-    color: var(--color-off-white);
+    color: var(--color-navy);
     font-family: var(--font-body);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: 0;
+    letter-spacing: -0.01em;
+    transition: background-color 250ms ease, color 250ms ease;
   }
 
   h1,
@@ -42,12 +104,13 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    letter-spacing: 0;
+    color: var(--color-navy);
+    letter-spacing: -0.025em;
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-lime) 35%, transparent);
-    color: var(--color-ink);
+    background: rgba(132, 204, 22, 0.25);
+    color: var(--color-navy);
   }
 
   a {
@@ -75,110 +138,81 @@
     text-wrap: balance;
   }
 
+  /* Crisp subtle grid background pattern */
   .surface-grid {
     background-image:
-      linear-gradient(color-mix(in oklab, var(--color-off-white) 4%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklab, var(--color-off-white) 4%, transparent) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      linear-gradient(rgba(24, 32, 31, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 32, 31, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
   }
 
   .hero-wash {
     background:
-      linear-gradient(105deg, color-mix(in oklab, var(--color-graphite) 88%, var(--color-lime) 12%), var(--color-ink) 64%);
+      radial-gradient(ellipse at top right, rgba(132, 204, 22, 0.12), transparent 58%),
+      linear-gradient(180deg, #f6f8f5 0%, var(--color-ink) 100%);
+  }
+
+  [data-theme='dark'] .hero-wash {
+    background:
+      radial-gradient(ellipse at top right, rgba(163, 230, 53, 0.1), transparent 58%),
+      linear-gradient(180deg, #1d2824 0%, var(--color-ink) 100%);
   }
 
   .dark-surface {
-    background:
-      linear-gradient(135deg, var(--color-panel), var(--color-graphite));
+    background: linear-gradient(145deg, #202725, #2d3633);
+    color: #f8faf9;
   }
 
-  .material-rule {
-    background: linear-gradient(90deg, var(--color-lime), transparent 72%);
-  }
-
-  .font-editorial {
-    font-family: var(--font-editorial);
-  }
-
-  .theme-image {
-    filter: sepia(0.5) saturate(0.85) hue-rotate(326deg) brightness(0.82) contrast(1.12);
-    transform: scale(1.015);
-  }
-
-  .image-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(115deg, color-mix(in oklab, #080a0c 54%, transparent), transparent 48%),
-      linear-gradient(180deg, transparent 52%, color-mix(in oklab, #080a0c 78%, transparent));
-    mix-blend-mode: multiply;
-  }
-
-  .image-frame {
-    isolation: isolate;
-  }
-
-  /* Text shimmer effect */
-  /* Gradient border */
-  .gradient-border {
+  /* Modern industrial light card styling */
+  .industrial-card {
     position: relative;
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(184,255,61,0.4), transparent 50%, rgba(184,255,61,0.15));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    background: #ffffff;
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Glow border on hover */
-  .glow-hover {
-    transition: box-shadow 0.3s ease;
-  }
-  .glow-hover:hover {
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-lime) 45%, transparent), var(--shadow-glow);
+  [data-theme='dark'] .industrial-card {
+    background: var(--color-graphite);
   }
 
-  /* Pulse dot */
+  .industrial-card:hover {
+    border-color: rgba(132, 204, 22, 0.5);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+
+  /* Micro pulse indicator */
   .pulse-dot {
     position: relative;
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--color-lime);
   }
+  
   .pulse-dot::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 50%;
     background: var(--color-lime);
-    animation: pulse-ring 2s ease-out infinite;
+    animation: pulse-ring 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
   }
 
   @keyframes pulse-ring {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(3); opacity: 0; }
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.2); opacity: 0; }
   }
 
-  /* Float animation for decorative elements */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

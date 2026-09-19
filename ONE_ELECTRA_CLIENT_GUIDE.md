@@ -14,7 +14,7 @@ Use these files:
 - `src/data/site.ts` for headings, paragraphs, contact details, and homepage text
 - `src/assets/` for images and logos
 
-Logo files are kept in `src/assets/brand/client-logo/`. The website currently uses `icon-badge-dark.svg` for the logo symbol and `icon-transparent-favicon.svg` for the browser tab icon. Replace those matching SVG files when the logo needs to change, and keep the same file names so the website updates automatically.
+The website uses `src/assets/brand/logo-mark.png` for the logo symbol and browser tab icon. Replace that file when the logo needs to change, keeping the same path so the website updates automatically.
 
 Do not edit files inside `src/components/` unless a developer asks you to. These files control the website design and functionality.
 

@@ -11,7 +11,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
 
   return (
     <div className="space-y-4">
-      <div className="aspect-square overflow-hidden rounded-[2rem] border border-line bg-panel">
+      <div className="aspect-square overflow-hidden rounded-lg border border-line bg-panel">
         <img
           src={current}
           alt={alt}

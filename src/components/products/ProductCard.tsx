@@ -39,7 +39,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-panel/70 transition-colors duration-300 hover:border-lime/40 hover:bg-panel"
+      className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-panel/70 transition-colors duration-300 hover:border-lime/40 hover:bg-panel"
       style={reduceMotion ? {} : {
         rotateX,
         rotateY,
@@ -54,7 +54,7 @@ export function ProductCard({ product }: ProductCardProps) {
       {/* Shimmer overlay */}
       {!reduceMotion && (
         <div
-          className="pointer-events-none absolute inset-0 z-10 rounded-3xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 z-10 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100"
           style={{
             background: `radial-gradient(circle at ${shimmerPos.x}% ${shimmerPos.y}%, rgba(184,255,61,0.10) 0%, transparent 55%)`,
           }}

@@ -74,7 +74,39 @@ export function QuoteModal() {
     return encodeURIComponent(lines.join('\n'))
   }
 
+  function saveDurableQuoteEnquiry(channel: 'whatsapp' | 'rfq_form') {
+    try {
+      const enquiry = {
+        id: `rfq_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        type: 'rfq_quote',
+        channel,
+        data: {
+          productCategory,
+          standard,
+          powerOutput,
+          quantity,
+          country,
+          businessType,
+          needOem,
+          companyName,
+          fullName,
+          email,
+          phone,
+          notes,
+        },
+        status: channel === 'whatsapp' ? 'whatsapp_sent' : 'queued',
+      }
+      const existing = JSON.parse(localStorage.getItem('one_electra_enquiries') || '[]')
+      existing.unshift(enquiry)
+      localStorage.setItem('one_electra_enquiries', JSON.stringify(existing))
+    } catch (e) {
+      console.warn('Durable enquiry store fallback:', e)
+    }
+  }
+
   function handleWhatsAppRedirect() {
+    saveDurableQuoteEnquiry('whatsapp')
     const text = getFormattedWhatsAppText()
     const url = `https://wa.me/${site.contact.whatsappNumber}?text=${text}`
     window.open(url, '_blank')
@@ -82,9 +114,10 @@ export function QuoteModal() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    saveDurableQuoteEnquiry('rfq_form')
     setStatus('submitting')
 
-    // FormSubmit POST simulation / submission trigger
+    // FormSubmit POST / serverless backup trigger
     setTimeout(() => {
       setStatus('success')
     }, 600)

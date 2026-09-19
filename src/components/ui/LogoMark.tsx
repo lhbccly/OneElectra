@@ -1,24 +1,25 @@
-import badgeLogo from '@/assets/brand/client-logo/icon-badge-dark.svg'
+import logoMark from '@/assets/brand/logo-mark-light.svg'
+import logoMarkDark from '@/assets/brand/logo-mark.svg'
+import { useTheme } from '@/context/ThemeContext'
 
 interface LogoMarkProps {
   size?: number
   className?: string
-  /** When true, uses lime accent; otherwise monochrome off-white */
-  accent?: boolean
+  variant?: 'light' | 'dark'
 }
 
-/**
- * Premium O/E monogram:
- * circle (O) + engineered E bars + restrained energy arc.
- */
-export function LogoMark({ size = 36, className = '', accent: _accent = true }: LogoMarkProps) {
+/** Theme-aware One Electra mark with an explicit variant override for dark surfaces. */
+export function LogoMark({ size = 36, className = '', variant }: LogoMarkProps) {
+  const { theme } = useTheme()
+  const resolvedVariant = variant ?? (theme === 'dark' ? 'dark' : 'light')
+
   return (
     <img
-      src={badgeLogo}
+      src={resolvedVariant === 'dark' ? logoMarkDark : logoMark}
       alt=""
       width={size}
       height={size}
-      className={className}
+      className={`shrink-0 ${className}`}
       aria-hidden
     />
   )

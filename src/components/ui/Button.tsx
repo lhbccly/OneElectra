@@ -6,11 +6,11 @@ type Size = 'md' | 'lg'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-off-white text-ink hover:bg-white focus-visible:outline-lime',
+    'bg-navy text-white hover:bg-zinc-800 focus-visible:outline-lime shadow-sm',
   secondary:
-    'border border-line bg-transparent text-off-white hover:border-muted hover:bg-white/5',
-  ghost: 'bg-transparent text-off-white hover:bg-white/5',
-  lime: 'bg-lime text-ink hover:brightness-105 shadow-[var(--shadow-glow)]',
+    'border border-line bg-graphite text-navy hover:bg-canvas-subtle hover:border-muted shadow-xs',
+  ghost: 'bg-transparent text-zinc-700 hover:bg-zinc-100',
+  lime: 'bg-lime text-navy hover:bg-emerald hover:text-white shadow-sm active:scale-[0.98]',
 }
 
 const sizes: Record<Size, string> = {
@@ -23,7 +23,7 @@ function cx(...parts: Array<string | false | undefined>) {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-wide transition duration-200 disabled:opacity-50 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 rounded-xl font-bold tracking-wide transition duration-200 disabled:opacity-50 disabled:pointer-events-none'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant

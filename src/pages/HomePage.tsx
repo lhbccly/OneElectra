@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/home/HeroSection'
+import { InPageNav } from '@/components/home/InPageNav'
 import { BrandStorySection } from '@/components/home/BrandStorySection'
 import { SolutionsSection } from '@/components/home/SolutionsSection'
 import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection'
@@ -17,6 +18,7 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
+      <InPageNav />
       <SolutionsSection />
       <BrandStorySection />
       <WhyChooseUsSection />

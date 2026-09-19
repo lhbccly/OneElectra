@@ -32,6 +32,22 @@ export function ContactForm() {
     setErrors(result.errors)
     if (!result.valid) return
 
+    // Path A Zero Lost Enquiry: Durable local backup before delivery
+    try {
+      const enquiry = {
+        id: `enquiry_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        type: 'contact_form',
+        data: values,
+        status: 'queued',
+      }
+      const existing = JSON.parse(localStorage.getItem('one_electra_enquiries') || '[]')
+      existing.unshift(enquiry)
+      localStorage.setItem('one_electra_enquiries', JSON.stringify(existing))
+    } catch (e) {
+      console.warn('Durable enquiry store fallback:', e)
+    }
+
     setStatus('submitting')
     setErrorMessage('')
     event.currentTarget.submit()

@@ -8,6 +8,7 @@ import { ServicesPage } from '@/pages/ServicesPage'
 import { FAQPage } from '@/pages/FAQPage'
 import { ContactPage } from '@/pages/ContactPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
+import { ThemeProvider } from '@/context/ThemeContext'
 
 const router = createBrowserRouter([
   {
@@ -27,5 +28,9 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  )
 }

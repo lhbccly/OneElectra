@@ -10,7 +10,7 @@ export function FeaturedProductsSection() {
   const featured = getFeaturedProducts().slice(0, 4)
 
   return (
-    <section className="border-t border-line bg-graphite/40 py-20 md:py-28 overflow-hidden">
+    <section id="featured" className="border-t border-line bg-graphite/40 py-20 md:py-28 overflow-hidden">
       <Container>
         <motion.div
           className="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between"
