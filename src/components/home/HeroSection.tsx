@@ -137,7 +137,7 @@ export function HeroSection() {
                 <Link
                   key={cat.label}
                   to={cat.to}
-                  className="inline-flex items-center rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-emerald hover:text-emerald hover:bg-emerald/5 transition"
+                  className="inline-flex items-center rounded-xl border border-line bg-panel px-3 py-1.5 text-xs font-semibold text-muted hover:border-emerald hover:text-emerald hover:bg-emerald/5 transition"
                 >
                   {cat.label}
                 </Link>
@@ -160,7 +160,7 @@ export function HeroSection() {
             ].map((item) => (
               <span
                 key={item}
-                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-xs"
+                className="inline-flex items-center rounded-full border border-line bg-graphite px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted shadow-xs"
               >
                 {item}
               </span>
