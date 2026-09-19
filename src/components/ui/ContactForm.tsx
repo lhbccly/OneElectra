@@ -12,6 +12,8 @@ const initial: ContactFormValues = {
   website: '',
 }
 
+const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT || 'https://formsubmit.co/support@oneelectra.com'
+
 export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(initial)
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormValues, string>>>({})
@@ -91,7 +93,7 @@ export function ContactForm() {
 
   return (
     <form
-      action="https://formsubmit.co/support@oneelectra.com"
+      action={contactEndpoint}
       method="POST"
       onSubmit={onSubmit}
       className="space-y-5"

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, FileText } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { Product } from '@/types/catalogue'
 import { getCategoryById } from '@/data/categories'
-import { useQuote } from '@/context/QuoteContext'
 
 interface ProductCardProps {
   product: Product
@@ -15,7 +14,6 @@ export function ProductCard({ product }: ProductCardProps) {
   const reduceMotion = useReducedMotion()
   const cardRef = useRef<HTMLDivElement>(null)
   const [shimmerPos, setShimmerPos] = useState({ x: 50, y: 50 })
-  const { openQuoteModal } = useQuote()
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -36,20 +34,6 @@ export function ProductCard({ product }: ProductCardProps) {
   function handleMouseLeave() {
     mouseX.set(0)
     mouseY.set(0)
-  }
-
-  function handleQuickQuote(e: React.MouseEvent) {
-    e.preventDefault()
-    e.stopPropagation()
-    const powerSpec = product.specifications.find((s) => s.label.toLowerCase().includes('power'))?.value
-    openQuoteModal({
-      product,
-      productModel: product.model,
-      productName: product.name,
-      category: category?.name,
-      powerOutput: powerSpec,
-      standard: product.standards.join(' / '),
-    })
   }
 
   return (
@@ -113,7 +97,6 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
 
-      {/* Quote-first Card Footer */}
       <div className="flex items-center justify-between border-t border-line/60 bg-ink/40 px-5 py-3.5">
         <Link
           to={`/products/${product.slug}`}
@@ -122,13 +105,12 @@ export function ProductCard({ product }: ProductCardProps) {
           View Specs
         </Link>
 
-        <button
-          onClick={handleQuickQuote}
-          className="inline-flex items-center gap-1.5 rounded-full border border-lime/40 bg-lime/10 px-3.5 py-1.5 text-xs font-semibold text-lime transition hover:bg-lime/20"
+        <Link
+          to={`/products/${product.slug}`}
+          className="text-xs font-semibold uppercase tracking-wider text-lime hover:text-soft-green transition"
         >
-          <FileText className="size-3.5" />
-          Request Quote
-        </button>
+          View Product
+        </Link>
       </div>
     </motion.div>
   )

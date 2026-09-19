@@ -93,6 +93,7 @@ export function ContactPage() {
               {[
                 { label: 'Support', value: site.contact.supportEmail, href: `mailto:${site.contact.supportEmail}` },
                 { label: 'Info', value: site.contact.infoEmail, href: `mailto:${site.contact.infoEmail}` },
+                { label: 'Direct inquiry', value: site.contact.inquiryEmail, href: `mailto:${site.contact.inquiryEmail}` },
                 { label: 'Markets', value: site.contact.markets },
                 { label: 'Address', value: site.contact.address },
               ].map(({ label, value, href }) => (
@@ -112,6 +113,9 @@ export function ContactPage() {
             </motion.dl>
             <div className="relative z-[1] mt-8">
               <WhatsAppButton label="Chat on WhatsApp" />
+              <p className="mt-3 text-xs leading-relaxed text-muted">
+                WhatsApp is our fastest channel for sharing product photos, specifications, and shipping details across time zones. Formal quotations and documents are sent by email.
+              </p>
             </div>
           </motion.div>
 

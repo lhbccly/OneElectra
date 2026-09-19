@@ -23,7 +23,7 @@ function cx(...parts: Array<string | false | undefined>) {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition duration-200 disabled:opacity-50 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-wide transition duration-200 disabled:opacity-50 disabled:pointer-events-none'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant

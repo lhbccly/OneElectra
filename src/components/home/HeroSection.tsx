@@ -14,29 +14,6 @@ import { useQuote } from '@/context/QuoteContext'
 import { site } from '@/data/site'
 import heroImage from '@/assets/products/ac-charging-pile/dl-eu004/01.png'
 
-// Floating particle component
-function Particle({ x, y, size, delay, duration }: { x: number; y: number; size: number; delay: number; duration: number }) {
-  return (
-    <motion.div
-      className="pointer-events-none absolute rounded-full bg-lime"
-      style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, opacity: 0 }}
-      animate={{
-        opacity: [0, 0.6, 0],
-        y: [0, -40, -80],
-        x: [0, Math.sin(x) * 20, Math.sin(x) * 40],
-        scale: [0.5, 1, 0.3],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: 'easeOut',
-      }}
-      aria-hidden
-    />
-  )
-}
-
 // Words that animate in with a stagger
 const titleWords = site.hero.title.split(' ')
 
@@ -68,48 +45,11 @@ export function HeroSection() {
     mouseY.set(0)
   }
 
-  const particles = !reduceMotion ? [
-    { x: 5, y: 80, size: 2, delay: 0, duration: 4.5 },
-    { x: 12, y: 60, size: 3, delay: 0.7, duration: 5.2 },
-    { x: 20, y: 70, size: 1.5, delay: 1.4, duration: 4.8 },
-    { x: 8, y: 40, size: 2.5, delay: 2.1, duration: 6 },
-    { x: 18, y: 90, size: 2, delay: 0.3, duration: 5.5 },
-    { x: 85, y: 85, size: 2, delay: 1, duration: 4.2 },
-    { x: 92, y: 65, size: 3, delay: 0.5, duration: 5.8 },
-    { x: 78, y: 75, size: 1.5, delay: 1.8, duration: 4.6 },
-    { x: 88, y: 45, size: 2.5, delay: 2.4, duration: 5.1 },
-  ] : []
-
   return (
     <section className="relative overflow-hidden hero-wash">
       <div className="pointer-events-none absolute inset-0 surface-grid opacity-40" aria-hidden />
 
-      {/* Animated ambient orbs */}
-      <motion.div
-        className="pointer-events-none absolute -right-32 top-1/4 size-96 rounded-full bg-lime/10 blur-[120px]"
-        animate={reduceMotion ? undefined : {
-          scale: [1, 1.18, 1],
-          opacity: [0.3, 0.6, 0.3],
-          x: [0, 20, 0],
-        }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        aria-hidden
-      />
-      <motion.div
-        className="pointer-events-none absolute -left-24 bottom-1/4 size-80 rounded-full bg-soft-green/8 blur-[100px]"
-        animate={reduceMotion ? undefined : {
-          scale: [1, 1.12, 1],
-          opacity: [0.2, 0.45, 0.2],
-          y: [0, -30, 0],
-        }}
-        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        aria-hidden
-      />
-
-      {/* Floating particles */}
-      {particles.map((p, i) => (
-        <Particle key={i} {...p} />
-      ))}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 border-l border-line/30 opacity-40" aria-hidden />
 
       <Container className="relative grid min-h-[calc(100dvh-4rem)] items-center gap-10 py-16 md:min-h-[calc(100dvh-5rem)] md:grid-cols-[1.05fr_0.95fr] md:gap-12 lg:py-20">
         <div className="max-w-2xl">

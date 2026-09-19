@@ -33,7 +33,7 @@ export function WhyChooseUsSection() {
               key={item.title}
               variants={fadeUp}
               custom={index}
-              className="group relative overflow-hidden rounded-[1.5rem] border border-line bg-panel/50 p-6 transition duration-300 hover:border-lime/40 hover:bg-panel"
+              className="group relative overflow-hidden rounded-lg border border-line bg-panel/50 p-6 transition duration-300 hover:border-lime/40 hover:bg-panel"
               whileHover={{ y: -4 }}
             >
               <div
@@ -42,7 +42,7 @@ export function WhyChooseUsSection() {
                 aria-hidden
               />
 
-              <div className="relative mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-line bg-lime/10 text-lg font-semibold text-lime">
+              <div className="relative mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-line bg-lime/10 text-lg font-semibold text-lime">
                 {String(index + 1).padStart(2, '0')}
               </div>
 

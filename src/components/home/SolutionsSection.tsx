@@ -83,7 +83,7 @@ export function SolutionsSection() {
           />
           <button
             onClick={() => openQuoteModal({ useCase: 'General Solution Query' })}
-            className="shrink-0 rounded-full border border-lime/40 bg-lime/10 px-5 py-2.5 text-sm font-semibold text-lime transition hover:bg-lime/20"
+            className="shrink-0 rounded-md border border-lime/40 bg-lime/10 px-5 py-2.5 text-sm font-semibold text-lime transition hover:bg-lime/20"
           >
             Get Custom Solution Quote
           </button>
@@ -103,14 +103,14 @@ export function SolutionsSection() {
                 key={item.id}
                 variants={fadeUp}
                 custom={index}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-line bg-panel/60 p-7 transition duration-300 hover:border-lime/40 hover:bg-panel"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-line bg-panel/60 p-7 transition duration-300 hover:border-lime/40 hover:bg-panel"
               >
                 <div>
                   <div className="mb-5 flex items-center justify-between">
-                    <div className="flex size-12 items-center justify-center rounded-2xl border border-line bg-ink text-lime transition duration-300 group-hover:border-lime/50 group-hover:bg-lime/10">
+                    <div className="flex size-12 items-center justify-center rounded-md border border-line bg-ink text-lime transition duration-300 group-hover:border-lime/50 group-hover:bg-lime/10">
                       <Icon className="size-6" />
                     </div>
-                    <span className="rounded-full border border-line bg-ink px-3 py-1 text-[11px] font-medium tracking-wide text-muted">
+                    <span className="rounded-md border border-line bg-ink px-3 py-1 text-[11px] font-medium tracking-wide text-muted">
                       {item.badge}
                     </span>
                   </div>
@@ -134,17 +134,9 @@ export function SolutionsSection() {
                     View Models <ArrowRight className="size-3.5" />
                   </Link>
 
-                  <button
-                    onClick={() =>
-                      openQuoteModal({
-                        category: item.title,
-                        useCase: item.badge,
-                      })
-                    }
-                    className="text-xs font-semibold text-lime hover:underline"
-                  >
-                    Quote This Solution
-                  </button>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                    Technical matching available
+                  </span>
                 </div>
               </motion.article>
             )

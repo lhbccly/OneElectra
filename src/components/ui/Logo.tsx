@@ -15,11 +15,11 @@ export function Logo({ compact = false, className = '', accent = true }: LogoPro
         <span className="inline-flex items-center gap-2.5">
           <LogoMark size={32} accent={accent} />
           <span className="flex flex-col leading-none" aria-label="One Electra">
-            <span className="font-display text-[0.7rem] font-semibold tracking-[0.24em] text-off-white uppercase sm:text-xs">
+            <span className="font-display text-[0.7rem] font-bold tracking-[0.18em] text-off-white uppercase sm:text-xs">
               One Electra
             </span>
-            <span className="mt-1 text-[0.45rem] font-medium tracking-[0.2em] text-muted uppercase">
-              Energy technology solutions
+            <span className="mt-1 text-[0.45rem] font-medium tracking-[0.16em] text-muted uppercase">
+              Charging infrastructure supply
             </span>
           </span>
         </span>

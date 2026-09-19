@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #080a0c;
-  --color-graphite: #111519;
-  --color-panel: #161b20;
-  --color-off-white: #f2f4f3;
-  --color-muted: #8d9698;
-  --color-lime: #b8ff3d;
-  --color-soft-green: #6ee7a0;
-  --color-line: color-mix(in oklab, #f2f4f3 12%, transparent);
+  --color-ink: #0d1112;
+  --color-graphite: #171d1e;
+  --color-panel: #202829;
+  --color-off-white: #f4f3ed;
+  --color-muted: #b5bfbd;
+  --color-lime: #d6e86a;
+  --color-soft-green: #b9d99a;
+  --color-line: color-mix(in oklab, #f4f3ed 16%, transparent);
 
   --font-display: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
-  --font-body: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-editorial: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
 
-  --shadow-glow: 0 0 60px color-mix(in oklab, #b8ff3d 18%, transparent);
+  --shadow-glow: 0 12px 36px color-mix(in oklab, #0d1112 35%, transparent);
 }
 
 @layer base {
@@ -32,7 +32,7 @@
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   h1,
@@ -42,7 +42,7 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
   }
 
   ::selection {
@@ -85,9 +85,16 @@
 
   .hero-wash {
     background:
-      radial-gradient(ellipse 80% 55% at 70% 20%, color-mix(in oklab, var(--color-lime) 16%, transparent), transparent 55%),
-      radial-gradient(ellipse 50% 40% at 15% 80%, color-mix(in oklab, var(--color-soft-green) 10%, transparent), transparent 50%),
-      linear-gradient(180deg, #0b0f12 0%, var(--color-ink) 100%);
+      linear-gradient(105deg, color-mix(in oklab, var(--color-graphite) 88%, var(--color-lime) 12%), var(--color-ink) 64%);
+  }
+
+  .dark-surface {
+    background:
+      linear-gradient(135deg, var(--color-panel), var(--color-graphite));
+  }
+
+  .material-rule {
+    background: linear-gradient(90deg, var(--color-lime), transparent 72%);
   }
 
   .font-editorial {
@@ -115,25 +122,6 @@
   }
 
   /* Text shimmer effect */
-  .text-shimmer {
-    background: linear-gradient(
-      90deg,
-      var(--color-lime) 0%,
-      color-mix(in oklab, var(--color-lime) 60%, white) 50%,
-      var(--color-lime) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer-text 3s linear infinite;
-  }
-
-  @keyframes shimmer-text {
-    from { background-position: 0% center; }
-    to { background-position: 200% center; }
-  }
-
   /* Gradient border */
   .gradient-border {
     position: relative;
@@ -157,7 +145,7 @@
     transition: box-shadow 0.3s ease;
   }
   .glow-hover:hover {
-    box-shadow: 0 0 0 1px rgba(184,255,61,0.3), 0 0 30px rgba(184,255,61,0.08);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-lime) 45%, transparent), var(--shadow-glow);
   }
 
   /* Pulse dot */

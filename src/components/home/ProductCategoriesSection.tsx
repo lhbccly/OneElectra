@@ -34,7 +34,7 @@ export function ProductCategoriesSection() {
             <motion.div key={category.id} variants={fadeUp}>
               <Link
                 to={`/products?category=${category.slug}`}
-                className="group relative flex h-full overflow-hidden rounded-[1.75rem] border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-lime/40 hover:shadow-[var(--shadow-glow)] md:p-9"
+                className="group relative flex h-full overflow-hidden rounded-lg border border-line bg-panel p-7 transition duration-500 hover:-translate-y-1 hover:border-lime/40 hover:shadow-[var(--shadow-glow)] md:p-9"
               >
                 {/* Animated corner gradient on hover */}
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -45,7 +45,7 @@ export function ProductCategoriesSection() {
                 />
                 {/* Animated left border accent */}
                 <motion.div
-                  className="absolute left-0 top-8 bottom-8 w-[2px] bg-lime rounded-full origin-top"
+                  className="absolute left-0 top-8 bottom-8 w-[2px] bg-lime origin-top"
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
                   viewport={viewportOnce}

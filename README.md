@@ -47,17 +47,20 @@ Prefer these files — do not edit React components for normal copy/product chan
 ## Contact form
 
 - Destination: `support@oneelectra.com`
-- The contact form submits directly to FormSubmit at `https://formsubmit.co/support@oneelectra.com`
-- FormSubmit handles delivery without exposing an email API secret in the frontend
+- Set `VITE_CONTACT_ENDPOINT` to the production serverless contact endpoint before deployment.
+- The current FormSubmit URL is only a development fallback. A production endpoint must validate, rate-limit, honeypot-check, and durably store each enquiry before attempting email delivery.
+- Never put Resend, SMTP, database, or storage credentials in `VITE_*` variables or the React bundle.
 
 ## Design system
 
 - Ink `#080A0C`
 - Graphite `#111519`
 - Off white `#F2F4F3`
-- Muted `#8D9698`
+- Muted `#B3BDBF`
 - Electric lime `#B8FF3D`
 
 ## Deployment
 
 Deploy the Vite static build (`dist/`) to Vercel, Netlify, or Cloudflare Pages. Configure SPA fallback to `index.html` for client routes.
+
+The build generates `public/sitemap.xml` from the route list and product slugs. See `docs/DEPLOYMENT_GUIDE.md` for endpoint, domain, and verification requirements.

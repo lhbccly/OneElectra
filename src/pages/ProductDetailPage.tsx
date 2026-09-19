@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
@@ -16,17 +17,38 @@ export function ProductDetailPage() {
   const { openQuoteModal } = useQuote()
   const { slug = '' } = useParams()
   const product = getProductBySlug(slug)
+  const category = product ? getCategoryById(product.category) : undefined
 
   usePageMeta(
     product ? `${product.model} | One Electra` : 'Product | One Electra',
     product?.shortDescription ?? 'One Electra product details',
   )
 
+  useEffect(() => {
+    if (!product) return
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      sku: product.model,
+      category: category?.name ?? product.category,
+      description: product.description,
+      image: product.images,
+      brand: { '@type': 'Brand', name: 'One Electra' },
+      url: window.location.href,
+    })
+    document.head.appendChild(script)
+
+    return () => script.remove()
+  }, [product, category])
+
   if (!product) {
     return <NotFoundPage />
   }
 
-  const category = getCategoryById(product.category)
   const related = getRelatedProducts(product)
 
   return (
@@ -120,7 +142,7 @@ export function ProductDetailPage() {
             {/* Certifications strip */}
             <motion.div variants={fadeUp} className="mt-6 flex flex-wrap items-center gap-2">
               <span className="text-xs text-muted mr-1">Certifications &amp; Standards:</span>
-              {['CE Verified', 'RoHS Compliant', 'UKCA', 'IP65 Rated'].map((badge) => (
+              {['CE', 'RoHS', 'UKCA', 'IP65'].map((badge) => (
                 <span key={badge} className="rounded-full border border-lime/30 bg-lime/5 px-3 py-1 text-[11px] font-semibold text-lime">
                   {badge}
                 </span>
