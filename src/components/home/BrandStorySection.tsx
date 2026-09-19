@@ -23,7 +23,7 @@ export function BrandStorySection() {
           variants={fadeRight}
           className="space-y-6"
         >
-          <p className="font-display max-w-2xl text-2xl leading-[1.15] tracking-[-0.03em] text-off-white/85 md:text-3xl lg:pb-2">
+          <p className="max-w-2xl text-base leading-relaxed text-muted md:text-lg lg:pb-2">
             {site.brandStory.body}
           </p>
 
