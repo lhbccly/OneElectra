@@ -22,13 +22,13 @@ export function WorldClocks() {
     <div className="space-y-2 text-sm" aria-label="Current local and Beijing times">
       <div className="flex items-center justify-between gap-6">
         <span className="text-muted">Local time</span>
-        <time dateTime={now.toISOString()} className="font-medium tabular-nums text-off-white">
+        <time dateTime={now.toISOString()} className="font-medium tabular-nums text-white">
           {formatTime(now)}
         </time>
       </div>
       <div className="flex items-center justify-between gap-6">
         <span className="text-muted">Beijing time</span>
-        <time dateTime={now.toISOString()} className="font-medium tabular-nums text-off-white">
+        <time dateTime={now.toISOString()} className="font-medium tabular-nums text-white">
           {formatTime(now, 'Asia/Shanghai')}
         </time>
       </div>
