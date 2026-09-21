@@ -11,12 +11,17 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
 
   return (
     <div className="space-y-4">
-      <div className="aspect-square overflow-hidden rounded-lg border border-line bg-panel">
+      <div
+        className="relative aspect-square overflow-hidden rounded-lg border border-line bg-panel"
+        data-protect-media
+      >
         <img
           src={current}
           alt={alt}
+          draggable={false}
           className="h-full w-full object-contain p-8"
         />
+        <div className="absolute inset-0 z-10" aria-hidden />
       </div>
       {images.length > 1 ? (
         <div className="flex gap-3 overflow-x-auto">
@@ -26,11 +31,18 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
               type="button"
               onClick={() => setActive(index)}
               aria-label={`Show image ${index + 1}`}
-              className={`size-20 shrink-0 overflow-hidden rounded-2xl border bg-graphite p-2 ${
+              data-protect-media
+              className={`relative size-20 shrink-0 overflow-hidden rounded-2xl border bg-graphite p-2 ${
                 index === active ? 'border-lime' : 'border-line'
               }`}
             >
-              <img src={image} alt="" className="h-full w-full object-contain" />
+              <img
+                src={image}
+                alt=""
+                draggable={false}
+                className="h-full w-full object-contain"
+              />
+              <span className="absolute inset-0 z-10" aria-hidden />
             </button>
           ))}
         </div>

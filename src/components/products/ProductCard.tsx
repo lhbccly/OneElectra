@@ -66,17 +66,19 @@ export function ProductCard({ product }: ProductCardProps) {
         to={`/products/${product.slug}`}
         className="flex flex-1 flex-col"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
+          <div className="relative aspect-[4/3] overflow-hidden bg-[#243038]" data-protect-media>
           <motion.img
             src={product.images[0]}
             alt={product.name}
+            draggable={false}
             className="h-full w-full object-contain p-6"
             loading="lazy"
             whileHover={reduceMotion ? {} : { scale: 1.07 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           />
+          <div className="absolute inset-0 z-[1]" aria-hidden />
           {/* Category badge */}
-          <div className="absolute top-3 left-3 rounded-full border border-line bg-ink/60 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-muted backdrop-blur-sm">
+          <div className="absolute top-3 left-3 z-[2] rounded-full border border-line bg-ink/60 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-muted backdrop-blur-sm">
             {category?.name ?? product.category}
           </div>
         </div>

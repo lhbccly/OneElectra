@@ -3,7 +3,6 @@ import { LogoMark } from '@/components/ui/LogoMark'
 interface LogoProps {
   compact?: boolean
   className?: string
-  accent?: boolean
 }
 
 export function Logo({ compact = false, className = '' }: LogoProps) {

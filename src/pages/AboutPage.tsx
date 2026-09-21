@@ -4,6 +4,10 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { BrandStorySection } from '@/components/home/BrandStorySection'
+import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection'
+import { StandardsSection } from '@/components/home/StandardsSection'
+import { GlobalPresenceSection } from '@/components/home/GlobalPresenceSection'
 import { site } from '@/data/site'
 import { usePageMeta } from '@/lib/usePageMeta'
 import chargerImage from '@/assets/products/ac-charging-pile/dl-eu004/01.png'
@@ -22,13 +26,9 @@ export function AboutPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line py-16 md:py-24 overflow-hidden">
+      <section className="hero-wash overflow-hidden border-b border-line py-16 md:py-24">
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-          >
+          <motion.div initial="hidden" animate="show" variants={staggerContainer}>
             <motion.div variants={fadeLeft}>
               <SectionHeading
                 eyebrow="About"
@@ -45,25 +45,71 @@ export function AboutPage() {
           </motion.div>
 
           <motion.div
-            className="relative flex min-h-[22rem] items-center justify-center"
+            className="relative flex min-h-[22rem] items-center justify-center overflow-hidden rounded-[2rem] border border-line bg-panel"
             initial="hidden"
             animate="show"
             variants={fadeRight}
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+            data-protect-media
           >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,255,61,0.18),transparent_58%)]" aria-hidden />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,255,61,0.14),transparent_58%)]" aria-hidden />
             <img
               src={chargerImage}
               alt="One Electra AC EV charger"
-              className="relative z-[1] h-auto max-h-[22rem] w-[72%] object-contain drop-shadow-[0_0_2rem_rgba(184,255,61,0.2)]"
+              draggable={false}
+              className="relative z-[1] h-auto max-h-[22rem] w-[72%] object-contain drop-shadow-[0_0_2rem_rgba(0,0,0,0.35)]"
             />
-            <span className="absolute bottom-5 left-5 z-[2] text-[10px] uppercase tracking-[0.2em] text-lime">
+            <div className="absolute inset-0 z-[2]" aria-hidden />
+            <span className="absolute bottom-5 left-5 z-[3] text-[10px] uppercase tracking-[0.2em] text-lime">
               Certified charging hardware
             </span>
           </motion.div>
         </Container>
       </section>
+
+      <Container className="pt-14 md:pt-20">
+        <motion.div
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+        >
+          {site.trustStats.map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={fadeUp}
+              className="rounded-2xl border border-line bg-panel/50 p-5"
+            >
+              <p className="font-display text-2xl font-semibold text-lime">{stat.value}</p>
+              <p className="mt-2 text-sm text-muted">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="mt-6 flex flex-wrap gap-2"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.45 }}
+        >
+          {site.trustHighlights.map((item) => (
+            <span
+              key={item}
+              className="inline-flex items-center rounded-full border border-line bg-white/[0.02] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted"
+            >
+              {item}
+            </span>
+          ))}
+        </motion.div>
+      </Container>
+
+      <BrandStorySection />
+      <WhyChooseUsSection />
+      <StandardsSection />
+      <GlobalPresenceSection />
 
       <Container className="grid gap-6 pt-16 md:grid-cols-2 md:pt-24">
         {[
@@ -113,7 +159,7 @@ export function AboutPage() {
 
       <Container className="pt-16 md:pt-24">
         <motion.div
-          className="rounded-[2rem] border border-line bg-graphite p-8 md:p-12 overflow-hidden"
+          className="overflow-hidden rounded-[2rem] border border-line bg-graphite p-8 md:p-12"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -124,6 +170,7 @@ export function AboutPage() {
             title={site.opportunity.title}
             description={site.opportunity.body}
           />
+          <p className="mb-6 text-xs text-muted">{site.opportunity.citation}</p>
           <motion.ul
             className="grid gap-3 md:grid-cols-3"
             initial="hidden"

@@ -1,12 +1,6 @@
 import { HeroSection } from '@/components/home/HeroSection'
-import { InPageNav } from '@/components/home/InPageNav'
-import { BrandStorySection } from '@/components/home/BrandStorySection'
 import { SolutionsSection } from '@/components/home/SolutionsSection'
-import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection'
 import { ProductCategoriesSection } from '@/components/home/ProductCategoriesSection'
-import { StandardsSection } from '@/components/home/StandardsSection'
-import { GlobalPresenceSection } from '@/components/home/GlobalPresenceSection'
-import { ServicesSection } from '@/components/home/ServicesSection'
 import { FeaturedProductsSection } from '@/components/home/FeaturedProductsSection'
 import { FinalCtaSection } from '@/components/home/FinalCtaSection'
 import { usePageMeta } from '@/lib/usePageMeta'
@@ -18,15 +12,9 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
-      <InPageNav />
       <SolutionsSection />
-      <BrandStorySection />
-      <WhyChooseUsSection />
       <ProductCategoriesSection />
       <FeaturedProductsSection />
-      <StandardsSection />
-      <GlobalPresenceSection />
-      <ServicesSection />
       <FinalCtaSection />
     </>
   )

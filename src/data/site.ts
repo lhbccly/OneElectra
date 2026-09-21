@@ -103,9 +103,9 @@ export const site = {
     },
   ],
   about: {
-    title: 'Why Choose One Electra',
+    title: 'Factory-direct EV charging, built for international buyers',
     intro:
-      'One Electra (Shenyang Yibu Trading Company) provides factory-direct EV charging hardware with international certification, cross-standard compatibility, and dedicated B2B sourcing support.',
+      'One Electra is the international trading brand of Shenyang Yibu Trading Company. We source certified AC and DC charging hardware from audited Chinese manufacturers and support distributors, fleets, and installers from quote to delivery.',
     productBenefits: [
       'Fully certified to Type 1, Type 2, GB/T, and NACS protocols',
       'CE, FCC, RoHS, UKCA documentation for seamless customs clearance',
@@ -123,6 +123,50 @@ export const site = {
       'Fast WhatsApp quotation response within 24 hours',
     ],
   },
+  trustHighlights: [
+    'Shenyang Yibu Trading Co.',
+    'Audited Tier-1 Factories',
+    'CE / RoHS / UKCA Certified',
+    'Fast WhatsApp Support',
+  ],
+  trustStats: [
+    { value: '4 Major', label: 'Standards (Type 1 / Type 2 / GB/T / NACS)' },
+    { value: 'Shenyang', label: 'Factory-direct trading base' },
+    { value: 'DDP / FOB', label: 'Global freight support' },
+    { value: '24h', label: 'Typical quote response' },
+  ],
+  sourcingWorkflow: [
+    {
+      step: '01',
+      title: 'Requirement & Specs',
+      desc: 'Tell us connector type, power output (kW), destination grid, and volume.',
+    },
+    {
+      step: '02',
+      title: 'Product & Factory Matching',
+      desc: 'We identify certified hardware models from vetted Chinese factories.',
+    },
+    {
+      step: '03',
+      title: 'Sample & Detailed Quote',
+      desc: 'Receive itemized wholesale pricing, lead times, and test samples.',
+    },
+    {
+      step: '04',
+      title: 'Quality Control & QA',
+      desc: 'Pre-shipment high-voltage and electrical safety testing at source.',
+    },
+    {
+      step: '05',
+      title: 'Global Freight & Customs',
+      desc: 'Sea/air shipping (DDP/CIF/FOB) with complete CE/RoHS/UKCA docs.',
+    },
+    {
+      step: '06',
+      title: 'Delivery & Technical Support',
+      desc: 'Doorstep arrival support, warranty management, and after-sales.',
+    },
+  ],
   seo: {
     homeTitle: 'One Electra | B2B EV Charging Hardware & Global Sourcing',
     homeDescription:

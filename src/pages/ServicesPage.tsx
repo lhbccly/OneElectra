@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { services } from '@/data/services'
+import { site } from '@/data/site'
 import { usePageMeta } from '@/lib/usePageMeta'
 import portableChargerImage from '@/assets/products/portable-charging-pile/nacs-portable/01.png'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
@@ -30,12 +32,15 @@ export function ServicesPage() {
             <motion.div variants={fadeUp}>
               <SectionHeading
                 eyebrow="Services"
-                title="Trade, logistics, and business support"
-                description="Commercial terms and logistics options designed for distributors, operators, and importers."
+                title="Sourcing, logistics, and B2B trade support"
+                description="From technical matching and factory QA to freight terms and documentation — One Electra manages the full procurement cycle for international buyers."
               />
             </motion.div>
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
               <WhatsAppButton label="Request Freight Quotation" />
+              <ButtonLink to="/about" variant="secondary">
+                Why buy through us
+              </ButtonLink>
             </motion.div>
           </motion.div>
           <motion.div
@@ -57,29 +62,54 @@ export function ServicesPage() {
 
       <Container className="pt-14 md:pt-20">
         <motion.div
-          className="mb-8 rounded-[1.75rem] border border-line bg-panel/40 p-6 md:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between"
+          initial="hidden"
+          whileInView="show"
           viewport={viewportOnce}
-          transition={{ duration: 0.5 }}
+          variants={staggerContainer}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-lime">How we work</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-5">
-            {[
-              'Share your requirements',
-              'Match suitable hardware',
-              'Confirm standards and quantity',
-              'Inspect and prepare shipment',
-              'Deliver with documentation',
-            ].map((step, index) => (
-              <div key={step} className="rounded-2xl border border-line bg-graphite/70 p-4">
-                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-lime/12 text-xs font-semibold text-lime">
-                  0{index + 1}
-                </div>
-                <p className="text-sm leading-relaxed text-off-white/90">{step}</p>
-              </div>
-            ))}
-          </div>
+          <motion.div variants={fadeUp}>
+            <SectionHeading
+              eyebrow="From Factory To Your Market"
+              title="6-step B2B sourcing & logistics workflow"
+              description="From initial technical matching to pre-shipment factory QA and door-to-door freight, One Electra manages the complete procurement cycle."
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+        >
+          {site.sourcingWorkflow.map((s, idx) => (
+            <motion.div
+              key={s.step}
+              variants={fadeUp}
+              custom={idx}
+              className="relative overflow-hidden rounded-2xl border border-line bg-panel/50 p-6 transition duration-300 hover:border-lime/40 hover:bg-panel"
+            >
+              <span className="font-display text-3xl font-bold text-lime/40">{s.step}</span>
+              <h3 className="mt-2 font-display text-lg font-semibold text-off-white">{s.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted">{s.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="mb-8"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={fadeUp}
+        >
+          <SectionHeading
+            eyebrow="Commercial services"
+            title="Trade, logistics, and business support"
+            description="Commercial terms and logistics options designed for distributors, operators, and importers."
+          />
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -95,36 +125,28 @@ export function ServicesPage() {
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
               >
-              {/* Hover glow */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{ background: 'radial-gradient(circle at 0% 0%, rgba(184,255,61,0.07), transparent 60%)' }}
-                aria-hidden
-              />
-
-              {/* Icon with pulse */}
-              <div className="relative mb-5 inline-flex">
-                <motion.div
-                  className="absolute inset-0 rounded-2xl bg-lime/20"
-                  animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: 'radial-gradient(circle at 0% 0%, rgba(184,255,61,0.07), transparent 60%)' }}
                   aria-hidden
                 />
-                <div className="relative inline-flex size-11 items-center justify-center rounded-2xl border border-line bg-panel text-lime transition duration-300 group-hover:border-lime/50 group-hover:bg-lime/10">
-                  <motion.span
-                    className="inline-flex"
-                    whileHover={{ rotate: 15, scale: 1.2 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 12 }}
-                  >
-                    <Icon className="size-5" aria-hidden />
-                  </motion.span>
-                </div>
-              </div>
 
-              <h2 className="font-display text-2xl font-semibold text-off-white transition duration-300 group-hover:text-lime/90">
-                {service.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{service.summary}</p>
+                <div className="relative mb-5 inline-flex">
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl bg-lime/20"
+                    animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                    aria-hidden
+                  />
+                  <div className="relative inline-flex size-11 items-center justify-center rounded-2xl border border-line bg-panel text-lime transition duration-300 group-hover:border-lime/50 group-hover:bg-lime/10">
+                    <Icon className="size-5" aria-hidden />
+                  </div>
+                </div>
+
+                <h2 className="font-display text-2xl font-semibold text-off-white transition duration-300 group-hover:text-lime/90">
+                  {service.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{service.summary}</p>
                 <motion.ul
                   className="mt-6 space-y-2"
                   initial="hidden"
@@ -147,6 +169,27 @@ export function ServicesPage() {
             )
           })}
         </div>
+
+        <motion.div
+          className="mt-14 rounded-[1.75rem] border border-line bg-panel/40 p-8 text-center md:p-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="font-display text-2xl font-semibold text-off-white md:text-3xl">
+            Need a freight or wholesale quote?
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted">
+            Share your destination market, connector standard, power range, and volume. We will match hardware and return commercial options.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <WhatsAppButton label="WhatsApp Quote" />
+            <ButtonLink to="/contact" variant="secondary">
+              Contact form
+            </ButtonLink>
+          </div>
+        </motion.div>
       </Container>
     </motion.div>
   )
