@@ -3,7 +3,7 @@ export const site = {
   brand: {
     name: 'One Electra',
     tagline: 'EV Charging Hardware & Global Sourcing',
-    legalName: 'Shenyang Yibu Trading Company',
+    legalName: 'Shenyang Yibo Trading Company',
     location: 'Shenyang, Liaoning 110000, China',
   },
   contact: {
