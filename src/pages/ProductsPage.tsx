@@ -62,14 +62,14 @@ export function ProductsPage() {
       </section>
 
       <Container className="pt-12 md:pt-16">
-        <motion.div
+        {/* <motion.div
           className="mb-8 rounded-[1.75rem] border border-line bg-panel/40 p-6 md:p-8"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45 }}
-        >
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        > */}
+          {/* <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.22em] text-lime">Quick matching</p>
               <h2 className="mt-2 font-display text-2xl font-semibold text-off-white">Need the right product for your project?</h2>
@@ -77,9 +77,9 @@ export function ProductsPage() {
             <a href="/contact" className="inline-flex items-center justify-center rounded-full border border-lime/40 bg-lime/10 px-5 py-2.5 text-sm font-medium text-lime transition hover:bg-lime/20">
               Request a Quote
             </a>
-          </div>
+          </div> */}
 
-          <div className="mt-6 grid gap-3 md:grid-cols-4">
+          {/* <div className="mt-6 grid gap-3 md:grid-cols-4">
             {[
               'Home charging',
               'Workplace charging',
@@ -90,8 +90,8 @@ export function ProductsPage() {
                 {useCase}
               </div>
             ))}
-          </div>
-        </motion.div>
+          </div> */}
+        {/* </motion.div> */}
 
         <motion.p
           className="mb-6 text-sm text-muted"

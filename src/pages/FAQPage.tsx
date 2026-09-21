@@ -51,9 +51,9 @@ export function FAQPage() {
               alt=""
               className="relative z-[1] w-[78%] rotate-[-8deg] object-contain opacity-100 drop-shadow-[0_1.2rem_1.5rem_rgba(0,0,0,0.55)]"
             />
-            <span className="absolute bottom-4 left-5 text-[10px] uppercase tracking-[0.2em] text-lime/80">
+            {/* <span className="absolute bottom-4 left-5 text-[10px] uppercase tracking-[0.2em] text-lime/80">
               Connector standards
-            </span>
+            </span> */}
           </motion.div>
         </Container>
       </section>

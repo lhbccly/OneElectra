@@ -11,7 +11,7 @@ import { GlobalPresenceSection } from '@/components/home/GlobalPresenceSection'
 import { site } from '@/data/site'
 import { usePageMeta } from '@/lib/usePageMeta'
 import chargerImage from '@/assets/products/ac-charging-pile/dl-eu004/01.png'
-import { staggerContainer, fadeUp, fadeLeft, fadeRight, viewportOnce } from '@/lib/animations'
+import { staggerContainer, fadeUp, fadeLeft, viewportOnce } from '@/lib/animations'
 
 export function AboutPage() {
   usePageMeta(
@@ -44,27 +44,12 @@ export function AboutPage() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="relative flex min-h-[22rem] items-center justify-center overflow-hidden rounded-[2rem] border border-line bg-panel"
-            initial="hidden"
-            animate="show"
-            variants={fadeRight}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-            data-protect-media
-          >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,255,61,0.14),transparent_58%)]" aria-hidden />
-            <img
-              src={chargerImage}
-              alt="One Electra AC EV charger"
-              draggable={false}
-              className="relative z-[1] h-auto max-h-[22rem] w-[72%] object-contain drop-shadow-[0_0_2rem_rgba(0,0,0,0.35)]"
-            />
-            <div className="absolute inset-0 z-[2]" aria-hidden />
-            <span className="absolute bottom-5 left-5 z-[3] text-[10px] uppercase tracking-[0.2em] text-lime">
-              Certified charging hardware
-            </span>
-          </motion.div>
+          <img
+            src={chargerImage}
+            alt="One Electra AC EV charger"
+            draggable={false}
+            className="mx-auto h-auto max-h-[22rem] w-[72%] object-contain"
+          />
         </Container>
       </section>
 
@@ -89,7 +74,7 @@ export function AboutPage() {
         </motion.div>
 
         <motion.div
-          className="mt-6 flex flex-wrap gap-2"
+          className="my-6 flex flex-wrap gap-2"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
