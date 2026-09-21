@@ -21,7 +21,7 @@ export function ContactPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line py-16 md:py-24">
+      <section className="hero-wash border-b border-line">
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <motion.div
             initial="hidden"

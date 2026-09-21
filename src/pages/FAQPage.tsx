@@ -23,7 +23,7 @@ export function FAQPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line py-16 md:py-24">
+      <section className="hero-wash border-b border-line">
         <Container className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.div
             initial="hidden"

@@ -26,7 +26,7 @@ export function AboutPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash overflow-hidden border-b border-line py-16 md:py-24">
+      <section className="hero-wash overflow-hidden border-b border-line py-12 md:py-16">
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <motion.div initial="hidden" animate="show" variants={staggerContainer}>
             <motion.div variants={fadeLeft}>

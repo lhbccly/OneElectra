@@ -50,10 +50,10 @@ export function HeroSection() {
   }, [reduceMotion, slides.length])
 
   return (
-    <section className="hero-wash relative overflow-hidden pt-20 md:pt-24 pb-16 md:pb-24">
+    <section className="hero-wash relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 surface-grid opacity-60" aria-hidden />
 
-      <Container className="relative grid min-h-[calc(100dvh-5rem)] items-center gap-10 py-10 md:grid-cols-[1fr_1fr] md:gap-10 lg:gap-14 lg:py-14">
+      <Container className="relative grid min-h-[calc(100dvh-5rem)] items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-10 lg:gap-14">
         <div className="relative z-[1] max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
