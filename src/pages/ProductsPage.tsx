@@ -37,7 +37,7 @@ export function ProductsPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line">
+      <section className="hero-wash border-b border-line py-12 md:py-16">
         <Container>
           <motion.div
             initial="hidden"
