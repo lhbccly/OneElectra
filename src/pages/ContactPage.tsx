@@ -71,20 +71,6 @@ export function ContactPage() {
           viewport={viewportOnce}
           variants={fadeRight}
         >
-          <motion.div
-            className="overflow-hidden rounded-[1.75rem] border border-line shadow-card"
-            data-protect-media
-          >
-            <div className="aspect-[16/10]">
-              <img
-                src={lifestyle.residentialAlt}
-                alt="Home EV charging setup showing wallbox and electric vehicle"
-                draggable={false}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </motion.div>
 
           <motion.div
             className="group relative rounded-[1.75rem] border border-line bg-graphite p-6 transition duration-300 hover:border-lime/30 md:p-8"

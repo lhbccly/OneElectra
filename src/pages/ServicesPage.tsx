@@ -76,6 +76,7 @@ export function ServicesPage() {
               <ButtonLink
                 to="/about"
                 variant="secondary"
+                size="lg"
                 className="!border-white/35 !bg-white/10 !text-white hover:!bg-white/20"
               >
                 Why buy through us
@@ -227,6 +228,7 @@ export function ServicesPage() {
               <ButtonLink
                 to="/contact"
                 variant="secondary"
+                size="lg"
                 className="!border-white/35 !bg-transparent !text-white hover:!bg-white/10"
               >
                 Contact form
