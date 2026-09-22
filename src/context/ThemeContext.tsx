@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import faviconLight from '@/assets/brand/logo-mark-light.png'
+import faviconDark from '@/assets/brand/logo-mark.png'
 
 type Theme = 'light' | 'dark'
 
@@ -16,6 +18,13 @@ function getInitialTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
+function syncFavicon(theme: Theme) {
+  const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
+  if (!favicon) return
+  favicon.type = 'image/png'
+  favicon.href = theme === 'dark' ? faviconDark : faviconLight
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
@@ -23,13 +32,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
     window.localStorage.setItem(storageKey, theme)
+    syncFavicon(theme)
   }, [theme])
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
-        toggleTheme: () => setTheme((value) => value === 'light' ? 'dark' : 'light'),
+        toggleTheme: () => setTheme((value) => (value === 'light' ? 'dark' : 'light')),
       }}
     >
       {children}

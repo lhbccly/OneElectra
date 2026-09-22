@@ -1,10 +1,10 @@
-import logoMark from '@/assets/brand/logo-mark-light.svg'
-import logoMarkDark from '@/assets/brand/logo-mark.svg'
+import logoMark from '@/assets/brand/logo-mark-light.png'
+import logoMarkDark from '@/assets/brand/logo-mark.png'
 import { useTheme } from '@/context/ThemeContext'
 
 /**
- * One Electra brand mark — Plug-E + O ring (EV connector arm + One/O).
- * O = One · E = Electra · Lime arm + pins = charge connector.
+ * One Electra brand mark — stylized 1E monogram with lightning charge bar.
+ * Light theme: navy + lime. Dark theme / dark surfaces: off-white + volt lime.
  */
 interface LogoMarkProps {
   size?: number
