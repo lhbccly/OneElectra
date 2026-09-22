@@ -3,36 +3,12 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { BrandIcon } from '@/components/ui/BrandIcon'
 import { lifestyle } from '@/assets/lifestyle'
+import { site } from '@/data/site'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
-const whyItems = [
-  {
-    icon: 'factory' as const,
-    title: 'Tier-1 Direct Factory Sourcing',
-    description: 'We connect international buyers directly with audited Chinese manufacturing partners in Shenyang and eastern industrial hubs—eliminating middlemen markups.',
-    badge: 'Shenyang Yibu Trading',
-  },
-  {
-    icon: 'standards' as const,
-    title: 'Multi-Standard Technical Matching',
-    description: 'Hardware configured for European (Type 2), North American (Type 1 / NACS), and Chinese (GB/T) grid standards with full CE, UKCA & IEC compliance.',
-    badge: 'CE / UKCA / IEC',
-  },
-  {
-    icon: 'logistics' as const,
-    title: 'Global Freight & Customs Clearance',
-    description: 'Seamless sea/air freight under DDP, CIF, or FOB terms with complete origin documentation, custom tariffs clearance, and door-to-door delivery.',
-    badge: 'DDP / CIF / FOB Freight',
-  },
-  {
-    icon: 'quality' as const,
-    title: 'Pre-Shipment High-Voltage QA',
-    description: 'Every batch undergoes rigorous high-voltage electrical safety testing, IP rate verification, and factory inspection before container loading.',
-    badge: '100% Pre-Shipment QA',
-  },
-]
-
 export function WhyChooseUsSection() {
+  const { whyChooseSection, whyChoose } = site
+
   return (
     <section id="why-choose-us" className="border-t border-line bg-canvas-subtle py-20 md:py-28 overflow-hidden">
       <Container>
@@ -44,9 +20,9 @@ export function WhyChooseUsSection() {
             variants={fadeUp}
           >
             <SectionHeading
-              eyebrow="Why One Electra"
-              title="Built for international buyers who need speed, standards, and supply confidence."
-              description="We help distributors, fleet operators, developers, and contractors find certified charging hardware without guessing across incompatible standards or unverified suppliers."
+              eyebrow={whyChooseSection.eyebrow}
+              title={whyChooseSection.title}
+              description={whyChooseSection.description}
             />
           </motion.div>
 
@@ -77,7 +53,7 @@ export function WhyChooseUsSection() {
           viewport={viewportOnce}
           variants={staggerContainer}
         >
-          {whyItems.map((item, index) => (
+          {whyChoose.map((item, index) => (
             <motion.article
               key={item.title}
               variants={fadeUp}
@@ -98,9 +74,7 @@ export function WhyChooseUsSection() {
                 <h3 className="font-display text-xl font-bold text-navy transition duration-200 group-hover:text-emerald">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {item.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{item.description}</p>
               </div>
 
               <div className="mt-8 flex items-center gap-2 border-t border-line pt-4">

@@ -8,11 +8,11 @@ export function buildWhatsAppUrl(message: string) {
 
 export function buildProductQuotationMessage(product: Product) {
   return [
-    'Hello One Electra,',
+    `Hello ${site.brand.name},`,
     'I would like a quotation for:',
     `Product: ${product.name}`,
     `Model: ${product.model}`,
-    'Website: oneelectra.com',
+    `Website: ${site.brand.website}`,
   ].join('\n')
 }
 
@@ -22,6 +22,6 @@ export function getProductWhatsAppUrl(product: Product) {
 
 export function getGeneralQuoteWhatsAppUrl() {
   return buildWhatsAppUrl(
-    'Hello One Electra,\nI would like a product quotation.\nWebsite: oneelectra.com',
+    `Hello ${site.brand.name},\nI would like a product quotation.\nWebsite: ${site.brand.website}`,
   )
 }

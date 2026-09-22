@@ -1,57 +1,145 @@
-# One Electra Website Guide
+# One Electra — Client Update Guide
 
-This guide explains how to make simple website updates safely.
+**Who this is for:** anyone who needs to change website text, products, contact details, or images — without coding.
 
-## Important
+**Golden rule:** only edit files listed in this guide. Do not open folders named `components`, `pages`, or `lib` unless a developer asks you to.
 
-Most content changes can be made without touching the website layout.
+---
 
-Use these files:
+## Jump to what you need
 
-- `src/data/products.ts` for products
-- `src/data/categories.ts` for product categories
-- `src/data/services.ts` for services
-- `src/data/site.ts` for headings, paragraphs, contact details, and homepage text
-- `src/assets/` for images and logos
+1. [Change phone, email, WhatsApp, or social links](#1-change-phone-email-whatsapp-or-social-links)
+2. [Change homepage & About page text](#2-change-homepage--about-page-text)
+3. [Add or edit a product](#3-add-or-edit-a-product)
+4. [Add or replace product photos](#4-add-or-replace-product-photos)
+5. [Change product categories](#5-change-product-categories)
+6. [Change services page text](#6-change-services-page-text)
+7. [Change FAQ answers](#7-change-faq-answers)
+8. [Change the logo or browser tab icon](#8-change-the-logo-or-browser-tab-icon)
+9. [Preview your changes](#9-preview-your-changes)
+10. [Checklist before publishing](#10-checklist-before-publishing)
+11. [When to ask a developer](#11-when-to-ask-a-developer)
 
-The website uses `src/assets/brand/logo-mark.png` for the logo symbol and browser tab icon. Replace that file when the logo needs to change, keeping the same path so the website updates automatically.
+---
 
-Do not edit files inside `src/components/` unless a developer asks you to. These files control the website design and functionality.
+## Quick map — which file do I open?
 
-## Change Website Text
+| I want to change… | Open this file |
+|---|---|
+| Phone, email, WhatsApp, address, social links | `src/data/site.ts` → `contact` and `social` |
+| Homepage headings, About text, Why Choose Us, Solutions, Standards | `src/data/site.ts` |
+| Product name, model, specs, features | `src/data/products.ts` |
+| Product photos | `src/assets/products/...` |
+| Category names / descriptions | `src/data/categories.ts` |
+| Services / trade terms | `src/data/services.ts` |
+| FAQ questions & answers | `src/data/faqs.ts` |
+| Logo symbol | `src/assets/brand/logo-mark.svg` |
+| Browser tab icon | `public/favicon.svg` |
 
-1. Open `src/data/site.ts`.
-2. Find the text you want to change.
-3. Replace only the words between the quotation marks.
-4. Save the file.
-5. Check the page in the browser.
+---
 
-This is the best place to change:
+## How to edit text safely
 
-- Homepage headings and descriptions
-- About page text
-- Contact details
-- Email addresses
-- WhatsApp number
-- Market names
-- SEO title and description
-
-## Add or Change a Product
-
-1. Open `src/data/products.ts`.
-2. Copy a product that is similar to the new product.
-3. Change the product name, model, description, features, and specifications.
-4. Add the correct image file path.
+1. Open the file in the table above.
+2. Find the words you want to change.
+3. Change **only** the text between quotation marks `"..."`.
+4. Do **not** remove commas `,` or curly braces `{ }`.
 5. Save the file.
-6. Check the Products page in the browser.
+6. Refresh the website preview in your browser.
 
-Each product needs a unique:
+**Example — change the support email:**
 
-- `id`
-- `slug`
-- `model`
+```ts
+supportEmail: 'support@oneelectra.com',
+```
 
-Available category names are:
+Become:
+
+```ts
+supportEmail: 'hello@yourcompany.com',
+```
+
+---
+
+## 1. Change phone, email, WhatsApp, or social links
+
+**File:** `src/data/site.ts`
+
+Find the `contact` block:
+
+```ts
+contact: {
+  supportEmail: 'support@oneelectra.com',
+  infoEmail: 'info@oneelectra.com',
+  inquiryEmail: 'jasmin@oneelectra.com',
+  whatsappNumber: '8615504192700',
+  markets: 'Europe | Middle East | South Asia | Global',
+  address: 'Shenyang, Liaoning 110000, China',
+},
+```
+
+| Field | What it controls |
+|---|---|
+| `supportEmail` | Contact form destination (and success message) |
+| `infoEmail` | Info email shown on the site |
+| `inquiryEmail` | Sales / enquiry email |
+| `whatsappNumber` | WhatsApp “Get Quotation” buttons (digits only, country code included, **no** `+` or spaces) |
+| `markets` | Markets line in contact areas |
+| `address` | Company address |
+
+Then find the `social` block to update LinkedIn, Facebook, Instagram, or WhatsApp profile links.
+
+Also update the brand website if needed:
+
+```ts
+brand: {
+  name: 'One Electra',
+  website: 'oneelectra.com',
+  ...
+}
+```
+
+---
+
+## 2. Change homepage & About page text
+
+**File:** `src/data/site.ts`
+
+Use the section name that matches what you see on the website:
+
+| Website section | Look for this name in `site.ts` |
+|---|---|
+| Top banner (hero) | `hero` |
+| “I Need EV Charging Hardware For…” cards | `solutions` |
+| “Charging systems for every deployment” | `categoriesSection` |
+| Brand story / “Why Buy Through One Electra?” | `brandStory` |
+| Why Choose Us cards | `whyChooseSection` + `whyChoose` |
+| Charging standards (About page) | `standardsSection` + `standards` |
+| Bottom “Need Certified Hardware…” banner | `finalCta` |
+| About page intro & benefit lists | `about` |
+| Number tiles (4 Major / Shenyang / etc.) | `trustStats` |
+| Google title & description | `seo` |
+
+**Tip:** Search inside the file (Ctrl+F / Cmd+F) for a few words you already see on the website. That jumps you straight to the right place.
+
+---
+
+## 3. Add or edit a product
+
+**File:** `src/data/products.ts`
+
+### Edit an existing product
+
+1. Search for the product name or model number.
+2. Change only the text between quotes: `name`, `model`, descriptions, `features`, `specifications`.
+3. Save and check `/products` and the product detail page.
+
+### Add a new product
+
+1. Copy a whole product block that is similar to yours.
+2. Paste it below the last product (keep a comma between products).
+3. Give it a **new unique** `id`, `slug`, and `model` (do not copy another product’s values).
+4. Set `category` to one of:
 
 ```text
 ac-charging-pile
@@ -60,11 +148,16 @@ portable-charging-pile
 adapters-connectors
 ```
 
-Do not reuse an existing product `id` or `slug`.
+5. Point `images` to your photo files (see next section).
+6. Set `featured: true` only if you want it on the homepage featured row.
 
-## Add Product Images
+**Slug rule:** lowercase words separated by hyphens, for example `dl-eu004-1`. This becomes the web address `/products/dl-eu004-1`.
 
-Put product images inside the matching folder:
+---
+
+## 4. Add or replace product photos
+
+Put photos in the matching category folder:
 
 ```text
 src/assets/products/
@@ -74,7 +167,7 @@ src/assets/products/
 └── adapters-connectors/
 ```
 
-It is best to create a folder for each product:
+**Best practice — one folder per product:**
 
 ```text
 src/assets/products/ac-charging-pile/dl-eu004-1/
@@ -83,85 +176,111 @@ src/assets/products/ac-charging-pile/dl-eu004-1/
 └── 03.webp
 ```
 
-Use `01.webp` as the main product image. Use WebP or AVIF when possible. Avoid very large files because they make the website slow.
+- Use `01.webp` as the main image shown on cards.
+- Prefer **WebP** (smaller = faster website). Avoid huge camera originals.
+- After adding files, update the product’s `images` list in `products.ts` so the new file names are used.
 
-## Add a Category
+---
 
-Ask a developer before adding a new category.
+## 5. Change product categories
 
-If you have developer support, add the category in `src/data/categories.ts` using this format:
+**File:** `src/data/categories.ts`
 
-```ts
-{
-  id: 'new-category',
-  name: 'New Category',
-  slug: 'new-category',
-  description: 'Short description',
-}
-```
+You can safely change:
 
-The category `id` must match the category used by the products.
+- `name` — title on the site
+- `description` — short paragraph
+- `powerLabel` — small badge like `7–22 kW AC`
+- `shortLabel` — short label
 
-## WhatsApp Quotations
+**Do not change** `id` or `slug` unless a developer helps you — products depend on those exact values.
 
-Product quotation buttons automatically create a WhatsApp message from the product information.
+**Adding a brand-new category:** ask a developer first (extra images and filters may be needed).
 
-Do not create a separate WhatsApp link for every product. Update the product information instead.
+---
 
-## Contact Form
+## 6. Change services page text
 
-Contact form messages are sent to:
+**File:** `src/data/services.ts`
 
-**support@oneelectra.com**
+Edit service titles, descriptions, and trade terms the same way — only change text inside quotation marks.
 
-Do not add passwords, email API keys, or other private information to the website files.
+---
 
-If the contact form stops working, contact a developer.
+## 7. Change FAQ answers
 
-## Preview the Website
+**File:** `src/data/faqs.ts`
 
-Ask a developer to start the local preview, or run:
+1. Find the question you want to update.
+2. Edit the question text and/or the answer text between quotes.
+3. To add a new FAQ, copy an existing item and change its text. Give it a new unique `id` if the file uses IDs.
+
+---
+
+## 8. Change the logo or browser tab icon
+
+| What | Replace this file (keep the same name) |
+|---|---|
+| Logo mark used in the header / footer | `src/assets/brand/logo-mark.svg` |
+| Logo for dark backgrounds | `src/assets/brand/logo-mark-light.svg` |
+| Browser tab icon | `public/favicon.svg` |
+
+Replace the file with your new artwork, **keeping the exact same file name and folder**. The site will pick it up automatically.
+
+---
+
+## 9. Preview your changes
+
+Ask a developer to start the preview, or run these commands yourself:
 
 ```text
 npm install
 npm run dev
 ```
 
-Then open the local address shown in the terminal, usually:
+Then open the address shown in the terminal (usually `http://localhost:5173`).
+
+After larger product changes, a full build also refreshes the sitemap:
 
 ```text
-http://localhost:5173
+npm run build
 ```
 
-## Before Publishing
+---
 
-Check the website on:
+## 10. Checklist before publishing
 
-- Desktop
-- Tablet
-- Mobile
+Check on **desktop**, **tablet**, and **phone**:
 
-Also check:
+- [ ] Contact email and WhatsApp number are correct
+- [ ] Product names, models, and photos look right
+- [ ] Categories still filter correctly
+- [ ] “Get Quotation” opens WhatsApp with the right product details
+- [ ] Contact form still submits
+- [ ] Menu and footer links work
+- [ ] Spelling of company name and address
 
-- Product images
-- Product names and model numbers
-- Product categories
-- WhatsApp quotation buttons
-- Contact form
-- Navigation links
-- Footer links
-- Spelling and contact details
+---
 
-## When to Ask a Developer
+## 11. When to ask a developer
 
-Ask a developer when you need to:
+Ask a developer if you need to:
 
-- Change the layout or design
-- Add a new page
-- Add a new homepage section
-- Change animations
-- Change the contact form system
-- Fix a build or browser error
-- Add a new website feature
+- Change layout, colours, or animations
+- Add a new page or homepage section type
+- Add a completely new product category
+- Change how the contact form sends email (`VITE_CONTACT_ENDPOINT`)
+- Fix a build error or broken page
+- Update SEO tags inside `index.html` or the live domain / sitemap
 
-The safest rule is simple: edit content in `src/data/` and images in `src/assets/`. Leave layout and component files to a developer.
+---
+
+## Safe vs unsafe folders
+
+| Safe for clients | Leave to developers |
+|---|---|
+| `src/data/` | `src/components/` |
+| `src/assets/` (images & logos) | `src/pages/` |
+| `public/favicon.svg` | `src/lib/`, `src/hooks/`, `src/context/` |
+
+If you are unsure, send the change request to a developer instead of guessing.

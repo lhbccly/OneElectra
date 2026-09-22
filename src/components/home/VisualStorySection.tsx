@@ -8,22 +8,9 @@ import { lifestyle } from '@/assets/lifestyle'
 import { site } from '@/data/site'
 import { fadeLeft, fadeRight, fadeUp, viewportOnce } from '@/lib/animations'
 
-const highlights = [
-  {
-    title: 'Verified manufacturers',
-    body: 'Audited factories producing CE, RoHS, UKCA, and FCC certified equipment.',
-  },
-  {
-    title: 'Multi-standard matching',
-    body: 'Precise technical alignment across Type 1, Type 2, GB/T, and NACS.',
-  },
-  {
-    title: 'Quality & logistics',
-    body: 'Pre-shipment testing plus DDP / CIF / FOB freight to your destination market.',
-  },
-]
-
 export function VisualStorySection() {
+  const { brandStory, trustStats } = site
+
   return (
     <section id="story" className="relative border-t border-line bg-graphite py-20 md:py-28 overflow-hidden">
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
@@ -49,9 +36,11 @@ export function VisualStorySection() {
             aria-hidden
           />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-volt">In the field</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-volt">
+              {brandStory.imageCaptionEyebrow}
+            </p>
             <p className="mt-2 max-w-sm font-display text-xl font-bold text-white md:text-2xl">
-              Hardware that looks as good installed as it performs on paper.
+              {brandStory.imageCaptionTitle}
             </p>
           </div>
         </motion.div>
@@ -63,13 +52,13 @@ export function VisualStorySection() {
           variants={fadeRight}
         >
           <SectionHeading
-            eyebrow={site.brandStory.eyebrow}
-            title={site.brandStory.title}
-            description={site.brandStory.body}
+            eyebrow={brandStory.eyebrow}
+            title={brandStory.title}
+            description={brandStory.body}
           />
 
           <ul className="mt-2 space-y-4">
-            {highlights.map((item, index) => (
+            {brandStory.points.map((item, index) => (
               <motion.li
                 key={item.title}
                 className="flex gap-3 rounded-2xl border border-line bg-panel p-4"
@@ -109,11 +98,8 @@ export function VisualStorySection() {
           viewport={viewportOnce}
           variants={fadeUp}
         >
-          {site.trustStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-line bg-panel p-5"
-            >
+          {trustStats.map((stat) => (
+            <div key={stat.label} className="rounded-2xl border border-line bg-panel p-5">
               <p className="font-display text-2xl font-bold text-emerald">{stat.value}</p>
               <p className="mt-2 text-sm text-muted">{stat.label}</p>
             </div>

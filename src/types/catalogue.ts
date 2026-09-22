@@ -11,6 +11,8 @@ export interface Category {
   slug: string
   description: string
   shortLabel: string
+  /** Short power / capability label shown on homepage category cards */
+  powerLabel: string
 }
 
 export interface Product {

@@ -3,8 +3,9 @@ export const site = {
   brand: {
     name: 'One Electra',
     tagline: 'EV Charging Hardware & Global Sourcing',
-    legalName: 'Shenyang Yibo Trading Company',
+    legalName: 'Shenyang Yibu Trading Company',
     location: 'Shenyang, Liaoning 110000, China',
+    website: 'oneelectra.com',
   },
   contact: {
     supportEmail: 'support@oneelectra.com',
@@ -27,14 +28,113 @@ export const site = {
     primaryCta: 'Request a Quote',
     secondaryCta: 'Explore Products',
   },
+  solutions: {
+    eyebrow: 'Targeted Procurement',
+    title: 'I Need EV Charging Hardware For...',
+    description:
+      'Find the right certified charging equipment by deployment environment — see how each solution looks in the field.',
+    ctaLabel: 'Get Custom Solution Quote',
+    items: [
+      {
+        id: 'residential',
+        title: 'Home & Multi-Unit Residential',
+        subtitle: '7kW – 22kW AC Wallboxes',
+        description:
+          'Compact, weatherproof single & 3-phase AC wallboxes with App control, RFID access, and dynamic load management for apartments and homes.',
+        categorySlug: 'ac-charging-pile',
+        badge: 'Residential',
+        imageKey: 'residential' as const,
+        imageAlt: 'Home EV wallbox charging a car in a residential driveway',
+      },
+      {
+        id: 'commercial',
+        title: 'Workplace & Commercial Parking',
+        subtitle: '11kW – 22kW AC · OCPP 1.6J',
+        description:
+          'Dual-socket and pedestal AC chargers with OCPP networking, billing software integration, RFID authentication, and IP65 protection.',
+        categorySlug: 'ac-charging-pile',
+        badge: 'Commercial',
+        imageKey: 'commercial' as const,
+        imageAlt: 'Commercial EV charging pedestal with status lights at night',
+      },
+      {
+        id: 'fleet',
+        title: 'Fleet Depots & Logistics Hubs',
+        subtitle: '60kW – 240kW DC Fast Chargers',
+        description:
+          'High-efficiency dual-gun DC chargers for commercial delivery fleets, buses, and logistics hubs requiring rapid turnaround times.',
+        categorySlug: 'dc-charging-pile',
+        badge: 'Fleets',
+        imageKey: 'logistics' as const,
+        imageAlt: 'Global logistics hub representing fleet and depot charging scale',
+      },
+      {
+        id: 'public',
+        title: 'Public Highway Fast Charging',
+        subtitle: '120kW – 360kW Ultra-Fast DC',
+        description:
+          'Heavy-duty modular DC fast charging stations designed for highway corridors, petrol stations, and public charging networks.',
+        categorySlug: 'dc-charging-pile',
+        badge: 'Highway & Public',
+        imageKey: 'publicFast' as const,
+        imageAlt: 'Electric vehicle on a high-power public charging station at night',
+      },
+      {
+        id: 'portable',
+        title: 'Portable & Travel Emergency Kits',
+        subtitle: '3.5kW – 7kW Travel Chargers',
+        description:
+          'Rugged IP66 portable chargers with adjustable current (8A–32A) and multi-plug industrial adapters for mobile service and backup.',
+        categorySlug: 'portable-charging-pile',
+        badge: 'Portable',
+        imageKey: 'portable' as const,
+        imageAlt: 'Electric vehicle on the road ready for portable travel charging',
+      },
+      {
+        id: 'oem',
+        title: 'OEM / ODM Private Labeling',
+        subtitle: 'Custom Hardware & Firmware',
+        description:
+          'Full OEM manufacturing support including customized sheet-metal casing, logo silkscreen, white-label packaging, and custom OCPP setup.',
+        categorySlug: 'ac-charging-pile',
+        badge: 'White-Label',
+        imageKey: 'oem' as const,
+        imageAlt: 'Engineer developing EV charging hardware in a production lab',
+      },
+    ],
+  },
+  categoriesSection: {
+    eyebrow: 'Hardware Ecosystem',
+    title: 'Charging systems for every deployment',
+    description:
+      'Explore AC wallboxes, DC hardware, portable chargers, and cross-standard adapters — organized for fast product discovery.',
+  },
   brandStory: {
     eyebrow: 'Why Buy Through One Electra?',
     title: 'Direct Chinese Factory Sourcing with International Quality Assurance.',
     body: 'One Electra is the international trading brand of Shenyang Yibu Trading Company (Shenyang, China). We bridge regional charging standard gaps, vet tier-1 Chinese EV manufacturers, perform pre-shipment quality inspections, and handle end-to-end freight logistics so international buyers can procure with total confidence.',
+    imageCaptionEyebrow: 'In the field',
+    imageCaptionTitle: 'Hardware that looks as good installed as it performs on paper.',
+    factoryCaptionEyebrow: 'Factory partnership',
+    factoryCaptionTitle: 'Audited manufacturers. Documented quality. Export-ready hardware.',
     points: [
-      'Verified Manufacturers: Audited factories producing CE, RoHS, UKCA, and FCC certified equipment.',
-      'Multi-Standard Matching: Precise technical alignment across Type 1, Type 2, GB/T, and NACS standards.',
-      'Quality Control & Logistics: Full pre-shipment electrical testing and international door-to-door (DDP/CIF/FOB) freight.',
+      {
+        title: 'Verified Manufacturers',
+        body: 'Audited factories producing CE, RoHS, UKCA, and FCC certified equipment.',
+      },
+      {
+        title: 'Multi-Standard Matching',
+        body: 'Precise technical alignment across Type 1, Type 2, GB/T, and NACS standards.',
+      },
+      {
+        title: 'Quality Control & Logistics',
+        body: 'Full pre-shipment electrical testing and international door-to-door (DDP/CIF/FOB) freight.',
+      },
+    ],
+    quickFacts: [
+      { label: 'Standards', value: 'Type 1 / Type 2 / GB/T / NACS' },
+      { label: 'Markets', value: 'Europe • Middle East • South Asia' },
+      { label: 'Support', value: 'Quote response in 24 hours' },
     ],
   },
   opportunity: {
@@ -47,30 +147,57 @@ export const site = {
       'Residential, multi-unit, and renewable-integrated smart charging (7kW AC / Portable)',
     ],
   },
+  standardsSection: {
+    eyebrow: 'Technology & Compliance',
+    title: 'Global charging standards we support',
+    description:
+      'Regional connector expertise and certification compliance (CE, UKCA, IEC 61851, RoHS) are built into product selection, documentation, and market delivery.',
+    complianceBadges: ['CE Certified', 'UKCA', 'IEC Compliant'],
+  },
   standards: [
+    {
+      id: 'type-2',
+      name: 'Type 2 (IEC 62196 / Mennekes)',
+      region: 'Europe, Middle East, S. Asia, Global',
+      summary:
+        'Standard 7kW–22kW AC single & 3-phase connector for European and international EV networks.',
+      code: 'IEC 62196-2',
+      iconName: 'wallbox' as const,
+      imageKey: 'heroAlt' as const,
+      imageAlt: 'Type 2 EV charging connector plugged into a vehicle',
+    },
     {
       id: 'type-1',
       name: 'Type 1 (SAE J1772)',
+      region: 'North America & Japan',
       summary:
-        'North America and Japan AC standard. Single-phase AC connector for home, workplace, and public Level 1/2 charging up to ~19.2kW.',
-    },
-    {
-      id: 'type-2',
-      name: 'Type 2 (IEC 62196-2)',
-      summary:
-        'Primary standard across Europe, UK, Australia, Middle East, and South Asia. Supports single- and three-phase AC up to 22kW and DC systems.',
+        'Single-phase AC connector standard widely used in North American residential and commercial setups.',
+      code: 'SAE J1772',
+      iconName: 'wallbox' as const,
+      imageKey: 'residential' as const,
+      imageAlt: 'Residential AC charging setup for Type 1 markets',
     },
     {
       id: 'gbt',
-      name: 'National Standard (GB/T)',
+      name: 'GB/T 20234 (China Standard)',
+      region: 'China & Domestic EV Exports',
       summary:
-        "China's official AC/DC charging standard — essential for Chinese-manufactured EVs and rapid infrastructure deployments globally.",
+        'National AC and DC fast charging connector standard for domestic Chinese EVs and overseas export fleets.',
+      code: 'GB/T 20234.2 / 20234.3',
+      iconName: 'standards' as const,
+      imageKey: 'oem' as const,
+      imageAlt: 'Chinese manufacturing and GB/T hardware engineering',
     },
     {
       id: 'nacs',
-      name: 'Tesla / NACS (SAE J3400)',
+      name: 'NACS (Tesla SAE J3400)',
+      region: 'North American Ecosystems',
       summary:
-        'Unified North American Charging Standard supporting AC and DC in one compact design, with regional conversion adapters available.',
+        'North American Charging Standard supported across Tesla and modern North American OEM platforms.',
+      code: 'SAE J3400 / NACS',
+      iconName: 'fast_dc' as const,
+      imageKey: 'heroAlt' as const,
+      imageAlt: 'EV charging port connection for multi-standard markets',
     },
   ],
   globalPartner: {
@@ -84,22 +211,40 @@ export const site = {
     primaryCta: 'Request Custom Quote',
     secondaryCta: 'Browse Products',
   },
+  whyChooseSection: {
+    eyebrow: 'Why One Electra',
+    title: 'Built for international buyers who need speed, standards, and supply confidence.',
+    description:
+      'We help distributors, fleet operators, developers, and contractors find certified charging hardware without guessing across incompatible standards or unverified suppliers.',
+  },
   whyChoose: [
     {
-      title: 'Verified Sourcing',
-      description: 'Access to audited Chinese tier-1 EV hardware manufacturers and vetted commercial product lines.',
+      icon: 'factory' as const,
+      title: 'Tier-1 Direct Factory Sourcing',
+      description:
+        'We connect international buyers directly with audited Chinese manufacturing partners in Shenyang and eastern industrial hubs—eliminating middlemen markups.',
+      badge: 'Shenyang Yibu Trading',
     },
     {
-      title: 'Standards Expertise',
-      description: 'Engineering guidance across Type 1, Type 2, GB/T, and NACS to ensure grid and vehicle compatibility.',
+      icon: 'standards' as const,
+      title: 'Multi-Standard Technical Matching',
+      description:
+        'Hardware configured for European (Type 2), North American (Type 1 / NACS), and Chinese (GB/T) grid standards with full CE, UKCA & IEC compliance.',
+      badge: 'CE / UKCA / IEC',
     },
     {
-      title: 'Quality Assurance',
-      description: 'Pre-shipment high-voltage, insulation, and electrical safety testing before goods leave the factory.',
+      icon: 'logistics' as const,
+      title: 'Global Freight & Customs Clearance',
+      description:
+        'Seamless sea/air freight under DDP, CIF, or FOB terms with complete origin documentation, custom tariffs clearance, and door-to-door delivery.',
+      badge: 'DDP / CIF / FOB Freight',
     },
     {
-      title: 'End-to-End Support',
-      description: 'From itemized quotes to export documentation, customs clearance, freight coordination, and after-sales support.',
+      icon: 'quality' as const,
+      title: 'Pre-Shipment High-Voltage QA',
+      description:
+        'Every batch undergoes rigorous high-voltage electrical safety testing, IP rate verification, and factory inspection before container loading.',
+      badge: '100% Pre-Shipment QA',
     },
   ],
   about: {
@@ -173,4 +318,3 @@ export const site = {
       'Certified AC & DC EV chargers, portable units, cables, and adapters from audited Chinese manufacturers for distributors, fleet operators, and commercial installers.',
   },
 } as const
-

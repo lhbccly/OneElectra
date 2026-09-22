@@ -26,17 +26,19 @@ npm run preview
 
 ## Content editing (non-technical)
 
-Prefer these files — do not edit React components for normal copy/product changes:
+**Start here:** [ONE_ELECTRA_CLIENT_GUIDE.md](./ONE_ELECTRA_CLIENT_GUIDE.md)
+
+That guide is organised by task so you can jump to one section (contact details, products, logo, FAQ, etc.) and update only what you need.
 
 | File | Purpose |
 |------|---------|
+| `src/data/site.ts` | Homepage / about / contact / solutions / standards copy |
 | `src/data/products.ts` | Product catalogue |
 | `src/data/categories.ts` | Categories |
 | `src/data/services.ts` | Services |
-| `src/data/site.ts` | Homepage / about / contact copy |
 | `src/data/faqs.ts` | FAQ content |
 | `src/assets/products/` | Product images |
-| `ONE_ELECTRA_CLIENT_GUIDE.md` | Client guide |
+| `src/assets/brand/logo-mark.svg` | Logo mark |
 
 ## Product → WhatsApp flow
 
@@ -46,18 +48,9 @@ Prefer these files — do not edit React components for normal copy/product chan
 
 ## Contact form
 
-- Destination: `support@oneelectra.com`
-- Set `VITE_CONTACT_ENDPOINT` to the production serverless contact endpoint before deployment.
-- The current FormSubmit URL is only a development fallback. A production endpoint must validate, rate-limit, honeypot-check, and durably store each enquiry before attempting email delivery.
-- Never put Resend, SMTP, database, or storage credentials in `VITE_*` variables or the React bundle.
-
-## Design system
-
-- Ink `#080A0C`
-- Graphite `#111519`
-- Off white `#F2F4F3`
-- Muted `#B3BDBF`
-- Electric lime `#B8FF3D`
+- Destination: value of `contact.supportEmail` in `src/data/site.ts`
+- Set `VITE_CONTACT_ENDPOINT` to the production serverless contact endpoint before deployment
+- Never put Resend, SMTP, database, or storage credentials in `VITE_*` variables or the React bundle
 
 ## Deployment
 

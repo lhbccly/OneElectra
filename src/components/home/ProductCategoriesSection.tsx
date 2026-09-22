@@ -4,36 +4,32 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { categories } from '@/data/categories'
-import { lifestyle } from '@/assets/lifestyle'
+import { site } from '@/data/site'
+import { lifestyle, type LifestyleKey } from '@/assets/lifestyle'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
-const categoryVisuals: Record<
-  string,
-  { image: string; alt: string; powerLabel: string }
-> = {
+const categoryVisuals: Record<string, { imageKey: LifestyleKey; alt: string }> = {
   'ac-charging-pile': {
-    image: lifestyle.residentialAlt,
+    imageKey: 'residentialAlt',
     alt: 'Residential AC wallbox charging a white EV beside a green living wall',
-    powerLabel: '7–22 kW AC',
   },
   'dc-charging-pile': {
-    image: lifestyle.publicFast,
+    imageKey: 'publicFast',
     alt: 'Electric vehicle on a high-power public charging station at night',
-    powerLabel: '20–360 kW DC',
   },
   'portable-charging-pile': {
-    image: lifestyle.portable,
+    imageKey: 'portable',
     alt: 'Electric vehicle ready for portable travel and emergency charging',
-    powerLabel: '3.5–7 kW',
   },
   'adapters-connectors': {
-    image: lifestyle.heroAlt,
+    imageKey: 'heroAlt',
     alt: 'EV charging connector plugged into a vehicle charging port',
-    powerLabel: 'Multi-standard',
   },
 }
 
 export function ProductCategoriesSection() {
+  const { categoriesSection } = site
+
   return (
     <section id="categories" className="border-t border-line bg-canvas-subtle py-20 md:py-28 overflow-hidden">
       <Container>
@@ -44,9 +40,9 @@ export function ProductCategoriesSection() {
           variants={fadeUp}
         >
           <SectionHeading
-            eyebrow="Hardware Ecosystem"
-            title="Charging systems for every deployment"
-            description="Explore AC wallboxes, DC hardware, portable chargers, and cross-standard adapters — organized for fast product discovery."
+            eyebrow={categoriesSection.eyebrow}
+            title={categoriesSection.title}
+            description={categoriesSection.description}
           />
         </motion.div>
 
@@ -67,7 +63,7 @@ export function ProductCategoriesSection() {
                 >
                   <div className="absolute inset-0" data-protect-media>
                     <img
-                      src={visual?.image ?? lifestyle.heroAlt}
+                      src={lifestyle[visual?.imageKey ?? 'heroAlt']}
                       alt={visual?.alt ?? category.name}
                       draggable={false}
                       loading="lazy"
@@ -82,7 +78,7 @@ export function ProductCategoriesSection() {
                   <div className="relative z-[1] mt-auto flex flex-col p-6 text-white">
                     <div className="mb-4 flex items-center justify-between">
                       <span className="rounded-full bg-volt/20 px-3 py-1 text-[11px] font-bold tracking-wide text-volt backdrop-blur-sm">
-                        {visual?.powerLabel}
+                        {category.powerLabel}
                       </span>
                       <span className="font-mono text-xs font-bold text-white/70">0{index + 1}</span>
                     </div>
@@ -93,7 +89,7 @@ export function ProductCategoriesSection() {
                     <p className="mt-2 text-sm leading-relaxed text-white/75">{category.description}</p>
 
                     <div className="mt-6 flex items-center justify-between border-t border-white/15 pt-4">
-                      <span className="text-xs font-bold uppercase tracking-wider text-white/85 group-hover:text-volt transition">
+                      <span className="text-xs font-bold uppercase tracking-wider text-white/85 transition group-hover:text-volt">
                         Explore Range
                       </span>
                       <span className="inline-flex size-9 items-center justify-center rounded-full border border-white/25 text-white transition group-hover:border-volt group-hover:bg-volt/15 group-hover:text-volt">

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Button } from '@/components/ui/Button'
+import { site } from '@/data/site'
 import { validateContactForm, type ContactFormValues } from '@/lib/validation'
 
 const initial: ContactFormValues = {
@@ -12,7 +13,8 @@ const initial: ContactFormValues = {
   website: '',
 }
 
-const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT || 'https://formsubmit.co/support@oneelectra.com'
+const contactEndpoint =
+  import.meta.env.VITE_CONTACT_ENDPOINT || `https://formsubmit.co/${site.contact.supportEmail}`
 
 export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(initial)
@@ -97,7 +99,7 @@ export function ContactForm() {
       <div className="rounded-[1.75rem] border border-lime/30 bg-lime/10 p-8">
         <h3 className="font-display text-2xl font-semibold text-off-white">Enquiry received</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Thank you. Your message is ready for our team at support@oneelectra.com. If email
+          Thank you. Your message is ready for our team at {site.contact.supportEmail}. If email
           delivery is temporarily unavailable, we still retain the enquiry details for follow-up.
         </p>
         <Button type="button" className="mt-6" variant="secondary" onClick={() => setStatus('idle')}>
@@ -115,7 +117,7 @@ export function ContactForm() {
       className="space-y-5"
       noValidate
     >
-      <input type="hidden" name="_subject" value="New Enquiry | One Electra" />
+      <input type="hidden" name="_subject" value={`New Enquiry | ${site.brand.name}`} />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
       <div className="grid gap-5 md:grid-cols-2">
