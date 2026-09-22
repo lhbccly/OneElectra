@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { faqs } from '@/data/faqs'
+import { lifestyle } from '@/assets/lifestyle'
 import { usePageMeta } from '@/lib/usePageMeta'
-import nacsGunImage from '@/assets/products/adapters-connectors/nacs-cable-gun/01.png'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
 export function FAQPage() {
@@ -23,37 +22,34 @@ export function FAQPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line">
-        <Container className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0" data-protect-media>
+          <img
+            src={lifestyle.heroAlt}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1210]/93 via-[#0a1210]/82 to-[#0a1210]/55" />
+        </div>
+
+        <Container className="relative z-[1] py-16 md:py-24">
           <motion.div
+            className="max-w-3xl"
             initial="hidden"
             animate="show"
             variants={staggerContainer}
           >
             <motion.div variants={fadeUp}>
-              <SectionHeading
-                eyebrow="FAQ"
-                title="Frequently asked questions"
-                description="Practical answers for buyers evaluating One Electra hardware, compliance, and logistics."
-              />
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-volt">FAQ</p>
+              <h1 className="font-display text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[3.2rem] lg:leading-[1.1]">
+                Frequently asked questions
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+                Practical answers for buyers evaluating One Electra hardware, compliance, and logistics.
+              </p>
             </motion.div>
-          </motion.div>
-          <motion.div
-            className="relative hidden min-h-48 items-center justify-center lg:flex"
-            initial={{ opacity: 0, x: 24, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            aria-hidden
-          >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,255,61,0.15),transparent_65%)]" />
-            <img
-              src={nacsGunImage}
-              alt=""
-              className="relative z-[1] w-[78%] rotate-[-8deg] object-contain opacity-100 drop-shadow-[0_1.2rem_1.5rem_rgba(0,0,0,0.55)]"
-            />
-            {/* <span className="absolute bottom-4 left-5 text-[10px] uppercase tracking-[0.2em] text-lime/80">
-              Connector standards
-            </span> */}
           </motion.div>
         </Container>
       </section>
@@ -72,7 +68,7 @@ export function FAQPage() {
               <motion.div
                 key={faq.id}
                 variants={fadeUp}
-                className={`rounded-[1.25rem] border bg-panel/40 overflow-hidden transition-colors duration-300 ${
+                className={`overflow-hidden rounded-[1.25rem] border bg-panel/40 transition-colors duration-300 ${
                   open ? 'border-lime/30 bg-panel/70' : 'border-line'
                 }`}
               >

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { lifestyle } from '@/assets/lifestyle'
 import { site } from '@/data/site'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
@@ -10,24 +11,28 @@ export function FinalCtaSection() {
     <section id="contact" className="border-t border-line bg-canvas-subtle py-20 md:py-28 overflow-hidden">
       <Container>
         <motion.div
-          className="dark-surface relative overflow-hidden rounded-lg border border-slate-800 bg-navy px-8 py-12 text-white shadow-2xl md:px-14 md:py-16"
+          className="relative overflow-hidden rounded-[1.75rem] border border-slate-800 shadow-2xl"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          data-protect-media
         >
-          {/* Subtle grid pattern */}
+          <img
+            src={lifestyle.commercialAlt}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div
-            className="pointer-events-none absolute inset-0 opacity-15"
-            style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-              backgroundSize: '48px 48px',
-            }}
+            className="absolute inset-0 bg-gradient-to-r from-[#0a1210]/94 via-[#0a1210]/88 to-[#0a1210]/70"
             aria-hidden
           />
 
           <motion.div
-            className="relative max-w-3xl"
+            className="relative max-w-3xl px-8 py-12 text-white md:px-14 md:py-16"
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
@@ -47,14 +52,11 @@ export function FinalCtaSection() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg"
+              className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg"
             >
               {site.finalCta.body}
             </motion.p>
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 flex flex-wrap gap-4"
-            >
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
               <ButtonLink to="/contact" variant="lime" size="lg">
                 {site.finalCta.primaryCta}
               </ButtonLink>

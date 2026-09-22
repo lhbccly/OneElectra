@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ContactForm } from '@/components/ui/ContactForm'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { site } from '@/data/site'
+import { lifestyle } from '@/assets/lifestyle'
 import { usePageMeta } from '@/lib/usePageMeta'
-import type2GunImage from '@/assets/products/adapters-connectors/type2-cable-gun/01.png'
 import { staggerContainer, fadeUp, fadeLeft, fadeRight, viewportOnce } from '@/lib/animations'
 
 export function ContactPage() {
@@ -21,34 +20,35 @@ export function ContactPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line">
-        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0" data-protect-media>
+          <img
+            src={lifestyle.commercial}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1210]/93 via-[#0a1210]/80 to-[#0a1210]/50" />
+        </div>
+
+        <Container className="relative z-[1] py-16 md:py-24">
           <motion.div
+            className="max-w-3xl"
             initial="hidden"
             animate="show"
             variants={staggerContainer}
           >
             <motion.div variants={fadeUp}>
-              <SectionHeading
-                eyebrow="Contact"
-                title="Send us an enquiry"
-                description="Tell us your market, connector standard, volume, and deployment type. Typical quote responses are sent within 24 hours and routed to support@oneelectra.com."
-              />
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-volt">Contact</p>
+              <h1 className="font-display text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[3.2rem] lg:leading-[1.1]">
+                Send us an enquiry
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+                Tell us your market, connector standard, volume, and deployment type. Typical quote
+                responses are sent within 24 hours and routed to support@oneelectra.com.
+              </p>
             </motion.div>
-          </motion.div>
-          <motion.div
-            className="relative flex min-h-48 items-center justify-center lg:min-h-64"
-            initial={{ opacity: 0, x: 24, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            aria-hidden
-          >
-            <div className="pointer-events-none absolute size-64 rounded-full bg-lime/10 blur-3xl" />
-            <img
-              src={type2GunImage}
-              alt=""
-              className="relative z-[1] h-auto w-[min(100%,30rem)] rotate-[-8deg] object-contain drop-shadow-[0_1.5rem_2rem_rgba(0,0,0,0.45)]"
-            />
           </motion.div>
         </Container>
       </section>
@@ -72,11 +72,25 @@ export function ContactPage() {
           variants={fadeRight}
         >
           <motion.div
-            className="group relative rounded-[1.75rem] border border-line bg-graphite p-6 md:p-8 transition duration-300 hover:border-lime/30"
+            className="overflow-hidden rounded-[1.75rem] border border-line shadow-card"
+            data-protect-media
+          >
+            <div className="aspect-[16/10]">
+              <img
+                src={lifestyle.residentialAlt}
+                alt="Home EV charging setup showing wallbox and electric vehicle"
+                draggable={false}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="group relative rounded-[1.75rem] border border-line bg-graphite p-6 transition duration-300 hover:border-lime/30 md:p-8"
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 260, damping: 22 }}
           >
-            {/* Hover glow */}
             <div
               className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               style={{ background: 'radial-gradient(circle at 100% 0%, rgba(184,255,61,0.08), transparent 55%)' }}
@@ -101,7 +115,7 @@ export function ContactPage() {
                   <dt className="text-muted">{label}</dt>
                   <dd>
                     {href ? (
-                      <a className="text-off-white hover:text-lime transition-colors duration-200" href={href}>
+                      <a className="text-off-white transition-colors duration-200 hover:text-lime" href={href}>
                         {value}
                       </a>
                     ) : (
@@ -114,7 +128,8 @@ export function ContactPage() {
             <div className="relative z-[1] mt-8">
               <WhatsAppButton label="Chat on WhatsApp" />
               <p className="mt-3 text-xs leading-relaxed text-muted">
-                WhatsApp is our fastest channel for sharing product photos, specifications, and shipping details across time zones. Formal quotations and documents are sent by email.
+                WhatsApp is our fastest channel for sharing product photos, specifications, and shipping
+                details across time zones. Formal quotations and documents are sent by email.
               </p>
             </div>
           </motion.div>
@@ -134,17 +149,6 @@ export function ContactPage() {
               <li>• OEM, fleet, or project-specific requirements</li>
             </ul>
           </motion.div>
-
-          <motion.p
-            className="text-sm leading-relaxed text-muted"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={viewportOnce}
-            transition={{ delay: 0.35 }}
-          >
-            Typical response time is within 24 hours. Submissions are sent securely to
-            support@oneelectra.com through the same FormSubmit delivery used by the One Electra website.
-          </motion.p>
         </motion.aside>
       </Container>
     </motion.div>

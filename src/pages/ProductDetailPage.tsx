@@ -8,6 +8,7 @@ import { ProductCard } from '@/components/products/ProductCard'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { getCategoryById } from '@/data/categories'
 import { getProductBySlug, getRelatedProducts } from '@/data/products'
+import { lifestyle } from '@/assets/lifestyle'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { useQuote } from '@/context/QuoteContext'
 import { NotFoundPage } from '@/pages/NotFoundPage'
@@ -189,6 +190,37 @@ export function ProductDetailPage() {
             viewport={viewportOnce}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
+            <div
+              className="overflow-hidden rounded-[1.5rem] border border-line shadow-card"
+              data-protect-media
+            >
+              <div className="aspect-[16/9]">
+                <img
+                  src={
+                    product.category === 'dc-charging-pile'
+                      ? lifestyle.publicFast
+                      : product.category === 'portable-charging-pile'
+                        ? lifestyle.portable
+                        : product.category === 'adapters-connectors'
+                          ? lifestyle.heroAlt
+                          : lifestyle.residential
+                  }
+                  alt={`${category?.name ?? 'EV charging'} deployment context`}
+                  draggable={false}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="border-t border-line bg-panel/60 px-5 py-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">
+                  Deployment context
+                </p>
+                <p className="mt-1 text-sm text-off-white">
+                  {category?.name ?? 'EV charging hardware'} · certified for international projects
+                </p>
+              </div>
+            </div>
+
             <div>
               <h2 className="mb-4 font-display text-2xl font-semibold text-off-white">Features</h2>
               <motion.ul

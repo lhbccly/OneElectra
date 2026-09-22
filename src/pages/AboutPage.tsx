@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { BrandStorySection } from '@/components/home/BrandStorySection'
 import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection'
 import { StandardsSection } from '@/components/home/StandardsSection'
 import { GlobalPresenceSection } from '@/components/home/GlobalPresenceSection'
 import { site } from '@/data/site'
 import { usePageMeta } from '@/lib/usePageMeta'
-import chargerImage from '@/assets/products/ac-charging-pile/dl-eu004/01.png'
+import { lifestyle } from '@/assets/lifestyle'
 import { staggerContainer, fadeUp, fadeLeft, viewportOnce } from '@/lib/animations'
 
 export function AboutPage() {
@@ -26,30 +24,47 @@ export function AboutPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash overflow-hidden border-b border-line py-12 md:py-16">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <motion.div initial="hidden" animate="show" variants={staggerContainer}>
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0" data-protect-media>
+          <img
+            src={lifestyle.residential}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1210]/92 via-[#0a1210]/80 to-[#0a1210]/50" />
+        </div>
+
+        <Container className="relative z-[1] py-16 md:py-24">
+          <motion.div
+            className="max-w-3xl"
+            initial="hidden"
+            animate="show"
+            variants={staggerContainer}
+          >
             <motion.div variants={fadeLeft}>
-              <SectionHeading
-                eyebrow="About"
-                title={site.about.title}
-                description={site.about.intro}
-              />
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-volt">About</p>
+              <h1 className="font-display text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[3.2rem] lg:leading-[1.1]">
+                {site.about.title}
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+                {site.about.intro}
+              </p>
             </motion.div>
-            <motion.div variants={fadeLeft} className="flex flex-wrap gap-3">
+            <motion.div variants={fadeLeft} className="mt-8 flex flex-wrap gap-3">
               <ButtonLink to="/products" variant="lime">
                 Browse Products
               </ButtonLink>
-              <WhatsAppButton variant="secondary" label="Get Quote" />
+              <ButtonLink
+                to="/contact"
+                variant="secondary"
+                className="!border-white/35 !bg-white/10 !text-white hover:!bg-white/20"
+              >
+                Get Quote
+              </ButtonLink>
             </motion.div>
           </motion.div>
-
-          <img
-            src={chargerImage}
-            alt="One Electra AC EV charger"
-            draggable={false}
-            className="mx-auto h-auto max-h-[22rem] w-[72%] object-contain"
-          />
         </Container>
       </section>
 
@@ -144,36 +159,50 @@ export function AboutPage() {
 
       <Container className="pt-16 md:pt-24">
         <motion.div
-          className="overflow-hidden rounded-[2rem] border border-line bg-graphite p-8 md:p-12"
+          className="relative overflow-hidden rounded-[2rem] border border-line shadow-card"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          data-protect-media
         >
-          <SectionHeading
-            eyebrow="Opportunity"
-            title={site.opportunity.title}
-            description={site.opportunity.body}
+          <img
+            src={lifestyle.publicFast}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-          <p className="mb-6 text-xs text-muted">{site.opportunity.citation}</p>
-          <motion.ul
-            className="grid gap-3 md:grid-cols-3"
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={staggerContainer}
-          >
-            {site.opportunity.points.map((point) => (
-              <motion.li
-                key={point}
-                variants={fadeUp}
-                className="rounded-2xl border border-line bg-panel/40 px-5 py-4 text-sm text-off-white transition duration-300 hover:border-lime/30 hover:bg-panel/70"
-                whileHover={{ y: -2 }}
-              >
-                {point}
-              </motion.li>
-            ))}
-          </motion.ul>
+          <div className="absolute inset-0 bg-[#0a1210]/88" />
+          <div className="relative p-8 md:p-12">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-volt">Opportunity</p>
+            <h2 className="mt-3 max-w-3xl font-display text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+              {site.opportunity.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+              {site.opportunity.body}
+            </p>
+            <p className="mb-6 mt-3 text-xs text-white/55">{site.opportunity.citation}</p>
+            <motion.ul
+              className="grid gap-3 md:grid-cols-3"
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportOnce}
+              variants={staggerContainer}
+            >
+              {site.opportunity.points.map((point) => (
+                <motion.li
+                  key={point}
+                  variants={fadeUp}
+                  className="rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-sm text-white/90 backdrop-blur-sm transition duration-300 hover:border-volt/40 hover:bg-white/10"
+                  whileHover={{ y: -2 }}
+                >
+                  {point}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
         </motion.div>
       </Container>
     </motion.div>

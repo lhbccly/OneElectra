@@ -2,14 +2,33 @@ import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { CategoryFilter } from '@/components/products/CategoryFilter'
 import { ProductCard } from '@/components/products/ProductCard'
 import { products } from '@/data/products'
 import { getCategoryBySlug } from '@/data/categories'
+import { lifestyle } from '@/assets/lifestyle'
 import type { CategoryId } from '@/types/catalogue'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { staggerContainer, fadeUp } from '@/lib/animations'
+
+const categoryBanners: Record<string, { image: string; alt: string }> = {
+  'ac-charging-pile': {
+    image: lifestyle.residential,
+    alt: 'AC wallbox charging an electric vehicle at home',
+  },
+  'dc-charging-pile': {
+    image: lifestyle.publicFast,
+    alt: 'High-power DC public charging station at night',
+  },
+  'portable-charging-pile': {
+    image: lifestyle.portable,
+    alt: 'Electric vehicle ready for portable travel charging',
+  },
+  'adapters-connectors': {
+    image: lifestyle.heroAlt,
+    alt: 'EV charging connector plugged into a vehicle port',
+  },
+}
 
 export function ProductsPage() {
   const [params] = useSearchParams()
@@ -18,6 +37,9 @@ export function ProductsPage() {
   const activeCategory: CategoryId | 'all' = selectedCategory?.id ?? 'all'
 
   const category = selectedCategory
+  const banner = category
+    ? categoryBanners[category.id]
+    : { image: lifestyle.hero, alt: 'EV charging hardware catalogue lifestyle scene' }
 
   const filtered = useMemo(() => {
     if (activeCategory === 'all') return products
@@ -37,62 +59,39 @@ export function ProductsPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <section className="hero-wash border-b border-line py-12 md:py-16">
-        <Container>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-          >
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0" data-protect-media>
+          <img
+            key={banner.image}
+            src={banner.image}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1210]/92 via-[#0a1210]/78 to-[#0a1210]/45" />
+        </div>
+
+        <Container className="relative z-[1] py-16 md:py-20">
+          <motion.div initial="hidden" animate="show" variants={staggerContainer}>
             <motion.div variants={fadeUp}>
-              <SectionHeading
-                eyebrow="Products"
-                title={category?.name ?? 'EV charging catalogue'}
-                description={
-                  category?.description ??
-                  'Filter by category, open a product for specifications, then request a quotation on WhatsApp.'
-                }
-              />
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-volt">Products</p>
+              <h1 className="max-w-3xl font-display text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[3.2rem] lg:leading-[1.1]">
+                {category?.name ?? 'EV charging catalogue'}
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+                {category?.description ??
+                  'Filter by category, open a product for specifications, then request a quotation on WhatsApp.'}
+              </p>
             </motion.div>
-            <motion.div variants={fadeUp}>
-              <CategoryFilter active={activeCategory} />
+            <motion.div variants={fadeUp} className="mt-8">
+              <CategoryFilter active={activeCategory} onDark />
             </motion.div>
           </motion.div>
         </Container>
       </section>
 
       <Container className="pt-12 md:pt-16">
-        {/* <motion.div
-          className="mb-8 rounded-[1.75rem] border border-line bg-panel/40 p-6 md:p-8"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45 }}
-        > */}
-          {/* <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-lime">Quick matching</p>
-              <h2 className="mt-2 font-display text-2xl font-semibold text-off-white">Need the right product for your project?</h2>
-            </div>
-            <a href="/contact" className="inline-flex items-center justify-center rounded-full border border-lime/40 bg-lime/10 px-5 py-2.5 text-sm font-medium text-lime transition hover:bg-lime/20">
-              Request a Quote
-            </a>
-          </div> */}
-
-          {/* <div className="mt-6 grid gap-3 md:grid-cols-4">
-            {[
-              'Home charging',
-              'Workplace charging',
-              'Fleet depots',
-              'Public infrastructure',
-            ].map((useCase) => (
-              <div key={useCase} className="rounded-2xl border border-line bg-graphite/70 p-4 text-sm text-off-white/90">
-                {useCase}
-              </div>
-            ))}
-          </div> */}
-        {/* </motion.div> */}
-
         <motion.p
           className="mb-6 text-sm text-muted"
           key={activeCategory}
@@ -126,11 +125,7 @@ export function ProductsPage() {
               variants={staggerContainer}
             >
               {filtered.map((product, i) => (
-                <motion.div
-                  key={product.id}
-                  variants={fadeUp}
-                  custom={i}
-                >
+                <motion.div key={product.id} variants={fadeUp} custom={i}>
                   <ProductCard product={product} />
                 </motion.div>
               ))}

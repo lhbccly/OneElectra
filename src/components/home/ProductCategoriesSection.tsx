@@ -3,15 +3,34 @@ import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { BrandIcon } from '@/components/ui/BrandIcon'
 import { categories } from '@/data/categories'
+import { lifestyle } from '@/assets/lifestyle'
 import { staggerContainer, fadeUp, viewportOnce } from '@/lib/animations'
 
-const categoryIconMap: Record<string, 'wallbox' | 'fast_dc' | 'portable' | 'adapter'> = {
-  'ac-charging-pile': 'wallbox',
-  'dc-charging-pile': 'fast_dc',
-  'portable-charging-pile': 'portable',
-  'adapters-connectors': 'adapter',
+const categoryVisuals: Record<
+  string,
+  { image: string; alt: string; powerLabel: string }
+> = {
+  'ac-charging-pile': {
+    image: lifestyle.residentialAlt,
+    alt: 'Residential AC wallbox charging a white EV beside a green living wall',
+    powerLabel: '7–22 kW AC',
+  },
+  'dc-charging-pile': {
+    image: lifestyle.publicFast,
+    alt: 'Electric vehicle on a high-power public charging station at night',
+    powerLabel: '20–360 kW DC',
+  },
+  'portable-charging-pile': {
+    image: lifestyle.portable,
+    alt: 'Electric vehicle ready for portable travel and emergency charging',
+    powerLabel: '3.5–7 kW',
+  },
+  'adapters-connectors': {
+    image: lifestyle.heroAlt,
+    alt: 'EV charging connector plugged into a vehicle charging port',
+    powerLabel: 'Multi-standard',
+  },
 }
 
 export function ProductCategoriesSection() {
@@ -32,48 +51,55 @@ export function ProductCategoriesSection() {
         </motion.div>
 
         <motion.div
-          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
         >
           {categories.map((category, index) => {
-            const iconName = categoryIconMap[category.id] || 'wallbox'
+            const visual = categoryVisuals[category.id]
             return (
               <motion.div key={category.id} variants={fadeUp}>
                 <Link
                   to={`/products?category=${category.slug}`}
-                  className="industrial-card group relative flex h-full flex-col justify-between rounded-2xl p-7"
+                  className="group relative flex h-full min-h-[22rem] flex-col overflow-hidden rounded-2xl border border-line shadow-card transition duration-300 hover:-translate-y-1 hover:border-emerald/40 hover:shadow-card-hover"
                 >
-                  <div>
-                    <div className="mb-6 flex items-center justify-between">
-                      <div className="flex size-12 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-emerald transition duration-300 group-hover:border-emerald group-hover:bg-emerald/10">
-                        <BrandIcon name={iconName} size={24} />
-                      </div>
-                      <span className="font-mono text-xs font-bold text-emerald">
-                        0{index + 1}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display text-2xl font-bold text-navy transition duration-300 group-hover:text-emerald">
-                      {category.name}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                      {category.description}
-                    </p>
+                  <div className="absolute inset-0" data-protect-media>
+                    <img
+                      src={visual?.image ?? lifestyle.heroAlt}
+                      alt={visual?.alt ?? category.name}
+                      draggable={false}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-[#0a1210]/92 via-[#0a1210]/45 to-[#0a1210]/15"
+                      aria-hidden
+                    />
                   </div>
 
-                  <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-600 group-hover:text-emerald transition">
-                      Explore Range
-                    </span>
-                    <motion.span
-                      className="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition group-hover:border-emerald group-hover:text-emerald group-hover:bg-emerald/10"
-                      whileHover={{ rotate: 45 }}
-                    >
-                      <ArrowUpRight className="size-4" aria-hidden />
-                    </motion.span>
+                  <div className="relative z-[1] mt-auto flex flex-col p-6 text-white">
+                    <div className="mb-4 flex items-center justify-between">
+                      <span className="rounded-full bg-volt/20 px-3 py-1 text-[11px] font-bold tracking-wide text-volt backdrop-blur-sm">
+                        {visual?.powerLabel}
+                      </span>
+                      <span className="font-mono text-xs font-bold text-white/70">0{index + 1}</span>
+                    </div>
+
+                    <h3 className="font-display text-2xl font-bold transition duration-300 group-hover:text-volt">
+                      {category.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/75">{category.description}</p>
+
+                    <div className="mt-6 flex items-center justify-between border-t border-white/15 pt-4">
+                      <span className="text-xs font-bold uppercase tracking-wider text-white/85 group-hover:text-volt transition">
+                        Explore Range
+                      </span>
+                      <span className="inline-flex size-9 items-center justify-center rounded-full border border-white/25 text-white transition group-hover:border-volt group-hover:bg-volt/15 group-hover:text-volt">
+                        <ArrowUpRight className="size-4" aria-hidden />
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>

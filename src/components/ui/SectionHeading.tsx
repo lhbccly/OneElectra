@@ -26,7 +26,7 @@ export function SectionHeading({
         {title}
       </h2>
       {description ? (
-        <p className="max-w-2xl text-base leading-7 text-slate-600 md:text-lg">{description}</p>
+        <p className="max-w-2xl text-base leading-7 text-muted md:text-lg">{description}</p>
       ) : null}
       {children}
     </div>

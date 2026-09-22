@@ -6,13 +6,15 @@ import type { CategoryId } from '@/types/catalogue'
 
 interface CategoryFilterProps {
   active?: CategoryId | 'all'
+  /** Use light chip styles when placed on a dark/photo hero. */
+  onDark?: boolean
 }
 
 type FilterItem =
   | { id: 'all'; name: string; slug?: undefined }
   | { id: CategoryId; name: string; slug: string }
 
-export function CategoryFilter({ active = 'all' }: CategoryFilterProps) {
+export function CategoryFilter({ active = 'all', onDark = false }: CategoryFilterProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const items: FilterItem[] = [
     { id: 'all', name: 'All Products' },
@@ -28,14 +30,20 @@ export function CategoryFilter({ active = 'all' }: CategoryFilterProps) {
       <div className="relative md:hidden">
         <button
           type="button"
-          className="flex w-full items-center justify-between rounded-2xl border border-line bg-ink px-4 py-3 pr-5 text-left text-sm text-off-white outline-none transition focus:border-lime"
+          className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 pr-5 text-left text-sm outline-none transition focus:border-lime ${
+            onDark
+              ? 'border-white/25 bg-white/10 text-white'
+              : 'border-line bg-ink text-off-white'
+          }`}
           aria-expanded={mobileOpen}
           aria-controls="mobile-category-menu"
           onClick={() => setMobileOpen((open) => !open)}
         >
           <span>{items.find((item) => item.id === active)?.name ?? 'All Products'}</span>
           <ChevronDown
-            className={`ml-5 size-4 shrink-0 text-muted transition-transform ${mobileOpen ? 'rotate-180 text-lime' : ''}`}
+            className={`ml-5 size-4 shrink-0 transition-transform ${
+              mobileOpen ? 'rotate-180 text-lime' : onDark ? 'text-white/60' : 'text-muted'
+            }`}
             aria-hidden
           />
         </button>
@@ -86,8 +94,10 @@ export function CategoryFilter({ active = 'all' }: CategoryFilterProps) {
               aria-selected={isActive}
               className={`rounded-full border px-4 py-2 text-sm transition ${
                 isActive
-                  ? 'border-lime bg-lime/10 text-lime'
-                  : 'border-line text-muted hover:border-muted hover:text-off-white'
+                  ? 'border-lime bg-lime/15 text-lime'
+                  : onDark
+                    ? 'border-white/25 bg-white/5 text-white/80 hover:border-white/45 hover:bg-white/10 hover:text-white'
+                    : 'border-line text-muted hover:border-muted hover:text-off-white'
               }`}
             >
               {item.name}
