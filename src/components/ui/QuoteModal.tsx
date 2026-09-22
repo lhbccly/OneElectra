@@ -4,6 +4,9 @@ import { X, CheckCircle2, MessageSquare, Send, ShieldCheck, Truck, Award } from 
 import { useQuote } from '@/context/QuoteContext'
 import { site } from '@/data/site'
 
+const quoteEndpoint =
+  import.meta.env.VITE_CONTACT_ENDPOINT || `https://formsubmit.co/${site.contact.supportEmail}`
+
 export function QuoteModal() {
   const { isOpen, quoteDetails, closeQuoteModal } = useQuote()
 
@@ -116,11 +119,7 @@ export function QuoteModal() {
     e.preventDefault()
     saveDurableQuoteEnquiry('rfq_form')
     setStatus('submitting')
-
-    // FormSubmit POST / serverless backup trigger
-    setTimeout(() => {
-      setStatus('success')
-    }, 600)
+    e.currentTarget.submit()
   }
 
   if (!isOpen) return null
@@ -222,7 +221,16 @@ export function QuoteModal() {
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+                <form
+                  action={quoteEndpoint}
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="mt-6 space-y-6"
+                >
+                  <input type="hidden" name="_subject" value={`New B2B Quotation | ${site.brand.name}`} />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_replyto" value={email} />
                   {/* Step 1: Equipment Specs */}
                   <div className="space-y-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">
@@ -234,6 +242,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">Product / Category</label>
                         <input
                           type="text"
+                          name="productCategory"
                           value={productCategory}
                           onChange={(e) => setProductCategory(e.target.value)}
                           placeholder="e.g. 22kW AC Wallbox DL-EU004-6"
@@ -245,6 +254,7 @@ export function QuoteModal() {
                       <div>
                         <label className="block text-xs text-muted mb-1.5">Charging Standard</label>
                         <select
+                          name="standard"
                           value={standard}
                           onChange={(e) => setStandard(e.target.value)}
                           className="w-full rounded-xl border border-line bg-ink px-3.5 py-2.5 text-sm text-off-white focus:border-lime focus:outline-none"
@@ -260,6 +270,7 @@ export function QuoteModal() {
                       <div>
                         <label className="block text-xs text-muted mb-1.5">Power Rating (kW)</label>
                         <select
+                          name="powerOutput"
                           value={powerOutput}
                           onChange={(e) => setPowerOutput(e.target.value)}
                           className="w-full rounded-xl border border-line bg-ink px-3.5 py-2.5 text-sm text-off-white focus:border-lime focus:outline-none"
@@ -277,6 +288,7 @@ export function QuoteModal() {
                       <div>
                         <label className="block text-xs text-muted mb-1.5">Target Order Quantity</label>
                         <select
+                          name="quantity"
                           value={quantity}
                           onChange={(e) => setQuantity(e.target.value)}
                           className="w-full rounded-xl border border-line bg-ink px-3.5 py-2.5 text-sm text-off-white focus:border-lime focus:outline-none"
@@ -301,6 +313,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">Destination Country & City</label>
                         <input
                           type="text"
+                          name="country"
                           value={country}
                           onChange={(e) => setCountry(e.target.value)}
                           placeholder="e.g. Dubai, UAE / Germany / Pakistan"
@@ -312,6 +325,7 @@ export function QuoteModal() {
                       <div>
                         <label className="block text-xs text-muted mb-1.5">Business Role</label>
                         <select
+                          name="businessType"
                           value={businessType}
                           onChange={(e) => setBusinessType(e.target.value)}
                           className="w-full rounded-xl border border-line bg-ink px-3.5 py-2.5 text-sm text-off-white focus:border-lime focus:outline-none"
@@ -328,6 +342,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">Company Name</label>
                         <input
                           type="text"
+                          name="companyName"
                           value={companyName}
                           onChange={(e) => setCompanyName(e.target.value)}
                           placeholder="Your company name"
@@ -339,6 +354,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">Full Name *</label>
                         <input
                           type="text"
+                          name="fullName"
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
                           placeholder="Your full name"
@@ -351,6 +367,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">Business Email *</label>
                         <input
                           type="email"
+                          name="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="name@company.com"
@@ -363,6 +380,7 @@ export function QuoteModal() {
                         <label className="block text-xs text-muted mb-1.5">WhatsApp / Phone *</label>
                         <input
                           type="tel"
+                          name="phone"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="+971 ... / +49 ..."
@@ -376,6 +394,8 @@ export function QuoteModal() {
                       <input
                         type="checkbox"
                         id="oemCheck"
+                        name="needOem"
+                        value="Yes"
                         checked={needOem}
                         onChange={(e) => setNeedOem(e.target.checked)}
                         className="size-4 rounded border-line bg-ink text-lime focus:ring-lime"
@@ -388,6 +408,7 @@ export function QuoteModal() {
                     <div>
                       <label className="block text-xs text-muted mb-1.5">Project Notes / Specifics</label>
                       <textarea
+                        name="notes"
                         rows={3}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
