@@ -10,6 +10,8 @@ import { ContactPage } from '@/pages/ContactPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { ThemeProvider } from '@/context/ThemeContext'
 
+const baseName = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
       { path: '*', element: <NotFoundPage /> },
     ],
   },
-])
+], { basename: baseName })
 
 export default function App() {
   return (
