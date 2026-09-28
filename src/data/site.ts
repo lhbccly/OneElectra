@@ -8,6 +8,7 @@ export const site = {
     website: 'oneelectra.com',
   },
   contact: {
+     supportEmail: 'support@oneelectra.com',
     infoEmail: 'info@oneelectra.com',
     inquiryEmail: 'jasmin@oneelectra.com',
     whatsappNumber: '8615504192700',
