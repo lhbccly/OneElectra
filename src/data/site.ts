@@ -20,6 +20,7 @@ export const site = {
     facebook: 'https://www.facebook.com/profile.php?id=61591170849895',
     instagram: 'https://www.instagram.com/oneelectra_technology',
     whatsapp: 'https://wa.me/8615504192700',
+      Global Partner: 'https://yibuglobal.com',
   },
   hero: {
     title: 'EV Charging Hardware & Global Sourcing',
