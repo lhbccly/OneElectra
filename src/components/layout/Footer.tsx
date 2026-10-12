@@ -98,8 +98,8 @@ export function Footer() {
             B2B Sales Contact
           </h3>
           <p>
-            <a className="hover:text-volt font-semibold text-white transition-colors" href={`mailto:${site.contact.supportEmail}`}>
-              {site.contact.supportEmail}
+            <a className="hover:text-volt font-semibold text-white transition-colors" href={`mailto:${site.contact.infoEmail}`}>
+              {site.contact.infoEmail}
             </a>
           </p>
           <p className="text-slate-400">Markets: {site.contact.markets}</p>

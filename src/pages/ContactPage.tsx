@@ -10,7 +10,7 @@ import { staggerContainer, fadeUp, fadeLeft, fadeRight, viewportOnce } from '@/l
 export function ContactPage() {
   usePageMeta(
     'Contact | One Electra',
-    'Send an enquiry to support@oneelectra.com or request a fast WhatsApp quotation from One Electra.',
+    'Request a quote or send an enquiry to One Electra for EV charging hardware and sourcing support.',
   )
 
   return (
@@ -46,7 +46,7 @@ export function ContactPage() {
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
                 Tell us your market, connector standard, volume, and deployment type. Typical quote
-                responses are sent within 24 hours and routed to support@oneelectra.com.
+                responses are sent within 24 hours.
               </p>
             </motion.div>
           </motion.div>
@@ -91,9 +91,7 @@ export function ContactPage() {
               variants={staggerContainer}
             >
               {[
-                { label: 'Support', value: site.contact.supportEmail, href: `mailto:${site.contact.supportEmail}` },
                 { label: 'Info', value: site.contact.infoEmail, href: `mailto:${site.contact.infoEmail}` },
-                { label: 'Direct inquiry', value: site.contact.inquiryEmail, href: `mailto:${site.contact.inquiryEmail}` },
                 { label: 'Markets', value: site.contact.markets },
                 { label: 'Address', value: site.contact.address },
               ].map(({ label, value, href }) => (
